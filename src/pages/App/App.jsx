@@ -41,7 +41,7 @@ class App extends Component {
 					render={()=> 
 						user ? <Users /> : <Redirect to='/login'/>
 				}/>
-
+				<h1>chitra's spot</h1>
 			</>
 		)
 	}
