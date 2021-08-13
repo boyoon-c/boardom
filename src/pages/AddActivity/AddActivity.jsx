@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../App/App.css'
 
 class AddActivity extends Component {
   state = { 
@@ -27,7 +28,8 @@ class AddActivity extends Component {
   render() { 
     return ( 
       <>
-      <h2>add activity</h2>
+      <main className='fs-6 m-5'>
+      <h2>Add activity</h2>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <h3>Activity type:</h3>
         <select 
@@ -53,18 +55,18 @@ class AddActivity extends Component {
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-        </select>
-        <button
+        </select><br />
+        <button 
         type="submit"
         disabled={this.state.invalidForm}
         >
           Add Activity
         </button>
-
         <button>Next Activity this will call another activity</button>  
       </form>
-      <h2>Your Activity:</h2>
-      {}
+      <h3>Your Activity:</h3>
+      {/* Here we will display the list of a user's activities in cards */}
+      </main>
       </>
      );
   }
