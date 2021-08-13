@@ -73,7 +73,7 @@ class App extends Component {
 		<Route exact path='/profileDetails'>
           <ProfileDetails handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>
-		
+
 		<Route exact path='/profileList'>
           <ProfileList handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>

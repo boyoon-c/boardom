@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './NavBar.css'
 
 const NavBar = ({ user, handleLogout }) => {
 	return (
@@ -8,11 +9,15 @@ const NavBar = ({ user, handleLogout }) => {
 				<nav>
 					<div>
 						<ul>
-							<li>Welcome, {user.name}</li>
-							<li>
-                <Link to="/users">Users</Link>
-              </li>
-							<li><Link to='' onClick={handleLogout}>LOG OUT</Link></li>
+							Welcome, {user.name}
+                			<Link to="/users">Users</Link>
+							<Link to="/addActivity">Add Activity</Link>
+							<Link to="/about">About</Link>
+							<Link to="/calendar">Calendar</Link>
+							<Link to="/group">Group</Link>
+							<Link to="/profileDetails">Profile Details</Link>
+							<Link to="/profileList">User List</Link>
+							<Link to='' onClick={handleLogout}>LOG OUT</Link>
 						</ul>
 					</div>
 				</nav>
@@ -23,7 +28,6 @@ const NavBar = ({ user, handleLogout }) => {
 								<Link to="/login">Log In</Link>
                					<Link to="/users">Users</Link>
 								<Link to="/signup">Sign Up</Link>
-								<Link to="/addActivity">Add Activity</Link>
 						</ul>
 					</div>
 				</nav>
