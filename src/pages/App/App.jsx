@@ -4,8 +4,11 @@ import NavBar from '../../components/NavBar/NavBar'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import Landing from '../Landing/Landing'
+import AddActivity from '../AddActivity/AddActivity'
 import * as authService from '../../services/authService'
 import Users from '../Users/Users'
+import './App.css'
+
 
 class App extends Component {
 	state = {
@@ -36,12 +39,14 @@ class App extends Component {
 				<Route exact path='/login'>
           <Login handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>
+				<Route exact path='/addActivity'>
+          <AddActivity handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+        </Route>
 				<Route 
 					exact path="/users"
 					render={()=> 
 						user ? <Users /> : <Redirect to='/login'/>
 				}/>
-				<h1>chitra's spot</h1>
 			</>
 		)
 	}

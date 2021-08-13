@@ -20,15 +20,10 @@ const NavBar = ({ user, handleLogout }) => {
 				<nav>
 					<div>
 						<ul>
-							<li>
 								<Link to="/login">Log In</Link>
-							</li>
-							<li>
-                <Link to="/users">Users</Link>
-              </li>
-							<li>
+               					<Link to="/users">Users</Link>
 								<Link to="/signup">Sign Up</Link>
-							</li>
+								<Link to="/addActivity">Add Activity</Link>
 						</ul>
 					</div>
 				</nav>
