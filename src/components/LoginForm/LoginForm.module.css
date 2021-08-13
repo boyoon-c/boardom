@@ -6,9 +6,13 @@
   margin-bottom: 50px;
 }
 
-.label,
+.label {
+  margin-right: .5rem;
+}
+
 .button {
   margin-right: .5rem;
+  background-color: rgb(9, 255, 0);
 }
 
 .inputContainer {

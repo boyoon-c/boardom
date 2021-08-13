@@ -42,3 +42,6 @@ a.active {
 .m-left {
   margin-left: 10px;
 }
+button {
+  margin-right: .5rem;
+}
