@@ -58,7 +58,7 @@ class LoginForm extends Component {
         <div>
           <button className={styles.button}>Log In</button>
           <Link to="/">
-            <button>Cancel</button>
+            <button className={styles.button}>Cancel</button>
           </Link>
         </div>
       </form>

@@ -20,9 +20,14 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    text-align: center;
   }
   
   .App main h1 {
     color: var(--secondary-dark);
     margin-bottom: 5vmin;
+    text-align: center;
   }
+  
+  
+  
