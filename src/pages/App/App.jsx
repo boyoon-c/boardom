@@ -7,6 +7,8 @@ import Landing from '../Landing/Landing'
 import AddActivity from '../AddActivity/AddActivity'
 import * as authService from '../../services/authService'
 import Users from '../Users/Users'
+import './App.css'
+
 
 class App extends Component {
 	state = {
@@ -45,7 +47,6 @@ class App extends Component {
 					render={()=> 
 						user ? <Users /> : <Redirect to='/login'/>
 				}/>
-				<h1>chitra's spot</h1>
 			</>
 		)
 	}
