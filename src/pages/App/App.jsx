@@ -8,6 +8,8 @@ import AddActivity from '../AddActivity/AddActivity'
 import * as authService from '../../services/authService'
 import Users from '../Users/Users'
 import './App.css'
+import * as profileAPI from '../../services/profileService'
+
 
 
 class App extends Component {
@@ -23,6 +25,16 @@ class App extends Component {
 
 	handleSignupOrLogin = () => {
 		this.setState({ user: authService.getUser() })
+	}
+
+	handleAddFriend = async friendId => {
+		const updatedProfile = await profileAPI.friend(friendId)
+		this.setState({ userProfile: updatedProfile })
+	}
+
+	handleRemoveFriend = async friendId => {
+		const updatedProfile = await profileAPI.unfriend(friendId)
+		this.setState({ userProfile: updatedProfile })
 	}
 
 	render() {
