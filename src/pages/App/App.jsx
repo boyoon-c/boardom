@@ -30,6 +30,7 @@ class App extends Component {
 		return (
 			<>
 				<NavBar user={user} handleLogout={this.handleLogout} />
+				
 				<Route exact path='/'>
           <Landing user={user} />
         </Route>
