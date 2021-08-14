@@ -16,7 +16,8 @@ export {
  //uri  /api/activity/search/:participants/:type
 router.use(decodeUserFromToken)
 router.get('/search/:participants/:type', checkAuth, activityCtrl.search) //uri  /api/activity/search/:participants/:type
-//router.get('/addActivity', checkAuth, activityCtrl.addActivity)
+router.post('/addActivity', checkAuth, activityCtrl.addActivity)
+
 
 
 

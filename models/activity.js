@@ -8,7 +8,8 @@ const activitySchema = new mongoose.Schema({
   name: String,
   type: String,
   participants: {type: Number, min: 1, max: 5, default:1},
-  peopleInActivity: [{type: mongoose.Schema.Types.ObjectId, ref: "Profile"}]
+  peopleInActivity: [{type: mongoose.Schema.Types.ObjectId, ref: "Profile"}],
+  activityNo: String //each activity has a key
 }, {
   timestamps: true
 });
