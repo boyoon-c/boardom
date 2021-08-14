@@ -2,7 +2,7 @@
 
 ## Why Boardom
 
-> ### Life is short. Make your time well spent. 
+> ### "***Life is short. Make your time well spent.***" - Lifehack 
 
 Oftentimes we end up doing the same thing in our free time, i.e. watching movies, listening to music, or going out to the restaurant that we already went for fourty times. 
 
