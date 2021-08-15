@@ -16,6 +16,6 @@ const router = Router()
 // IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
 // endpoint /api/profile/
 router.use(decodeUserFromToken)
-//router.get('/', checkAuth, profileCtrl.index) //double check
+router.get('/', checkAuth, profileCtrl.index) //double check
 router.patch('/addfriend/:id', checkAuth, profileCtrl.addFriend)
 router.patch('/unfriend/:id', checkAuth, profileCtrl.unFriend)

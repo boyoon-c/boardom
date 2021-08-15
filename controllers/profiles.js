@@ -8,9 +8,7 @@ export{
 
 function index (req, res) {
   Profile.find({})
-  .populate('friends')
-  .populate('activities')
-  .populate('groups')
+  // if we need to populate it is good to play with the data around here
   .then(profiles => {
     res.json(profiles)
   })
