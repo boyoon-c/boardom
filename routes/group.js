@@ -16,4 +16,4 @@ export {
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, groupCtrl.index)
 router.post('/createGroup', checkAuth, groupCtrl.create)
-router.post('/joinGroup', checkAuth, groupCtrl.join)
+router.post('/joinGroup/:id', checkAuth, groupCtrl.join)

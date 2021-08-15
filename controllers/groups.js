@@ -1,4 +1,5 @@
 import { Group } from '../models/group.js'
+import { Profile } from '../models/profile.js'
 
 export{
   index,
