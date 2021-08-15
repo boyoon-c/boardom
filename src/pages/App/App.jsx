@@ -113,12 +113,24 @@ class App extends Component {
           <Group handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>
 
-		<Route exact path='/profileDetails'>
-          <ProfileDetails handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
-        </Route>
-
-		<Route exact path='/profileList'>
-          <ProfileList handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+		<Route 
+		exact path='/profile/:id'
+		render={({ match })=> 
+			authService.getUser() ?
+          <ProfileDetails
+		  match={match}
+		  handleAddFriend={this.handleAddFriend}
+		  handleRemoveFriend={this.handleRemoveFriend}
+		  userProfile={userProfile}
+	  /> : <Redirect to='/login' />
+  }
+/>
+		<Route 
+		exact path='/profileList'>
+          <ProfileList
+		  	handleAddFriend={this.handleAddFriend}
+			handleRemoveFriend={this.handleRemoveFriend}
+		   handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>
 
 

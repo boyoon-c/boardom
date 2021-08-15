@@ -22,3 +22,16 @@ export function friend(id) {
       { mode: "cors" }
       ).then((res) => res.json())
   }
+
+  export function getDetails(id) {
+    return fetch(
+      `${BASE_URL}${id}`,
+      {
+        method: 'GET', 
+        headers: { Authorization: "Bearer " + tokenService.getToken() }
+
+      },
+      { mode: "cors" }
+    )
+    .then((res) => res.json())
+  }
