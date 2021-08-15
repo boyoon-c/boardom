@@ -11,6 +11,7 @@ import { router as activityRouter } from './routes/activity.js' //(bo) this shou
 import { router as messagePostRouter } from './routes/messagePost.js'
 import { router as calendarRouter } from './routes/calendar.js'
 import { router as profileRouter } from './routes/profile.js'
+import { router as groupRouter } from './routes/group.js'
 
 import('./config/database.js')
 
@@ -28,6 +29,7 @@ app.use('/api/activity', activityRouter) //(bo) this one I added for activity ro
 app.use('/api/messagePost', messagePostRouter)
 app.use('/api/calendar', calendarRouter)
 app.use('/api/profile', profileRouter)
+app.use('/api/group', groupRouter)
 
 app.get("/*", function (req, res) {
 	res.sendFile(
