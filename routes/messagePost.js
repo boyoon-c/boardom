@@ -14,4 +14,5 @@ export {
 /*---------- Protected Routes ----------*/
 // IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
 router.use(decodeUserFromToken)
+// endpoint /api/messagePost/
 router.post('/', checkAuth, messagePostCtrl.create)
