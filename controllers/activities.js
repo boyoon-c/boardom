@@ -5,7 +5,15 @@ import axios from 'axios'
 export {
   search,
   addActivity,
+  removeActivity
+}
 
+function removeActivity (req, res) {
+  Activity.findOne({ activityNo: req.params.id })
+  .then(activity => {
+    activity.peopleInActivity.remove({ _id: req.user.profile })
+    activity.save()
+  })
 }
 
 function addActivity (req, res) {
