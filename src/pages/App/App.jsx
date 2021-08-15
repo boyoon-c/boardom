@@ -13,6 +13,7 @@ import ProfileDetails from '../ProfileDetails/ProfileDetails'
 import ProfileList from '../ProfileList/ProfileList'
 import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
+import * as userAPI from '../../services/userService'
 import Users from '../Users/Users'
 import './App.css'
 
@@ -20,9 +21,7 @@ import './App.css'
 class App extends Component {
 	state = {
 		user: authService.getUser(),
-		events: [
-			{title: 'event 1', date: '2021-8-21'},
-		]
+		userProfile: null
 	}
 
 	renderEventContent = () => {
@@ -43,9 +42,14 @@ class App extends Component {
 	handleSignupOrLogin = () => {
 		this.setState({ user: authService.getUser() })
 	}
-
+	async componentDidMount() {
+		if (!this.state.userProfile){
+			const userProfile = await userAPI.getUserProfile()
+			this.setState({ userProfile })
+		}
+	}
 	render() {
-		const { user } = this.state
+		const { user, userProfile } = this.state
 		return (
 			<>
 				<NavBar user={user} handleLogout={this.handleLogout} />
