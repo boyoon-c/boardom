@@ -1,71 +1,29 @@
-## Hey
+# ✨ Boardom ✨
 
-# MERN Stack with OAuth Template
+## Why Boardom
 
-This is a MERN Stack template that includes JWT Authentication.
+> ### "***Life is short. Make your time well spent.***" - Lifehack 
 
-Use this to go build things! 🚀
+Oftentimes we end up doing the same thing in our free time, i.e. watching movies, listening to music, or going out to the restaurant that we already went for fourty times. 
 
-## To Use This Template
+ABC considers the time of our users a top priority. We want to make sure that our users are given vast pool of activities to choose from that actually worth their time and have their spare time well spent. Here we introduce an app that guides our users to try out new things, making their free time fulfilling, more entertaining and exciting.  
 
-__Replace `<name-of-your-app-here>` in the commands below with the name of your app!__
+## Description 
 
-```bash
-git clone https://github.com/SEI-Remote-WC/mern-jwt-auth-template-no-hooks <name-of-your-app-here>
-cd <name-of-your-app-here>
-```
 
-Once you are in the project directory:
+## Getting Started
+- Trello board
+- ERD
+- Deployed app
 
-```bash
-rm -rf .git
-```
+## Screenshot(s)
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
+## Technologies Used
 
-Re-initialize a git repository:
 
-```bash
-git init
-```
+## Next Steps
 
-Use the GitHub CLI to create a new project repository on GitHub:
 
-```bash
-gh repo create <name-of-your-app-here>
-```
+## Resources
 
-Run npm i to fetch the template's dependencies:
-
-```bash
-npm i
-```
-
-Then, make an initial commit:
-
-```bash
-git add .
-git commit -m "initial commit"
-git push -u origin main
-```
-
-touch a .env file:
-
-```bash
-touch .env
-```
-
-Fill it with the following:
-
-```
-DATABASE_URL=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-Replace the `DATABASE_URL` and `SECRET` with values that you provide.
-
-Delete this README.md
-
-You're done!
