@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as authCtrl from '../controllers/auth.js'
+import * as groupCtrl from '../controllers/groups.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
@@ -8,9 +8,10 @@ export {
   router
 }
 
-
 /*---------- Public Routes ----------*/
-router.post('/signup', authCtrl.signup)
-router.post('/login', authCtrl.login)
+
 
 /*---------- Protected Routes ----------*/
+// IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
+router.use(decodeUserFromToken)
+router.get('/', checkAuth, groupCtrl.index)

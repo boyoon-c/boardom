@@ -11,6 +11,7 @@ import ProfileDetails from '../ProfileDetails/ProfileDetails'
 import ProfileList from '../ProfileList/ProfileList'
 import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
+import * as userAPI from '../../services/userService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
@@ -19,7 +20,8 @@ import * as profileAPI from '../../services/profileService'
 
 class App extends Component {
 	state = {
-		user: authService.getUser()
+		user: authService.getUser(),
+		userProfile: null
 	}
 
 	handleLogout = () => {
@@ -42,8 +44,14 @@ class App extends Component {
 		this.setState({ userProfile: updatedProfile })
 	}
 
+	async componentDidMount() {
+		if (!this.state.userProfile){
+			const userProfile = await userAPI.getUserProfile()
+			this.setState({ userProfile })
+		}
+	}
 	render() {
-		const { user } = this.state
+		const { user, userProfile } = this.state
 		return (
 			<>
 				<NavBar user={user} handleLogout={this.handleLogout} />
