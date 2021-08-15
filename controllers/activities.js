@@ -5,7 +5,15 @@ import axios from 'axios'
 export {
   search,
   addActivity,
-  removeActivity
+  removeActivity,
+  createActivity
+}
+
+function createActivity (req, res) {
+  Activity.create(req.body)
+  .then((activity) => {
+    res.json(activity)
+  })
 }
 
 function removeActivity (req, res) {
@@ -13,6 +21,16 @@ function removeActivity (req, res) {
   .then(activity => {
     activity.peopleInActivity.remove({ _id: req.user.profile })
     activity.save()
+    .then(() => {
+      Profile.findById(req.user.profile)
+      .then(profile => {
+        profile.activities.remove(activity._id)
+        profile.save()
+        .then(() => {
+          res.json(profile)
+        })
+      })
+    })
   })
 }
 
@@ -36,7 +54,7 @@ Profile.findById(req.user.profile)
         profile.activities.push(activity._id)
         profile.save()          //why save profile?
         //do a populate to keep userProfile accurate in <App> state
-        profile.populate('activities').populate('friends').execPopulate()
+       // profile.populate('activities').populate('friends').execPopulate()
         .then((profile) => {
           // sending back the freshly fully updataed, fully populated profile document
           res.json(profile)
@@ -44,13 +62,13 @@ Profile.findById(req.user.profile)
       })
       //if no match is found. then create a new media document
     } else {
-      Activity.create(req.body)
+      Activity.create(req.body) // i think this is the json body data
       .then(activity => {
         //add the new media document to the user's profile
         profile.activities.push(activity._id) //profile media?
         profile.save()
         //populate to keep the user's profile current
-        profile.populate('activities').populate('friends').execPopulate()
+        //profile.populate('activities').populate('friends').execPopulate()
         .then((profile) => {
           //return the freshly updated and fully populated profie document
           res.json(profile)

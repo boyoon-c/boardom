@@ -1,7 +1,8 @@
 import { Group } from '../models/group.js'
 
 export{
-  index
+  index,
+  
 }
 
 function index (req, res) {
