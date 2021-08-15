@@ -28,7 +28,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/activity', activityRouter) //(bo) this one I added for activity route in the backend
 app.use('/api/messagePost', messagePostRouter)
 app.use('/api/calendar', calendarRouter)
-app.use('/api/profile', profileRouter)
+app.use('/api/profiles', profileRouter)
 app.use('/api/group', groupRouter)
 
 app.get("/*", function (req, res) {
