@@ -4,7 +4,6 @@ export{
   index,
   addFriend,
   unFriend,
-  userProfile,
   show
 }
 
@@ -37,14 +36,6 @@ function unFriend (req, res) {
     .then(() => {
       res.json(profile)
     })
-  })
-}
-
-function userProfile(req, res) {
-  Profile.findById(req.user.profiles)
-  .populate('friends')
-  .then(profile => {
-    res.json(profile)
   })
 }
 
