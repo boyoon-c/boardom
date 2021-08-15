@@ -39,16 +39,18 @@ class ProfileDetails extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props.match.params.id)
+        //console.log(this.props.match.params.id)
         const profile = await profileService.getDetails(this.props.match.params.id)
-       console.log(profile)
-        this.setState(profile)
+        console.log('profile', profile)
+        this.setState({profile})
     }
     render () {
-
+        console.log("Profile", this.state.profile.name)
         return (
           <>
-
+              {this.props.match.params.id}
+              <h1>profile id: {this.state.profile?.name}</h1>
+            
           </>
         );
     }

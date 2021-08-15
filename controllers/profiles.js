@@ -1,5 +1,5 @@
 import { Profile } from '../models/profile.js'
-
+import { User } from '../models/user.js'
 export{
   index,
   addFriend,
@@ -18,7 +18,7 @@ function index (req, res) {
 function addFriend (req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.friends.push(req.params.id)
+    profile.friends.push(req.user.profile)
     profile.save()
     //if we need to populate here we can
     .then (() => {
