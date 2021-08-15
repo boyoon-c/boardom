@@ -10,7 +10,7 @@ const profileSchema = new mongoose.Schema(
     name: String,
     calendar: {type: mongoose.Schema.Types.ObjectId, ref: "Calendar"},
     friends: [{type: mongoose.Schema.Types.ObjectId, ref: "Profile"}],
-    completedActivities: [{type: mongoose.Schema.Types.ObjectId, ref: "Activity"}],
+    activities: [{type: mongoose.Schema.Types.ObjectId, ref: "Activity"}],
     messagePosts: [{type: mongoose.Schema.Types.ObjectId, ref: "MessagePost"}],
     groups: [{type: mongoose.Schema.Types.ObjectId, ref: "Group"}]
   },

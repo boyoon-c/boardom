@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // stub up some services that connects the front-end to the back-end
 import * as tokenService from './tokenService'
 const BASE_URL="/api/activity/"
@@ -38,7 +37,3 @@ export function show(type, query) {
     }, {mode: "cors"})
     .then(res => res.json())
   }
-=======
-// this is where we stub up data retrieved from the api 
-// note that the baseURL should be identical to the route in the backend
->>>>>>> c1648beae6a2faeed3d77ba65598d5736d72663a

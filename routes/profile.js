@@ -1,17 +1,21 @@
 import { Router } from 'express'
-import * as groupCtrl from '../controllers/groups.js'
+import * as profileCtrl from '../controllers/profiles.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
-const router = Router()
 
 export {
   router
 }
+
+const router = Router()
 
 /*---------- Public Routes ----------*/
 
 
 /*---------- Protected Routes ----------*/
 // IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
+// endpoint /api/profile/
 router.use(decodeUserFromToken)
-router.get('/', checkAuth, groupCtrl.index)
+router.get('/', checkAuth, profileCtrl.index) //double check
+router.post('/addfriend/:id', checkAuth, profileCtrl.addFriend)
+router.post('/unfriend/:id', checkAuth, profileCtrl.unFriend)
