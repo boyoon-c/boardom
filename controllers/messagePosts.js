@@ -11,7 +11,8 @@ function index (req, res) {
   MessagePost.find({})
   .populate('author')
   .then(messagePosts => {
-    res.json(messagePosts)
+    res.status(200)
+    .json(messagePosts)
   })
 }
 
