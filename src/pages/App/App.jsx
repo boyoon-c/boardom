@@ -3,7 +3,9 @@ import { Route, Redirect } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import About from '../About/About'
 import AddActivity from '../AddActivity/AddActivity'
-import Calendar from '../Calendar/Calendar'
+//import Calendar from '../Calendar/Calendar'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
 import Group from '../Group/Group'
 import Landing from '../Landing/Landing'
 import Login from '../Login/Login'
@@ -17,8 +19,20 @@ import './App.css'
 
 class App extends Component {
 	state = {
-		user: authService.getUser()
+		user: authService.getUser(),
+		events: [
+			{title: 'event 1', date: '2021-8-21'},
+		]
 	}
+
+	renderEventContent = () => {
+		return (
+		  <>
+			<b>event</b>
+			<i>{this.state.title}</i>
+		  </>
+		)
+	  }
 
 	handleLogout = () => {
 		authService.logout()
@@ -63,7 +77,19 @@ class App extends Component {
         </Route>
 
 		<Route exact path='/calendar'>
-          <Calendar handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+          <FullCalendar 
+		  	handleSignupOrLogin={this.handleSignupOrLogin} 
+			history={this.props.history}
+			plugins={[ dayGridPlugin ]}
+			initialViews="dayGridMonth"
+			
+			//events={this.state.events}
+			events={[
+				{ title: 'event 1', date: '2019-04-01' },
+				{ title: 'event 2', date: '2019-04-02' }
+			  ]}
+			  eventContent={this.renderEventContent}
+		  />
         </Route>
 
 		<Route exact path='/group'>
@@ -83,5 +109,14 @@ class App extends Component {
 		)
 	}
 }
+
+// function renderEventContent(eventInfo) {
+// 	return (
+// 	  <>
+// 		<b>{eventInfo.timeText}</b>
+// 		<i>{eventInfo.event.title}</i>
+// 	  </>
+// 	)
+//   }
 
 export default App
