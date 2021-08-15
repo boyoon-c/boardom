@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getAllUsers } from "../../services/userService"
+import UserCard from '../../components/UserCard/UserCard'
+
 
 class ProfileList extends Component {
 
@@ -12,15 +14,21 @@ state = {
     this.setState({ users })
   }
 
-  render() {
+  render() { 
     return (
       <>
-        <h1>Here is the Profile List</h1>
-        {this.state.users.map((user) => (
-          <p key={user._id}>{user.name} </p>
-        ))}
+        <h1>All available profiles</h1>
+        {this.state.users.map(user => 
+          <UserCard
+            user={user}
+            key={user._id}
+            userProfile={this.props.userProfile}
+            handleAddFriend={this.props.handleAddFriend}
+            handleRemoveFriend={this.props.handleRemoveFriend}
+          />
+        )}
       </>
-    )
+    );
   }
 }
 
