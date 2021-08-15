@@ -17,3 +17,4 @@ router.use(decodeUserFromToken)
 // endpoint /api/messagePost/
 router.post('/', checkAuth, messagePostCtrl.create)
 router.delete('/deleteMessagePost/:id', checkAuth, messagePostCtrl.delete) //:id is the database _id
+router.put('/edit/:id', checkAuth, messagePostCtrl.edit)
