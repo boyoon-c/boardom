@@ -16,7 +16,8 @@ export {
  //uri  /api/activity/search/:participants/:type
 router.use(decodeUserFromToken)
 router.get('/search/:participants/:type', checkAuth, activityCtrl.search) 
-//router.post('/addActivity', checkAuth, activityCtrl.addActivity) //needs to be tested... postman requests need jwt setup... will do later for testing
+router.post('/addActivity', checkAuth, activityCtrl.addActivity) //not sure why it keeps adding the same activity will do later for testing
+router.post('/createActivity', checkAuth, activityCtrl.createActivity) //creating works!
 //router.delete('/removeActivity/:id', checkAuth, activityCtrl.removeActivity) 
 
 
