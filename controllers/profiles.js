@@ -3,7 +3,7 @@ import { Profile } from '../models/profile.js'
 export{
   index,
   addFriend,
-
+  unFriend,
 }
 
 function index (req, res) {
@@ -23,6 +23,18 @@ function addFriend (req, res) {
     profile.save()
     //if we need to populate here we can
     .then (() => {
+      res.json(profile)
+    })
+  })
+}
+
+function unFriend (req, res) {
+  Profile.findById(req.user.profile)
+  .populate('friends')
+  .then(profile => {
+    profile.friends.remove({ _id: req.params.id })
+    profile.save()
+    .then(() => {
       res.json(profile)
     })
   })

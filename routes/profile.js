@@ -18,3 +18,4 @@ const router = Router()
 router.use(decodeUserFromToken)
 //router.get('/', checkAuth, profileCtrl.index) //double check
 router.patch('/addfriend/:id', checkAuth, profileCtrl.addFriend)
+router.patch('/unfriend/:id', checkAuth, profileCtrl.unFriend)
