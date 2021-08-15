@@ -8,7 +8,13 @@ export{
 }
 
 function join (req, res) {
-  
+  Group.findById(req.params.id)
+  .then(group => {
+    group.members.push(req.user.profile)
+    .then((group) => {
+      res.json(group)
+    })
+  })
 }
 
 function createGroup (req, res) {
