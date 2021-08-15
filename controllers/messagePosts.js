@@ -3,7 +3,16 @@ import { MessagePost } from "../models/messagePost.js";
 export {
   create,
   deleteMessagePost as delete,
-  edit
+  edit,
+  index
+}
+
+function index (req, res) {
+  MessagePost.find({})
+  .populate('author')
+  .then(messagePosts => {
+    res.json(messagePosts)
+  })
 }
 
 function edit (req, res) {
