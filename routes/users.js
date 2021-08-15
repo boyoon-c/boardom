@@ -11,6 +11,8 @@ const router = Router()
 // IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, usersCtrl.index)
+router.get('/userProfile', checkAuth, usersCtrl.userProfile)
+
 
 
 
