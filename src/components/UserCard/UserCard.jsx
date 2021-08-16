@@ -13,7 +13,8 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
           state: {user}
         }}
       >
-        <h4>{userEvent.name}</h4>
+        {/* <h4>{userEvent.name}</h4> */}
+        <h1>{user.name}</h1>
       </Link>
       { !(userProfile?._id === user._id) && !(userProfile?.friends?.some(eachProfile => eachProfile._id === user._id)) &&
       <button onClick={() => handleAddFriend(user.profile)}>Add friend {user.name}</button> 
