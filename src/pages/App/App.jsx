@@ -14,6 +14,7 @@ import ProfileList from '../ProfileList/ProfileList'
 import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
 import * as userAPI from '../../services/userService'
+import * as activityAPI from '../../services/activityService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
@@ -55,7 +56,10 @@ class App extends Component {
 		this.setState({ userProfile: updatedProfile })
 	}
 
-	
+	handleAddActivity = async activity =>{
+		const updatedProfile = await activityAPI.addActivity(activity)
+		this.setState({updatedProfile: updatedProfile})
+	} 
 
 	async componentDidMount() {
 		if (!this.state.userProfile){
@@ -88,7 +92,11 @@ class App extends Component {
 				}/>
 				
 				<Route exact path='/addActivity'>
-          <AddActivity handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+          <AddActivity 
+		  handleSignupOrLogin={this.handleSignupOrLogin} 
+		  history={this.props.history}
+		  handleAddActivity={this.handleAddActivity}
+		  />
         </Route>
 				
 		<Route exact path='/about'>
