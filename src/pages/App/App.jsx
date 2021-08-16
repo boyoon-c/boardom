@@ -147,7 +147,7 @@ class App extends Component {
 		<Route 
 		exact path='/profileList'>
           <ProfileList
-		  userProfile={this.state.userProfile}
+			userProfile={this.state.userProfile}
 		  	handleAddFriend={this.handleAddFriend}
 			handleRemoveFriend={this.handleRemoveFriend}
 		   handleSignupOrLogin={this.handleSignupOrLogin} 
