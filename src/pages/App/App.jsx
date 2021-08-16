@@ -15,6 +15,7 @@ import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
 import * as userAPI from '../../services/userService'
 import * as activityAPI from '../../services/activityService'
+import * as groupAPI from '../../services/groupService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
@@ -44,6 +45,11 @@ class App extends Component {
 
 	handleSignupOrLogin = () => {
 		this.setState({ user: authService.getUser() })
+	}
+
+	handleCreateGroup = async newGroupData => {
+		const newGroup = await groupAPI.createGroup(newGroupData)
+		this.setState ({ userProfile: newGroup }) // not sure what to set new group
 	}
 
 	handleAddFriend = async friendId => {
@@ -129,7 +135,11 @@ class App extends Component {
         </Route>
 
 		<Route exact path='/group'>
-          <Group handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+          <Group 
+						handleSignupOrLogin={this.handleSignupOrLogin} 
+						history={this.props.history} 
+						handleCreateGroup={this.handleCreateGroup}
+					/>
         </Route>
 
 		<Route 
