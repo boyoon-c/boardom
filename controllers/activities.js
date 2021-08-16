@@ -70,9 +70,10 @@ Profile.findById(req.user.profile)
         .then(profile => {
           //console.log('else statement req.body.profile', profile)
 
-          profile.activities.push(activity._id) 
+          profile.activities.push(activity) 
           profile.save()
           
+          .then(profile => profile.populate('activities').execPopulate())
           .then(profile => {
             //console.log('else statement req.body.profile.save', profile)
             activity.peopleInActivity.push(req.user.profile) //what will we put here for collected by 
