@@ -42,3 +42,4 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
 }
  
 export default UserCard;
+
