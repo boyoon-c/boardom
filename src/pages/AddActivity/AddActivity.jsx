@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../App/App.css'
+import * as activityAPI from '../../services/activityService'
 
 class AddActivity extends Component {
   state = { 
@@ -15,7 +16,8 @@ class AddActivity extends Component {
 
    handleSubmit = e => {
      e.preventDefault()
-     this.props.handleAddActivity(this.state.formData)
+     //this.props.handleAddActivity(this.state.formData)
+     this.props.handleSearch(this.state.formData)
    }
 
    handleChange(e) {
@@ -34,7 +36,7 @@ class AddActivity extends Component {
         <h3>Activity type:</h3>
         <select 
           value={this.state.type} 
-          onChange={this.handleChange}
+          //onChange={this.handleChange}
           >
           <option value="education">education</option>
           <option value="recreational">recreational</option>
@@ -48,7 +50,7 @@ class AddActivity extends Component {
         <h3>Number of Participants:</h3>
         <select
         value={this.state.participants}
-        onChange={this.handleChange}
+        //onChange={this.handleChange}
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -64,6 +66,8 @@ class AddActivity extends Component {
         </button>
         <button>Next Activity this will call another activity</button>  
       </form>
+      <h3>Search Results</h3>
+
       <h3>Your Activity:</h3>
       {/* Here we will display the list of a user's activities in cards */}
       </main>
