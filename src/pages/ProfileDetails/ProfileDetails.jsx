@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserCard from '../../components/UserCard/UserCard'
-import { getUserProfile } from "../../services/userService"
+import { friend, getUserProfile } from "../../services/userService"
 import * as profileService from "../../services/profileService"
 
 
@@ -41,6 +41,7 @@ class ProfileDetails extends Component {
     async componentDidMount() {
         //console.log(this.props.match.params.id)
         const profile = await profileService.getDetails(this.props.match.params.id)
+        console.log('this.props.match', this.props.match)
         console.log('profile', profile)
         this.setState({profile})
     }
@@ -50,7 +51,9 @@ class ProfileDetails extends Component {
           <>
               {this.props.match.params.id}
               <h1>profile id: {this.state.profile?.name}</h1>
-            
+              {this.state.profile?.friends?.map(friend =>{
+                return(<h1>{friend.name}</h1>)
+              })}
           </>
         );
     }

@@ -14,10 +14,10 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
         <h4>{userEvent.name}</h4>
       </Link>
       { !(userProfile?._id === user._id) && !(userProfile?.friends?.some(eachProfile => eachProfile._id === user._id)) &&
-      <button onClick={() => handleAddFriend(user._id)}>Add friend {user.name}</button> 
+      <button onClick={() => handleAddFriend(user.profile)}>Add friend {user.name} I changed user._id to user.profile</button>  
       }
       { !(userProfile?._id === user._id) && (userProfile?.friends?.some(eachProfile => eachProfile._id === user._id)) &&
-      <button onClick={() => handleRemoveFriend(user._id)}>Unfriend {user.name}</button> 
+      <button onClick={() => handleRemoveFriend(user.profile)}>Unfriend {user.name}</button> 
       }   
     </>
   );

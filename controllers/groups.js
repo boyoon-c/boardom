@@ -8,13 +8,23 @@ export{
 }
 
 function join (req, res) {
-  Group.findById(req.params.id)
-  .then(group => {
+  console.log('hitting the route')
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    Group.findById(req.params.id)
+    //.populate('members')
+    .then(group => {
+    profile.groups.push(group._id)
+    profile.save()
+    .then(() => {
     group.members.push(req.user.profile)
-    .then((group) => {
+    group.save()
+    .then(() => {
       res.json(group)
+      })
     })
   })
+})
 }
 
 function createGroup (req, res) {

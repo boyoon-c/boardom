@@ -18,7 +18,7 @@ function index (req, res) {
 function addFriend (req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.friends.push(req.user.profile)
+    profile.friends.push(req.params.id)
     profile.save()
     //if we need to populate here we can
     .then (() => {
@@ -42,7 +42,7 @@ function unFriend (req, res) {
 function show(req, res) {
   //req.user.profile
   Profile.findById(req.params.id)
-  //.populate('friends')
+  .populate('friends')
   .then(profile => {
     res.json(profile)
   })
