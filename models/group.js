@@ -5,7 +5,6 @@ export {
 }
 
 
-
 const groupSchema = new mongoose.Schema({
   name: String,
   decription: String,
