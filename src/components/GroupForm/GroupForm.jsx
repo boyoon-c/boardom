@@ -25,6 +25,7 @@ class GroupForm extends Component {
   };
  
   render() { 
+    const { name, description } = this.state.formData 
     return ( 
       <>
       <form
