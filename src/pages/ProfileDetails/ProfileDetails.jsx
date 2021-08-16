@@ -25,10 +25,16 @@ class ProfileDetails extends Component {
               {this.state.profile?.friends?.map(friend =>{
                 return(<h1>{friend.name}</h1>)
               })}
-              {/* <h3>{this.state.profile?.friends[0]?.name}</h3> */}
+              <h1>{this.state.profile?.name}'s Activities: </h1>
+              {this.props.userProfile?.activities?.map(activity=>{
+        return(
+        <p>{activity} </p>
+        )
+      })}
           </>
         );
     }
+    
   }
 
 
