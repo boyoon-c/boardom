@@ -55,6 +55,8 @@ class App extends Component {
 		this.setState({ userProfile: updatedProfile })
 	}
 
+	
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
@@ -130,7 +132,8 @@ class App extends Component {
           <ProfileList
 		  	handleAddFriend={this.handleAddFriend}
 			handleRemoveFriend={this.handleRemoveFriend}
-		   handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+		   handleSignupOrLogin={this.handleSignupOrLogin} 
+		   history={this.props.history}/>
         </Route>
 
 
