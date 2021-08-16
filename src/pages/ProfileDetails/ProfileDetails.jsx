@@ -27,9 +27,9 @@ class ProfileDetails extends Component {
                 return(<h1>{friend.name}</h1>)
               })}
               <h1>{this.state.profile?.name}'s Activities: </h1>
-              {this.props.userProfile?.activities?.map(activity=>{
+              {this.state.profile?.activities?.map(activity=>{
         return(
-        <p>{activity} </p>
+        <p>{activity.name} </p>
         )
       })}
           </>
