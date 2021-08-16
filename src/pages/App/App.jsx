@@ -48,6 +48,7 @@ class App extends Component {
 
 	handleAddFriend = async friendId => {
 		const updatedProfile = await profileAPI.friend(friendId)
+		console.log(updatedProfile)
 		this.setState({ userProfile: updatedProfile })
 	}
 
@@ -58,7 +59,8 @@ class App extends Component {
 
 	handleAddActivity = async activity =>{
 		const updatedProfile = await activityAPI.addActivity(activity)
-		this.setState({updatedProfile: updatedProfile})
+		console.log('updatedProfile', updatedProfile)
+		this.setState({userProfile: updatedProfile})
 	} 
 
 	handleRemoveActivity = async activity =>{

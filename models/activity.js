@@ -17,4 +17,4 @@ const activitySchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Activity = mongoose.model('activity', activitySchema);
+const Activity = mongoose.model('Activity', activitySchema);
