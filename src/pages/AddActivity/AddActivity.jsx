@@ -52,13 +52,29 @@ class AddActivity extends Component {
       <h2>Add activity</h2>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <h3>Activity type:</h3>
-        <input
+        {/* <input
         type="text"
         name="type"
         value={this.state.formData.type}
         onChange={this.handleChange}
         required
-        />
+        /> */}
+        <select 
+          //value={this.state.formData.type} 
+          name="type"
+          onChange={this.handleChange}
+          required
+          >
+          <option value={this.state.formData.type}>education</option>
+          <option value={this.state.formData.type}>recreational</option>
+          <option value={this.state.formData.type}>social</option>
+          <option value={this.state.formData.type}>diy</option>
+          <option value={this.state.formData.type}>cooking</option>
+          <option value={this.state.formData.type}>relaxation</option>
+          <option value={this.state.formData.type}>music</option>
+          <option value={this.state.formData.type}>busywork</option>
+        </select>
+
         <h3>Number of participants</h3>
         <input
         type="text"
