@@ -20,8 +20,10 @@ function addFriend (req, res) {
   .then(profile => {
     profile.friends.push(req.params.id)
     profile.save()
+    .then((profile)=>profile.populate('friends').execPopulate())
+    //this will return promise
     //if we need to populate here we can
-    .then (() => {
+    .then ((profile) => {
       res.json(profile)
     })
   })
