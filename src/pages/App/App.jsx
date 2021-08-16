@@ -48,6 +48,7 @@ class App extends Component {
 
 	handleAddFriend = async friendId => {
 		const updatedProfile = await profileAPI.friend(friendId)
+		console.log(updatedProfile)
 		this.setState({ userProfile: updatedProfile })
 	}
 
