@@ -15,6 +15,7 @@ import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
 import * as userAPI from '../../services/userService'
 import * as activityAPI from '../../services/activityService'
+import * as groupAPI from '../../services/groupService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
@@ -44,6 +45,11 @@ class App extends Component {
 
 	handleSignupOrLogin = () => {
 		this.setState({ user: authService.getUser() })
+	}
+
+	handleCreateGroup = async groupForm => {
+		const createGroup = await groupAPI.createGroup(groupForm)
+		this.setState ({ userProfile: createGroup })
 	}
 
 	handleAddFriend = async friendId => {
