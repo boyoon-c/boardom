@@ -14,7 +14,7 @@ const router = Router()
 
 /*---------- Protected Routes ----------*/
 // IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
-// endpoint /api/profile/
+// endpoint /api/profiles/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profileCtrl.index) //double check
 router.get('/:id', checkAuth, profileCtrl.show)

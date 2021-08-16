@@ -9,6 +9,7 @@ export{
 
 function index (req, res) {
   Profile.find({})
+  //.populate('friends')
   // if we need to populate it is good to play with the data around here
   .then(profiles => {
     res.json(profiles)
@@ -45,6 +46,7 @@ function show(req, res) {
   //req.user.profile
   Profile.findById(req.params.id)
   .populate('friends')
+  .populate('activities') //.execPopulate()
   .then(profile => {
     res.json(profile)
   })

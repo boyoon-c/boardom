@@ -2,6 +2,7 @@ import * as tokenService from "./tokenService"
 const BASE_URL = "/api/profiles/"
 
 export function friend(id) {
+  console.log('friend id', id)
     return fetch(
       `${BASE_URL}/friend/${id}`,
       {
