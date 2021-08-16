@@ -5,7 +5,7 @@ const BASE_URL="/api/activity/"
 // add function that's going to add activity to the user profile
 export function addActivity(act) {
     return fetch(
-      `${BASE_URL}add`,
+      `${BASE_URL}addActivity`,
       {
         method: 'POST',
         headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
@@ -16,9 +16,9 @@ export function addActivity(act) {
   }
 
 // remove function that's going to remove activity from the user profile
-export function removeMedia(api_id) {
+export function removeActivity(act) {
     return fetch(
-      `${BASE_URL}remove/${api_id}`,
+      `${BASE_URL}removeActivity/${act}`,
       {
         method: 'DELETE',
         headers: {'Authorization': 'Bearer ' + tokenService.getToken()},

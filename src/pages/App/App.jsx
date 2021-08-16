@@ -61,6 +61,11 @@ class App extends Component {
 		this.setState({updatedProfile: updatedProfile})
 	} 
 
+	handleRemoveActivity = async activity =>{
+		const updatedProfile = await activityAPI.removeActivity(activity)
+		this.setState({updatedProfile:updatedProfile})
+	}
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
@@ -71,31 +76,33 @@ class App extends Component {
 		const { user, userProfile } = this.state
 		return (
 			<>
-				<NavBar user={user} handleLogout={this.handleLogout} />
+			<NavBar user={user} handleLogout={this.handleLogout} />
 				
-				<Route exact path='/'>
+			<Route exact path='/'>
           <Landing user={user} />
         </Route>
 				
-				<Route exact path='/signup'>
+			<Route exact path='/signup'>
           <Signup history={this.props.history} handleSignupOrLogin={this.handleSignupOrLogin}/>
         </Route>
 				
-				<Route exact path='/login'>
+			<Route exact path='/login'>
           <Login handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>
 				
-				<Route 
-					exact path="/users"
-					render={()=> 
-						user ? <Users /> : <Redirect to='/login'/>
-				}/>
+			<Route 
+				exact path="/users"
+				render={()=> 
+					user ? <Users /> : <Redirect to='/login'/>
+			}/>
 				
-				<Route exact path='/addActivity'>
+			<Route exact path='/addActivity'>
           <AddActivity 
+		  userProfile={userProfile}
 		  handleSignupOrLogin={this.handleSignupOrLogin} 
 		  history={this.props.history}
 		  handleAddActivity={this.handleAddActivity}
+		  handleRemoveActivity={this.handleRemoveActivity}
 		  />
         </Route>
 				

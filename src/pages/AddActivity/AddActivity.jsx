@@ -6,7 +6,7 @@ class AddActivity extends Component {
   state = { 
     invalidForm: true,
     formData: {
-      //name:'',
+      name:'',
       type:'',
       participants: ''
     },
@@ -29,6 +29,7 @@ class AddActivity extends Component {
     this.setState({searchResults: searchResults})
   }
 
+  
   handleSubmit = e => {
     e.preventDefault()
     this.handleSearch(this.state.formData.participants, this.state.formData.type)
@@ -37,6 +38,8 @@ class AddActivity extends Component {
   
   render() { 
     console.log("searchResult", this.state.searchResults)
+    console.log("props", this.props)
+    console.log('userProfile', this.props.userProfile)
     return ( 
       <>
       <main className='fs-6 m-5'>
@@ -48,15 +51,17 @@ class AddActivity extends Component {
           name="type"
           onChange={this.handleChange}
           required
+          default="social"
           >
-          <option>education</option>
-          <option>recreational</option>
-          <option>social</option>
-          <option>diy</option>
-          <option>cooking</option>
-          <option>relaxation</option>
-          <option>music</option>
-          <option>busywork</option>
+          <option value="">Please select type</option>
+          <option value="education">education</option>
+          <option value="recreational">recreational</option>
+          <option value="social">social</option>
+          <option value="diy">diy</option>
+          <option value="cooking">cooking</option>
+          <option value="relaxation">relaxation</option>
+          <option value="music">music</option>
+          <option value="busywork">busywork</option>
         </select>
 
         <h3>Number of participants</h3>
@@ -66,25 +71,40 @@ class AddActivity extends Component {
         onChange={this.handleChange}
         required
         >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option value="">Select number of participants</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select><br />
         <button type="submit" disabled={this.state.invalidForm}>
           Next Activity this will call another activity
         </button>
       </form>
+      <h3>Search Results</h3>
+        <div>{this.state.searchResults.activity}</div>
       <button 
         type="submit"
-        disabled={this.state.invalidForm}
+        onClick={()=>this.props.handleAddActivity(this.state.searchResults)}
         >
           Add Activity
       </button>
-      <h3>Search Results</h3>
-        <div>{this.state.searchResults.activity}</div>
+
       <h3>Your Activity:</h3>
+      {this.props.userProfile?.activities?.map(activity=>{
+        return(
+        <p>{activity} 
+        {/* <button 
+        type="submit"
+        onClick={()=>this.props.handleRemoveActivity(this.state.searchResults)}>
+          DELETE
+        </button>
+        */}
+        </p> 
+        
+        )
+      })}
       {/* Here we will display the list of a user's activities in cards */}
       </main>
       </>
