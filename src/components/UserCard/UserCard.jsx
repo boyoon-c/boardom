@@ -8,7 +8,7 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
   return (
     <>
       
-      { !(userProfile?._id === user.profile) && !(userProfile?.friends?.some(eachUser => eachUser === user.profile)) &&
+      { !(userProfile?._id === user.profile) && !(userProfile?.friends?.some(eachUser => eachUser._id === user.profile)) &&
             <div>
               <Link
         to={{
@@ -24,7 +24,7 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
            }
             
 
-      { !(userProfile?._id === user.profile) && (userProfile?.friends?.some(eachUser => eachUser === user.profile)) &&
+      { !(userProfile?._id === user.profile) && (userProfile?.friends?.some(eachUser => eachUser._id === user.profile)) &&
       <div>
         <Link
         to={{
@@ -42,3 +42,4 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
 }
  
 export default UserCard;
+
