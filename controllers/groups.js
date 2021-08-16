@@ -20,8 +20,8 @@ function leaveGroup (req, res) {
       profile.save()
       .then(() =>{
         res.json(group)
+        })
       })
-    })
     })
   })
 }
