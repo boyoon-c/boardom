@@ -5,7 +5,17 @@ export{
   index,
   createGroup as create,
   join,
-  leaveGroup
+  leaveGroup,
+  addActivity,
+  joinActivity
+}
+
+function joinActivity (req, res) {
+  //people in activity
+}
+
+function addActivity (req, res) {
+//work on this
 }
 
 function leaveGroup (req, res) {

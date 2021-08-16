@@ -25,7 +25,7 @@ function removeActivity (req, res) {
     .then(() => {
       Profile.findById(req.user.profile)
       .then(profile => {
-        profile.activities.remove(activity._id)
+        profile.soloActivities.remove(activity._id)
         profile.save()
         .then(() => {
           res.json(profile)
@@ -36,13 +36,14 @@ function removeActivity (req, res) {
 }
 
 function addActivity (req, res) {
-//adding user's profile _id to req.body (for creating a new resource)
-req.body.collected_by = req.user.profile
+  //adding user's profile _id to req.body (for creating a new resource)
+  req.body.collected_by = req.user.profile
 //find the profile of the logged in user
 Profile.findById(req.user.profile)
+.populate('soloActivities')
 .then(profile => {
   //check to see if the activity exists in the database
-  Activity.findOne({activityNo: req.body.activityNo})
+  Activity.findOne({activityNo: req.body.key})
   .then(activity =>  {
     //if a matching activity is found 
     if (activity) {
@@ -50,6 +51,7 @@ Profile.findById(req.user.profile)
       activity.peopleInActivity.push(req.user.profile) 
       //saving the activity object
       activity.save()
+      //(bo) feel like we should use populate here 
       .then(activity => {
         profile.activities.push(activity._id)
         profile.save() 
@@ -60,15 +62,24 @@ Profile.findById(req.user.profile)
     } else {
       Activity.create(req.body) // json body data from postman
       .then(activity => {
+        activity.name=req.body.activity
+        console.log('else statement req.body.activity', activity)
         //add the new activity document to the user's profile
        Profile.findById(req.user.profile)
+       .populate('soloActivities')
         .then(profile => {
-          profile.activities.push(activity._id) 
+          //console.log('else statement req.body.profile', profile)
+          profile.soloActivities.push(activity._id) 
           profile.save()
           .then(profile => {
+            //console.log('else statement req.body.profile.save', profile)
             activity.peopleInActivity.push(req.user.profile) //what will we put here for collected by 
+            //activity.name=req.body.activity
+            //console.log('else statement 10', activity)
+
               //saving the activity object
               activity.save()
+              //console.log('11', activity)
               .then(() => {
                 res.json(profile)
 
