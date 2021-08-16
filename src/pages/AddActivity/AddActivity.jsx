@@ -94,7 +94,7 @@ class AddActivity extends Component {
       <h3>Your Activity:</h3>
       {this.props.userProfile?.activities?.map(activity=>{
         return(
-        <p>{activity} 
+        <p>{activity.name} 
         {/* <button 
         type="submit"
         onClick={()=>this.props.handleRemoveActivity(this.state.searchResults)}>
