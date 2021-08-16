@@ -21,7 +21,7 @@ class GroupForm extends Component {
 
    handleSubmit = e => {
 		e.preventDefault();
-    this.props.history.push(`/group`)
+    this.props.handleCreateGroup(this.state.formData)
   };
  
   render() { 

@@ -47,9 +47,9 @@ class App extends Component {
 		this.setState({ user: authService.getUser() })
 	}
 
-	handleCreateGroup = async groupForm => {
-		const createGroup = await groupAPI.createGroup(groupForm)
-		this.setState ({ userProfile: createGroup })
+	handleCreateGroup = async newGroupData => {
+		const newGroup = await groupAPI.createGroup(newGroupData)
+		this.setState ({ userProfile: newGroup }) // not sure what to set new group
 	}
 
 	handleAddFriend = async friendId => {
@@ -135,7 +135,11 @@ class App extends Component {
         </Route>
 
 		<Route exact path='/group'>
-          <Group handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+          <Group 
+						handleSignupOrLogin={this.handleSignupOrLogin} 
+						history={this.props.history} 
+						handleCreateGroup={this.handleCreateGroup}
+					/>
         </Route>
 
 		<Route 
