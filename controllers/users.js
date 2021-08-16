@@ -16,6 +16,7 @@ function index(req, res) {
 function userProfile(req, res) {
   Profile.findById(req.user.profile)
   .populate('friends')
+  .populate('activities')
   .then(user => {
     res.json(user)
   })
