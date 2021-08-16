@@ -17,6 +17,6 @@ const router = Router()
 // endpoint /api/profile/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profileCtrl.index) //double check
+router.get('/:id', checkAuth, profileCtrl.show)
 router.patch('/friend/:id', checkAuth, profileCtrl.addFriend)
 router.patch('/unfriend/:id', checkAuth, profileCtrl.unFriend)
-router.get('/:id', checkAuth, profileCtrl.show)
