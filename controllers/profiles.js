@@ -44,7 +44,7 @@ function unFriend (req, res) {
 function show(req, res) {
   //req.user.profile
   Profile.findById(req.params.id)
-  //.populate('friends')
+  .populate('friends')
   .then(profile => {
     res.json(profile)
   })
