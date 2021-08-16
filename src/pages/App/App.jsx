@@ -14,6 +14,7 @@ import ProfileList from '../ProfileList/ProfileList'
 import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
 import * as userAPI from '../../services/userService'
+import * as activityAPI from '../../services/activityService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
@@ -55,7 +56,15 @@ class App extends Component {
 		this.setState({ userProfile: updatedProfile })
 	}
 
-	
+	handleAddActivity = async activity =>{
+		const updatedProfile = await activityAPI.addActivity(activity)
+		this.setState({updatedProfile: updatedProfile})
+	} 
+
+	handleRemoveActivity = async activity =>{
+		const updatedProfile = await activityAPI.removeActivity(activity)
+		this.setState({updatedProfile:updatedProfile})
+	}
 
 	async componentDidMount() {
 		if (!this.state.userProfile){
@@ -67,28 +76,34 @@ class App extends Component {
 		const { user, userProfile } = this.state
 		return (
 			<>
-				<NavBar user={user} handleLogout={this.handleLogout} />
+			<NavBar user={user} handleLogout={this.handleLogout} />
 				
-				<Route exact path='/'>
+			<Route exact path='/'>
           <Landing user={user} />
         </Route>
 				
-				<Route exact path='/signup'>
+			<Route exact path='/signup'>
           <Signup history={this.props.history} handleSignupOrLogin={this.handleSignupOrLogin}/>
         </Route>
 				
-				<Route exact path='/login'>
+			<Route exact path='/login'>
           <Login handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
         </Route>
 				
-				<Route 
-					exact path="/users"
-					render={()=> 
-						user ? <Users /> : <Redirect to='/login'/>
-				}/>
+			<Route 
+				exact path="/users"
+				render={()=> 
+					user ? <Users /> : <Redirect to='/login'/>
+			}/>
 				
-				<Route exact path='/addActivity'>
-          <AddActivity handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+			<Route exact path='/addActivity'>
+          <AddActivity 
+		  userProfile={userProfile}
+		  handleSignupOrLogin={this.handleSignupOrLogin} 
+		  history={this.props.history}
+		  handleAddActivity={this.handleAddActivity}
+		  handleRemoveActivity={this.handleRemoveActivity}
+		  />
         </Route>
 				
 		<Route exact path='/about'>
