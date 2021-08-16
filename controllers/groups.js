@@ -4,7 +4,26 @@ import { Profile } from '../models/profile.js'
 export{
   index,
   createGroup as create,
-  join
+  join,
+  leaveGroup
+}
+
+function leaveGroup (req, res) {
+  Profile.findById(req.user.profile)
+  .then(profile => {
+  Group.findById(req.params.id )
+  .then (group => {
+    group.members.remove(req.user.profile)
+    group.save()
+    .then(() =>{
+      profile.groups.remove({ _id: req.params.id})
+      profile.save()
+      .then(() =>{
+        res.json(group)
+      })
+    })
+    })
+  })
 }
 
 function join (req, res) {
