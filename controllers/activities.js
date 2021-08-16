@@ -25,7 +25,7 @@ function removeActivity (req, res) {
     .then(() => {
       Profile.findById(req.user.profile)
       .then(profile => {
-        profile.soloActivities.remove(activity._id)
+        profile.activities.remove(activity._id)
         profile.save()
         .then(() => {
           res.json(profile)
@@ -40,7 +40,7 @@ function addActivity (req, res) {
   req.body.collected_by = req.user.profile
 //find the profile of the logged in user
 Profile.findById(req.user.profile)
-.populate('soloActivities')
+//.populate('activities')
 .then(profile => {
   //check to see if the activity exists in the database
   Activity.findOne({activityNo: req.body.key})
@@ -66,11 +66,13 @@ Profile.findById(req.user.profile)
         console.log('else statement req.body.activity', activity)
         //add the new activity document to the user's profile
        Profile.findById(req.user.profile)
-       .populate('soloActivities')
+       //.populate('activities')
         .then(profile => {
           //console.log('else statement req.body.profile', profile)
-          profile.soloActivities.push(activity._id) 
+
+          profile.activities.push(activity._id) 
           profile.save()
+          
           .then(profile => {
             //console.log('else statement req.body.profile.save', profile)
             activity.peopleInActivity.push(req.user.profile) //what will we put here for collected by 
