@@ -95,12 +95,13 @@ class AddActivity extends Component {
       {this.props.userProfile?.activities?.map(activity=>{
         return(
         <p>{activity.name} 
-        {/* <button 
+        {/* Delete button not working */}
+        <button 
         type="submit"
-        onClick={()=>this.props.handleRemoveActivity(this.state.searchResults)}>
+        onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
         </button>
-        */}
+        
         </p> 
         
         )

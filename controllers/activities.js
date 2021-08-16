@@ -18,14 +18,16 @@ function createActivity (req, res) {
 }
 
 function removeActivity (req, res) {
-  Activity.findOne({ activityNo: req.params.id })
+  console.log('removeAct', req.params)
+  //Activity.findOne({ activityNo: req.params.id })
+  Activity.findOne({ _id : req.params.id })
   .then(activity => {
     activity.peopleInActivity.remove({ _id: req.user.profile })
     activity.save()
     .then(() => {
       Profile.findById(req.user.profile)
       .then(profile => {
-        profile.activities.remove(activity._id)
+        profile.activities.remove(activity)
         profile.save()
         .then(() => {
           res.json(profile)
