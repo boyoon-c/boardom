@@ -29,8 +29,8 @@ export function removeMedia(api_id) {
 
 // show function that's going to show random activity on some pages
 // but need to figure out what type and query this might be 
-export function show(type, query) {
-    return fetch(`${BASE_URL}show/${type}/${query}`, {
+export function search(participants, type) {
+    return fetch(`${BASE_URL}search/${participants}/${type}`, {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
