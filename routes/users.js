@@ -12,7 +12,8 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, usersCtrl.index)
 router.get('/userProfile', checkAuth, usersCtrl.userProfile)
-
+router.patch('/friend/:id', checkAuth, usersCtrl.friend)
+router.patch('/unfriend/:id', checkAuth, usersCtrl.unfriend)
 
 
 
