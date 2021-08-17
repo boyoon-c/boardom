@@ -21,14 +21,15 @@ import * as groupAPI from '../../services/groupService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
-
-
+import MessagePost from '../MessagePost/MessagePost'
+import * as messageAPI from '../../services/messagePostService'
 
 class App extends Component {
 	state = {
 		user: authService.getUser(),
 		userProfile: null,
 		groups: [],
+		messages: [],
 	}
 
 	renderEventContent = () => {
@@ -70,13 +71,14 @@ class App extends Component {
 		const groups = await groupAPI.getAllGroups()
 		this.setState({ groups: groups })
 	}
-
+	
+	
 	handleJoin = async groupId => {
 		const updatedGroup = await groupAPI.join(groupId)
 		console.log(updatedGroup)
 		this.setState({ groups: updatedGroup })
 	}
-
+	
 	handleLeaveGroup = async groupId => {
 		const updatedGroup = await groupAPI.leave(groupId)
 		this.setState({ groups: updatedGroup })
@@ -87,12 +89,41 @@ class App extends Component {
 		console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
 	} 
-
+	
 	handleRemoveActivity = async activity =>{
 		const updatedProfile = await activityAPI.removeActivity(activity)
 		this.setState({updatedProfile:updatedProfile})
 	}
+	
+	handleGetAllMessages = async () => {
+		const messages = await messageAPI.getAllMessages()
+		this.setState({ messages: messages })
+	}
+	
+	handleAddMessage = async message => {
+		const newMessage = await messageAPI.createMessagePost(message)
+		this.setState(state => ({
+			messages: [...state.messages, newMessage]
+		})
+	)}
 
+	handleDeleteMessage = async messageId => {
+		const updatedMessages = await messageAPI.deleteMessagePost(messageId)
+		console.log('updatedMessages', updatedMessages)
+		this.setState({
+			messages: updatedMessages
+		})
+	}
+
+	handleUpdateMessage = async messageId => {
+		const updatedMessage = await messageAPI.update(messageId)
+		const newMessagesArray = this.state.messages.map(p => 
+      p._id === updatedMessage._id ? updatedMessage : p
+    );
+		this.setState(
+      {messages: newMessagesArray}
+		)
+	}
 
 	async componentDidMount() {
 		if (!this.state.userProfile){
@@ -100,6 +131,7 @@ class App extends Component {
 			this.setState({ userProfile })
 		}
 		this.handleGetAllGroups()
+		this.handleGetAllMessages()
 	}
 	render() {
 		const { user, userProfile } = this.state
@@ -173,9 +205,9 @@ class App extends Component {
 		  handleRemoveFriend={this.handleRemoveFriend}
 		  userProfile={userProfile}
 	  /> : <Redirect to='/login' />
+
   }
 />
-
 		<Route 
 		exact path='/group/:id'
 		render={({ match })=> 
@@ -188,6 +220,9 @@ class App extends Component {
 	  /> : <Redirect to='/login' />
   }
 />
+  		}
+				/>
+
 		<Route 
 		exact path='/profileList'>
           <ProfileList
@@ -208,7 +243,15 @@ class App extends Component {
 		   handleSignupOrLogin={this.handleSignupOrLogin} 
 		   history={this.props.history}/>
         </Route>
-
+		<Route 
+			exact path='/messagePost'>
+          <MessagePost
+						messages={this.state.messages}
+						handleAddMessage={this.handleAddMessage}
+						handleDeleteMessage={this.handleDeleteMessage}
+						handleUpdateMessage={this.handleUpdateMessage}
+						/>
+        </Route>
 			</>
 		)
 	}

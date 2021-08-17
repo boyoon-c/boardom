@@ -10,7 +10,6 @@ class Group extends Component {
     render() {
         return (
             <>
-
                 Group!
                 <GroupForm 
                 history={this.props.history}

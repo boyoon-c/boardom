@@ -26,11 +26,12 @@ function edit (req, res) {
 
 function deleteMessagePost (req, res) {
   MessagePost.findByIdAndDelete(req.params.id)
-  .then(() => {
+  .then((message) => {
     res.status(200)
-    .json({
-      message: `messagePost deleted successfully`,
-    })
+    .json(message)
+    // .json({
+    //   message: `messagePost deleted successfully`,
+    // })
   })
 }
 
