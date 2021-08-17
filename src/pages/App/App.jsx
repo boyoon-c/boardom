@@ -77,12 +77,13 @@ class App extends Component {
 		const updatedGroup = await groupAPI.join(groupId)
 		console.log(updatedGroup)
 		this.setState({ groups: updatedGroup })
-	}
+	} 
 	
 	handleLeaveGroup = async groupId => {
 		const updatedGroup = await groupAPI.leave(groupId)
 		this.setState({ groups: updatedGroup })
-	}
+	} 
+	
 	
 	handleAddActivity = async activity =>{
 		console.log('before', activity)
@@ -259,7 +260,7 @@ class App extends Component {
           <GroupList
 		  	userProfile={this.state.userProfile}
 			groups={this.state.groups}
-		  	handleJoinGroup={this.handleJoinGroup}
+		  	handleJoin={this.handleJoin}
 			handleLeaveGroup={this.handleLeaveGroup}
 		   handleSignupOrLogin={this.handleSignupOrLogin} 
 		   history={this.props.history}/>
