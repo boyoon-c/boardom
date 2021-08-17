@@ -10,7 +10,9 @@ import Group from '../Group/Group'
 import Landing from '../Landing/Landing'
 import Login from '../Login/Login'
 import ProfileDetails from '../ProfileDetails/ProfileDetails'
+import GroupDetails from '../GroupDetails/GroupDetails'
 import ProfileList from '../ProfileList/ProfileList'
+import GroupList from '../GroupList/GroupList'
 import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
 import * as userAPI from '../../services/userService'
@@ -19,13 +21,15 @@ import * as groupAPI from '../../services/groupService'
 import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
-
-
+import MessagePost from '../MessagePost/MessagePost'
+import * as messageAPI from '../../services/messagePostService'
 
 class App extends Component {
 	state = {
 		user: authService.getUser(),
-		userProfile: null
+		userProfile: null,
+		groups: [],
+		messages: [],
 	}
 
 	renderEventContent = () => {
@@ -62,16 +66,63 @@ class App extends Component {
 		const updatedProfile = await profileAPI.unfriend(friendId)
 		this.setState({ userProfile: updatedProfile })
 	}
-
+	
+	handleGetAllGroups = async () => {
+		const groups = await groupAPI.getAllGroups()
+		this.setState({ groups: groups })
+	}
+	
+	
+	handleJoin = async groupId => {
+		const updatedGroup = await groupAPI.join(groupId)
+		console.log(updatedGroup)
+		this.setState({ groups: updatedGroup })
+	}
+	
+	handleLeaveGroup = async groupId => {
+		const updatedGroup = await groupAPI.leave(groupId)
+		this.setState({ groups: updatedGroup })
+	}
+	
 	handleAddActivity = async activity =>{
 		const updatedProfile = await activityAPI.addActivity(activity)
 		console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
 	} 
-
+	
 	handleRemoveActivity = async activity =>{
 		const updatedProfile = await activityAPI.removeActivity(activity)
 		this.setState({updatedProfile:updatedProfile})
+	}
+	
+	handleGetAllMessages = async () => {
+		const messages = await messageAPI.getAllMessages()
+		this.setState({ messages: messages })
+	}
+	
+	handleAddMessage = async message => {
+		const newMessage = await messageAPI.createMessagePost(message)
+		this.setState(state => ({
+			messages: [...state.messages, newMessage]
+		})
+	)}
+
+	handleDeleteMessage = async messageId => {
+		const updatedMessages = await messageAPI.deleteMessagePost(messageId)
+		console.log('updatedMessages', updatedMessages)
+		this.setState({
+			messages: updatedMessages
+		})
+	}
+
+	handleUpdateMessage = async messageId => {
+		const updatedMessage = await messageAPI.update(messageId)
+		const newMessagesArray = this.state.messages.map(p => 
+      p._id === updatedMessage._id ? updatedMessage : p
+    );
+		this.setState(
+      {messages: newMessagesArray}
+		)
 	}
 
 	handleUpdateActivity = async updatedActivityData => {
@@ -91,6 +142,8 @@ class App extends Component {
 			const userProfile = await userAPI.getUserProfile()
 			this.setState({ userProfile })
 		}
+		this.handleGetAllGroups()
+		this.handleGetAllMessages()
 	}
 	render() {
 		const { user, userProfile } = this.state
@@ -165,8 +218,23 @@ class App extends Component {
 		  handleRemoveActivity={this.handleRemoveActivity}
 		  userProfile={userProfile}
 	  /> : <Redirect to='/login' />
+
   }
 />
+		<Route 
+		exact path='/group/:id'
+		render={({ match })=> 
+			authService.getUser() ?
+          <GroupDetails
+		  match={match}
+		  handleJoin={this.handleJoin}
+		  handleLeaveGroup={this.handleLeaveGroup}
+		  userProfile={userProfile}
+	  /> : <Redirect to='/login' />
+  }
+/>
+
+
 		<Route 
 		exact path='/profileList'>
           <ProfileList
@@ -177,7 +245,25 @@ class App extends Component {
 		   history={this.props.history}/>
         </Route>
 
-
+		<Route 
+		exact path='/groupList'>
+          <GroupList
+		  	userProfile={this.state.userProfile}
+			groups={this.state.groups}
+		  	handleJoinGroup={this.handleJoinGroup}
+			handleLeaveGroup={this.handleLeaveGroup}
+		   handleSignupOrLogin={this.handleSignupOrLogin} 
+		   history={this.props.history}/>
+        </Route>
+		<Route 
+			exact path='/messagePost'>
+          <MessagePost
+						messages={this.state.messages}
+						handleAddMessage={this.handleAddMessage}
+						handleDeleteMessage={this.handleDeleteMessage}
+						handleUpdateMessage={this.handleUpdateMessage}
+						/>
+        </Route>
 			</>
 		)
 	}

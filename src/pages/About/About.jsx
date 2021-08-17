@@ -20,7 +20,7 @@ class About extends Component {
                     height: 300,
                     width: 300,
                     margin: 10,
-                    padding: 10
+                    padding: 10,
                   }}
                 src={vap} alt="vap" class="vap"/> 
                 Avis, man of birds. Bird man. Perpetual loser in Pokemon showdown.

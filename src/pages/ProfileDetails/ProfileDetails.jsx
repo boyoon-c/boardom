@@ -3,6 +3,7 @@ import UserCard from '../../components/UserCard/UserCard'
 import { friend, getUserProfile } from "../../services/userService"
 import * as profileService from "../../services/profileService"
 
+
 class ProfileDetails extends Component {
 
     state = {
@@ -72,9 +73,15 @@ class ProfileDetails extends Component {
         </>
         )
       })}
-          </>
-        );
-    }
+      <h1>{this.state.profile?.name}'s Groups: </h1>
+              {this.state.profile?.groups?.map(group=>{
+                return(
+                  <p>{group.name}</p>
+                )
+              })}
+              </>
+              );
+            }
     
   }
 
