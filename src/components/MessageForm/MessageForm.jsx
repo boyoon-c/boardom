@@ -24,6 +24,7 @@ class MessagePost extends Component {
     };
 
   render() { 
+    const { body } = this.state.formData
     return ( 
       <>
         <h3>Message:</h3>
