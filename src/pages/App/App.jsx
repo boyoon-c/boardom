@@ -220,8 +220,7 @@ class App extends Component {
 	  /> : <Redirect to='/login' />
   }
 />
-  		}
-				/>
+
 
 		<Route 
 		exact path='/profileList'>

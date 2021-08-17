@@ -15,7 +15,7 @@ class GroupDetails extends Component {
         this.setState({group})
     }
     render () {
-        console.log("Members", this.state.groups?.members)
+        console.log("Members", this.state.group?.members)
         return (
           <>
               <h1>Welcome to {this.state.group.name}!</h1>
