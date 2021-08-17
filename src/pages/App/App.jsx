@@ -11,6 +11,7 @@ import Landing from '../Landing/Landing'
 import Login from '../Login/Login'
 import ProfileDetails from '../ProfileDetails/ProfileDetails'
 import ProfileList from '../ProfileList/ProfileList'
+import GroupList from '../GroupList/GroupList'
 import Signup from '../Signup/Signup'
 import * as authService from '../../services/authService'
 import * as userAPI from '../../services/userService'
@@ -25,7 +26,8 @@ import * as profileAPI from '../../services/profileService'
 class App extends Component {
 	state = {
 		user: authService.getUser(),
-		userProfile: null
+		userProfile: null,
+		groups: [],
 	}
 
 	renderEventContent = () => {
@@ -62,7 +64,23 @@ class App extends Component {
 		const updatedProfile = await profileAPI.unfriend(friendId)
 		this.setState({ userProfile: updatedProfile })
 	}
+	
+	handleGetAllGroups = async () => {
+		const groups = await groupAPI.getAllGroups()
+		this.setState({ groups: groups })
+	}
 
+	handleJoin = async groupId => {
+		const updatedGroup = await groupAPI.join(groupId)
+		console.log(updatedGroup)
+		this.setState({ groups: updatedGroup })
+	}
+
+	handleLeaveGroup = async groupId => {
+		const updatedGroup = await groupAPI.leave(groupId)
+		this.setState({ groups: updatedGroup })
+	}
+	
 	handleAddActivity = async activity =>{
 		const updatedProfile = await activityAPI.addActivity(activity)
 		console.log('updatedProfile', updatedProfile)
@@ -74,11 +92,13 @@ class App extends Component {
 		this.setState({updatedProfile:updatedProfile})
 	}
 
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
 			this.setState({ userProfile })
 		}
+		this.handleGetAllGroups()
 	}
 	render() {
 		const { user, userProfile } = this.state
@@ -164,6 +184,15 @@ class App extends Component {
 		   history={this.props.history}/>
         </Route>
 
+		<Route 
+		exact path='/groupList'>
+          <GroupList
+			groups={this.state.groups}
+		  	handleJoinGroup={this.handleJoinGroup}
+			handleLeaveGroup={this.handleLeaveGroup}
+		   handleSignupOrLogin={this.handleSignupOrLogin} 
+		   history={this.props.history}/>
+        </Route>
 
 			</>
 		)
