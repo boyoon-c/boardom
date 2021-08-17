@@ -6,33 +6,33 @@ const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
   return (
     <>
       
-      { !(group?._id === userProfile) && !(group?.members?.some(eachMember => eachMember._id === group.profile)) &&
+      { !(group?._id === userProfile) && !(group?.members?.some(eachMember => eachMember._id === group._id)) &&
             <div>
               <Link
         to={{
-          pathname: `/group/${group.profile}`,
+          pathname: `/group/${group._id}`,
           state: {group}
         }}
       >
         <h1>{group.name}</h1>
       </Link>
               
-              <button onClick={() => handleJoin(group.profile)}>Become a member of {group.name}!</button> 
+              <button onClick={() => handleJoin(group._id)}>Become a member of {group.name}!</button> 
            </div> 
            }
             
 
-      { !(group?._id === userProfile) && (group?.members?.some(eachMember => eachMember._id === group.profile)) &&
+      { !(group?._id === userProfile) && (group?.members?.some(eachMember => eachMember._id === group._id)) &&
       <div>
         <Link
         to={{
-          pathname: `/group/${group.profile}`,
+          pathname: `/group/${group._id}`,
           state: {group}
         }}
       >
         <h1>{group.name}</h1>
       </Link>
-      <button onClick={() => handleLeaveGroup(group.profile)}>Leave {group.name}.</button> 
+      <button onClick={() => handleLeaveGroup(group._id)}>Leave {group.name}.</button> 
       </div>
       }   
     </>
