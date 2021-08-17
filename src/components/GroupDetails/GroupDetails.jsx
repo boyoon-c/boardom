@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import UserCard from '../../components/UserCard/UserCard'
-import { friend, getUserProfile } from "../../services/userService"
 import * as groupService from "../../services/groupService"
 
 

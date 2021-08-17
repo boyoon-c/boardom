@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const GroupCard = ({  group, handleJoin, handleLeaveGroup }) => {
+const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
   console.log('group', group)
   return (
     <>
       
-      { !(group?._id === group.profile) && !(group?.group?.some(eachUser => eachUser._id === group.profile)) &&
+      { !(group?._id === userProfile) && !(group?.members?.some(eachMember => eachMember._id === group.profile)) &&
             <div>
               <Link
         to={{
@@ -17,12 +17,12 @@ const GroupCard = ({  group, handleJoin, handleLeaveGroup }) => {
         <h1>{group.name}</h1>
       </Link>
               
-              <button onClick={() => handleJoin(group.profile)}>Add {group.name} to group</button> 
+              <button onClick={() => handleJoin(group.profile)}>Become a member of {group.name}!</button> 
            </div> 
            }
             
 
-      { !(group?._id === group.profile) && (group?.group?.some(eachUser => eachUser._id === group.profile)) &&
+      { !(group?._id === userProfile) && (group?.members?.some(eachMember => eachMember._id === group.profile)) &&
       <div>
         <Link
         to={{
@@ -32,7 +32,7 @@ const GroupCard = ({  group, handleJoin, handleLeaveGroup }) => {
       >
         <h1>{group.name}</h1>
       </Link>
-      <button onClick={() => handleLeaveGroup(group.profile)}>Remove {group.name} from group</button> 
+      <button onClick={() => handleLeaveGroup(group.profile)}>Leave {group.name}.</button> 
       </div>
       }   
     </>
