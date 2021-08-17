@@ -6,10 +6,29 @@ import * as profileService from "../../services/profileService"
 class ProfileDetails extends Component {
 
     state = {
-        profile: {}
+        profile: {},
+        formData:{
+            profile: '',
+            activityName: '',
+            date: '',
+            time: ''
+        }
     }
 
-    async componentDidMount() {
+    handleSubmit = e=>{
+      e.preventDefault()
+      this.handleUpdate()
+    }
+
+    handleChange= e=> {
+      const formData = {...this.state.formData, [e.target.name]: e.target.value}
+       this.setState({
+         formData: formData,
+     })
+     console.log('formData', formData)
+    }
+    
+     async componentDidMount() {
         //console.log("this.props.match", this.props.match)
         const profile = await profileService.getDetails(this.props.match.params.id)
         console.log('this.props.match', this.props.match)
@@ -19,6 +38,7 @@ class ProfileDetails extends Component {
     render () {
         console.log("Profile", this.state.profile)
         console.log("My Friends", this.state.profile?.friends)
+        console.log('Acitivity', this.state.formData)
         return (
           <>
               <h1>{this.state.profile?.name}'s Profile</h1>
@@ -36,6 +56,19 @@ class ProfileDetails extends Component {
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
         </button>
+        {/* <form ref={this.formRef} onSubmit={this.handleSubmit}>
+          <input 
+            name={this.state.formData.date}
+            type="date"
+            onChange={this.handleChange}
+           />
+          <input 
+            name={this.state.formData.time}
+            type="time"
+            onChange={this.handleChange} 
+          />
+          <button className="btn-sm btn-secondary">Submit</button>
+        </form> */}
         </>
         )
       })}

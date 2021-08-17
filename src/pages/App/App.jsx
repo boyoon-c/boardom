@@ -74,6 +74,18 @@ class App extends Component {
 		this.setState({updatedProfile:updatedProfile})
 	}
 
+	handleUpdateActivity = async updatedActivityData => {
+		// const updatedPuppy = await activityAPI.updateActivity(updatedActivityData);
+		// const newPuppiesArray = this.state.puppies.map(p => 
+		//   p._id === updatedPuppy._id ? updatedPuppy : p
+		// );
+		// this.setState(
+		//   {puppies: newPuppiesArray},
+		//   // Using cb to wait for state to update before rerouting
+		//   () => this.props.history.push('/')
+		// );
+	  }
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
