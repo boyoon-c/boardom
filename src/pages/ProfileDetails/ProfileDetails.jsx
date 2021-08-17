@@ -33,9 +33,15 @@ class ProfileDetails extends Component {
         <p>{activity.name} </p>
         )
       })}
-          </>
-        );
-    }
+      <h1>{this.state.profile?.name}'s Groups: </h1>
+              {this.state.profile?.groups?.map(group=>{
+                return(
+                  <p>{group.name}</p>
+                )
+              })}
+              </>
+              );
+            }
     
   }
 
