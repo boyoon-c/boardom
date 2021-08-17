@@ -110,8 +110,12 @@ class App extends Component {
 	handleDeleteMessage = async messageId => {
 		const updatedMessages = await messageAPI.deleteMessagePost(messageId)
 		console.log('updatedMessages', updatedMessages)
+		const newMessages=[...this.state.messages]
+		const deleteMessage = (element) => element._id === messageId
+		const deleteMessageIdx = newMessages.findIndex(deleteMessage)
+		newMessages.splice(deleteMessageIdx,1)
 		this.setState({
-			messages: updatedMessages
+			messages: newMessages
 		})
 	}
 
