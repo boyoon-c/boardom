@@ -23,7 +23,6 @@ class MessagePost extends Component {
       this.props.handleAddMessage(this.state.formData) //create and pass handleAddMessage from App
     };
 
-    
 
   render() { 
     const { body } = this.state.formData
