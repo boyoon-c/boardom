@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
   console.log('group', group)
   return (

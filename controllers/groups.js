@@ -7,7 +7,8 @@ export{
   join,
   leaveGroup,
   addActivity,
-  joinActivity
+  joinActivity,
+  show
 }
 
 function joinActivity (req, res) {
@@ -65,6 +66,15 @@ function createGroup (req, res) {
 
 function index (req, res) {
   Group.find({})
+  .then(group => {
+    res.json(group)
+  })
+}
+
+function show(req, res) {
+  Group.findById(req.params.id)
+  .populate('memebers')
+  .populate('activities')//.execPopulate()
   .then(group => {
     res.json(group)
   })
