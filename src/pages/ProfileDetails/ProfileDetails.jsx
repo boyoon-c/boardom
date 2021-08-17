@@ -29,7 +29,14 @@ class ProfileDetails extends Component {
               <h1>{this.state.profile?.name}'s Activities: </h1>
               {this.state.profile?.activities?.map(activity=>{
         return(
+        <>
         <p>{activity.name} </p>
+        <button 
+        type="submit"
+        onClick={()=>this.props.handleRemoveActivity(activity._id)}>
+          DELETE
+        </button>
+        </>
         )
       })}
           </>

@@ -150,6 +150,7 @@ class App extends Component {
 		  match={match}
 		  handleAddFriend={this.handleAddFriend}
 		  handleRemoveFriend={this.handleRemoveFriend}
+		  handleRemoveActivity={this.handleRemoveActivity}
 		  userProfile={userProfile}
 	  /> : <Redirect to='/login' />
   }
