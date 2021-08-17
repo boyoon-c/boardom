@@ -10,6 +10,7 @@ import Group from '../Group/Group'
 import Landing from '../Landing/Landing'
 import Login from '../Login/Login'
 import ProfileDetails from '../ProfileDetails/ProfileDetails'
+import GroupDetails from '../GroupDetails/GroupDetails'
 import ProfileList from '../ProfileList/ProfileList'
 import GroupList from '../GroupList/GroupList'
 import Signup from '../Signup/Signup'
@@ -204,8 +205,24 @@ class App extends Component {
 		  handleRemoveFriend={this.handleRemoveFriend}
 		  userProfile={userProfile}
 	  /> : <Redirect to='/login' />
+
+  }
+/>
+		<Route 
+		exact path='/group/:id'
+		render={({ match })=> 
+			authService.getUser() ?
+          <GroupDetails
+		  match={match}
+		  handleJoin={this.handleJoin}
+		  handleLeaveGroup={this.handleLeaveGroup}
+		  userProfile={userProfile}
+	  /> : <Redirect to='/login' />
+  }
+/>
   		}
 				/>
+
 		<Route 
 		exact path='/profileList'>
           <ProfileList
