@@ -213,6 +213,7 @@ class App extends Component {
 		render={({ match })=> 
 			authService.getUser() ?
           <GroupDetails
+		  group={this.state.group}
 		  match={match}
 		  handleJoin={this.handleJoin}
 		  handleLeaveGroup={this.handleLeaveGroup}
