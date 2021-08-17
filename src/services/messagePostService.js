@@ -23,3 +23,13 @@ export function getAllMessages () {
   {mode: 'cors'})
   .then(res => res.json())
 }
+
+export function deleteMessagePost(message) {
+  return fetch(`${BASE_URL}deleteMessagePost/${message}`,
+  {
+    method: 'DELETE',
+    headers: { Authorization: "Bearer " + tokenService.getToken()}
+  }, 
+  {mode: 'cors'})
+  .then(res => res.json())
+}

@@ -106,6 +106,14 @@ class App extends Component {
 		})
 	)}
 
+	handleDeleteMessage = async messageId => {
+		const updatedMessages = await messageAPI.deleteMessagePost(messageId)
+		console.log('updatedMessages', updatedMessages)
+		this.setState({
+			messages: updatedMessages
+		})
+	}
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
@@ -212,6 +220,7 @@ class App extends Component {
           <MessagePost
 						messages={this.state.messages}
 						handleAddMessage={this.handleAddMessage}
+						handleDeleteMessage={this.handleDeleteMessage}
 						/>
         </Route>
 			</>
