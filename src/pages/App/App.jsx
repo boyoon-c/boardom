@@ -85,9 +85,11 @@ class App extends Component {
 	}
 	
 	handleAddActivity = async activity =>{
+		console.log('before', activity)
 		const updatedProfile = await activityAPI.addActivity(activity)
 		console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
+		this.props.history.push('/addActivity')
 	} 
 	
 	handleRemoveActivity = async activity =>{
@@ -110,8 +112,12 @@ class App extends Component {
 	handleDeleteMessage = async messageId => {
 		const updatedMessages = await messageAPI.deleteMessagePost(messageId)
 		console.log('updatedMessages', updatedMessages)
+		const newMessages=[...this.state.messages]
+		const deleteMessage = (element) => element._id === messageId
+		const deleteMessageIdx = newMessages.findIndex(deleteMessage)
+		newMessages.splice(deleteMessageIdx,1)
 		this.setState({
-			messages: updatedMessages
+			messages: newMessages
 		})
 	}
 
@@ -140,6 +146,7 @@ class App extends Component {
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
+			console.log("This is the userProfile", userProfile)
 			this.setState({ userProfile })
 		}
 		this.handleGetAllGroups()
@@ -223,13 +230,15 @@ class App extends Component {
 />
 		<Route 
 		exact path='/group/:id'
-		render={({ match })=> 
+		render={({ match, location })=> 
 			authService.getUser() ?
           <GroupDetails
+		  group={this.state.group}
 		  match={match}
 		  handleJoin={this.handleJoin}
 		  handleLeaveGroup={this.handleLeaveGroup}
 		  userProfile={userProfile}
+		  location={location}
 	  /> : <Redirect to='/login' />
   }
 />

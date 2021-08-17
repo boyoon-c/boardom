@@ -15,6 +15,7 @@ export {
 // IF YOU NEED ACCESS TO req.user, IT MUST GO BENEATH:
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, groupCtrl.index)
+router.get('/:id', checkAuth, groupCtrl.show)
 router.post('/createGroup', checkAuth, groupCtrl.create)
 router.post('/joinGroup/:id', checkAuth, groupCtrl.join)
 router.post('/leaveGroup/:id', checkAuth, groupCtrl.leaveGroup)
