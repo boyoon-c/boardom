@@ -2,6 +2,21 @@
 import * as tokenService from './tokenService'
 const BASE_URL="/api/activity/"
 
+// update function that's going to add time information to the activity
+export function updateActivity(act){
+  return fetch(
+    `${BASE_URL}${act}`,
+    {
+      method: 'PUT', 
+      headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
+      body: JSON.stringify(act)
+  },
+  {mode: 'cors'})
+  .then((res)=>res.json())
+    //something
+}
+
+
 // add function that's going to add activity to the user profile
 export function addActivity(act) {
     return fetch(
