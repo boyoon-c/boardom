@@ -29,7 +29,7 @@ class AddActivity extends Component {
     this.setState({searchResults: searchResults})
   }
 
-  
+
   handleSubmit = e => {
     e.preventDefault()
     this.handleSearch(this.state.formData.participants, this.state.formData.type)
