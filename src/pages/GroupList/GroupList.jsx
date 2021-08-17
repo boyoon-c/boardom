@@ -5,14 +5,6 @@ import GroupCard from '../../components/GroupCard/GroupCard'
 
 class GroupList extends Component {
 
-// state = {
-//     groups: [],
-//   }
-
-//   async componentDidMount() {
-//     const groups = await getAllGroups()
-//     this.setState({ groups })
-//   }
 
   render() { 
     return (
@@ -22,7 +14,6 @@ class GroupList extends Component {
           <GroupCard
             group={group}
             key={group._id}
-            // groups={this.props.groups}
             handleJoin={this.props.handleJoin}
             handleLeaveGroup={this.props.handleLeaveGroup}
           />

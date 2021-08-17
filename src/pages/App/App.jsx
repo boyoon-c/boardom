@@ -187,6 +187,7 @@ class App extends Component {
 		<Route 
 		exact path='/groupList'>
           <GroupList
+		  	userProfile={this.state.userProfile}
 			groups={this.state.groups}
 		  	handleJoinGroup={this.handleJoinGroup}
 			handleLeaveGroup={this.handleLeaveGroup}
