@@ -70,13 +70,14 @@ class App extends Component {
 		const groups = await groupAPI.getAllGroups()
 		this.setState({ groups: groups })
 	}
-
+	
+	
 	handleJoin = async groupId => {
 		const updatedGroup = await groupAPI.join(groupId)
 		console.log(updatedGroup)
 		this.setState({ groups: updatedGroup })
 	}
-
+	
 	handleLeaveGroup = async groupId => {
 		const updatedGroup = await groupAPI.leave(groupId)
 		this.setState({ groups: updatedGroup })
@@ -87,16 +88,23 @@ class App extends Component {
 		console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
 	} 
-
+	
 	handleRemoveActivity = async activity =>{
 		const updatedProfile = await activityAPI.removeActivity(activity)
 		this.setState({updatedProfile:updatedProfile})
 	}
-
+	
+	handleGetAllMessages = async () => {
+		const messages = await messageAPI.getAllMessages()
+		this.setState({ messages: messages })
+	}
+	
 	handleAddMessage = async message => {
 		const newMessage = await messageAPI.createMessagePost(message)
-		this.setState({messages: newMessage})
-	}
+		this.setState(state => ({
+			messages: [...state.messages, newMessage]
+		})
+	)}
 
 	async componentDidMount() {
 		if (!this.state.userProfile){
@@ -104,6 +112,7 @@ class App extends Component {
 			this.setState({ userProfile })
 		}
 		this.handleGetAllGroups()
+		this.handleGetAllMessages()
 	}
 	render() {
 		const { user, userProfile } = this.state
@@ -199,8 +208,9 @@ class App extends Component {
 		   history={this.props.history}/>
         </Route>
 		<Route 
-		exact path='/messagePost'>
+			exact path='/messagePost'>
           <MessagePost
+						messages={this.state.messages}
 						handleAddMessage={this.handleAddMessage}
 						/>
         </Route>

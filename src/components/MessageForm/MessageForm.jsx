@@ -33,10 +33,12 @@ class MessagePost extends Component {
       >
         <h3>Message:</h3>
         <input 
+        autoComplete="off"
           type="text"
           name="body"
           value={this.state.formData.body}
           onChange={this.handleChange}
+          placeholder="enter message post"
           required
         />
          <button

@@ -13,3 +13,13 @@ export function createMessagePost (message) {
     { mode: "cors" })
   .then((res) => res.json())
 }
+
+export function getAllMessages () {
+  return fetch(BASE_URL,
+  {
+    method: 'GET',
+    headers: { Authorization: "Bearer " + tokenService.getToken()}
+  }, 
+  {mode: 'cors'})
+  .then(res => res.json())
+}
