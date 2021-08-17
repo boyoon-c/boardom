@@ -27,6 +27,10 @@ class MessagePost extends Component {
     const { body } = this.state.formData
     return ( 
       <>
+      <form
+        ref={this.formRef}
+        onSubmit={this.handleSubmit}
+      >
         <h3>Message:</h3>
         <input 
           type="text"
@@ -35,6 +39,13 @@ class MessagePost extends Component {
           onChange={this.handleChange}
           required
         />
+         <button
+          type="submit"
+    			disabled={this.state.invalidForm}
+        >
+				  create
+        </button>
+      </form>
       </>
      );
   }
