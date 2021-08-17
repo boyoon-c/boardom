@@ -223,7 +223,7 @@ class App extends Component {
 />
 		<Route 
 		exact path='/group/:id'
-		render={({ match })=> 
+		render={({ match, location })=> 
 			authService.getUser() ?
           <GroupDetails
 		  group={this.state.group}
@@ -231,6 +231,7 @@ class App extends Component {
 		  handleJoin={this.handleJoin}
 		  handleLeaveGroup={this.handleLeaveGroup}
 		  userProfile={userProfile}
+		  location={location}
 	  /> : <Redirect to='/login' />
   }
 />
