@@ -7,7 +7,7 @@ import cors from 'cors'
 
 import { router as usersRouter } from './routes/users.js'
 import { router as authRouter } from './routes/auth.js'
-import { router as activityRouter } from './routes/activity.js' //(bo) this should later reference the exact name of the file in the back end
+import { router as activityRouter } from './routes/activity.js' 
 import { router as messagePostRouter } from './routes/messagePost.js'
 import { router as calendarRouter } from './routes/calendar.js'
 import { router as profileRouter } from './routes/profile.js'
