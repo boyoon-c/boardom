@@ -4,11 +4,17 @@ import { Calendar } from '../models/calendar.js'
 import axios from 'axios'
 
 export {
+  //updateActivity,
   search,
   addActivity,
   removeActivity,
   createActivity
 }
+
+//function updateActivity(req,res){
+  //some function
+  //res.redirect('/')
+//}
 
 function createActivity (req, res) {
   Activity.create(req.body)
