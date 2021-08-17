@@ -5,7 +5,7 @@ class GroupDetails extends Component {
     constructor(props) {
       super(props)
     this.state = {
-      group: {{this.props.location.state.group}}
+      group: this.props.location.state.group
     }
 }
     // async componentDidMount() {
@@ -19,11 +19,11 @@ class GroupDetails extends Component {
         return (
           <>
               <h1>Welcome to {this.state.group?.name}!</h1>
-              <h1>Members List:</h1>
+              <h1>{this.state.group?.name}s' members List:</h1>
               {this.state.group?.members?.map(members =>{
                 return(<h1>{members.name}</h1>)
               })}
-              <h1>{this.state.group?.name} Activities: </h1>
+              <h1>{this.state.group?.name}'s Activities: </h1>
               {this.state.group?.activities?.map(activity=>{
         return(
         <p>{activity.name} </p>
