@@ -21,13 +21,14 @@ import Users from '../Users/Users'
 import './App.css'
 import * as profileAPI from '../../services/profileService'
 import MessagePost from '../MessagePost/MessagePost'
-
+import * as messageAPI from '../../services/messagePostService'
 
 class App extends Component {
 	state = {
 		user: authService.getUser(),
 		userProfile: null,
 		groups: [],
+		messages: [],
 	}
 
 	renderEventContent = () => {
@@ -92,6 +93,10 @@ class App extends Component {
 		this.setState({updatedProfile:updatedProfile})
 	}
 
+	handleAddMessage = async message => {
+		const newMessage = await messageAPI.createMessagePost(message)
+		this.setState({messages: newMessage})
+	}
 
 	async componentDidMount() {
 		if (!this.state.userProfile){
@@ -196,7 +201,7 @@ class App extends Component {
 		<Route 
 		exact path='/messagePost'>
           <MessagePost
-						
+						handleAddMessage={this.handleAddMessage}
 						/>
         </Route>
 			</>

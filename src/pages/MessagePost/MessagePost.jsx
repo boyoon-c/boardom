@@ -9,7 +9,9 @@ class MessagePost extends Component {
     return ( 
       <>
         <h2>Messages</h2>
-        <MessageForm />
+        <MessageForm
+          handleAddMessage={this.props.handleAddMessage}
+        />
       </>
      );
   }
