@@ -15,6 +15,7 @@ const NavBar = ({ user, handleLogout }) => {
 							<Link to="/about">About</Link>
 							<Link to="/calendar">Calendar</Link>
 							<Link to="/group">Group</Link>
+							<Link to="/grouplist">Grouplist</Link>
 							<Link to={`/profile/${user.profile}`}>Profile Details</Link>
 							<Link to="/profileList">User List</Link>
 							<Link to='' onClick={handleLogout}>LOG OUT</Link>
