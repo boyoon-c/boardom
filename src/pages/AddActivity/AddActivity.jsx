@@ -6,7 +6,7 @@ class AddActivity extends Component {
   state = { 
     invalidForm: true,
     formData: {
-      name:'',
+      //name:'',
       type:'',
       participants: ''
     },

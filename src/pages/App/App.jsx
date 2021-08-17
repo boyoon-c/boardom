@@ -85,9 +85,11 @@ class App extends Component {
 	}
 	
 	handleAddActivity = async activity =>{
+		console.log('before', activity)
 		const updatedProfile = await activityAPI.addActivity(activity)
 		console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
+		this.props.history.push('/addActivity')
 	} 
 	
 	handleRemoveActivity = async activity =>{
@@ -144,6 +146,7 @@ class App extends Component {
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
+			console.log("This is the userProfile", userProfile)
 			this.setState({ userProfile })
 		}
 		this.handleGetAllGroups()
