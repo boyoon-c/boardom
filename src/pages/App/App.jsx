@@ -90,12 +90,14 @@ class App extends Component {
 		const updatedProfile = await activityAPI.addActivity(activity)
 		console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
-		this.props.history.push('/addActivity')
+		//this.props.history.push('/addActivity')
 	} 
 	
 	handleRemoveActivity = async activity =>{
 		const updatedProfile = await activityAPI.removeActivity(activity)
-		this.setState({updatedProfile:updatedProfile})
+		this.setState({userProfile:updatedProfile})
+		//this.props.history.push('/addActivity')
+
 	}
 	
 	handleGetAllMessages = async () => {

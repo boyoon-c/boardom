@@ -35,7 +35,8 @@ function removeActivity (req, res) {
       .then(profile => {
         profile.activities.remove(activity)
         profile.save()
-        .then(() => {
+        .then(profile=> profile.populate('activities').execPopulate())
+        .then((profile) => {
           res.json(profile)
         })
       })
