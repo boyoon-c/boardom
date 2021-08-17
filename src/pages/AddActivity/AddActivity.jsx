@@ -10,7 +10,7 @@ class AddActivity extends Component {
       type:'',
       participants: ''
     },
-    searchResults:{}
+    searchResults:{},
    }
 
    formRef=React.createRef()
@@ -36,10 +36,14 @@ class AddActivity extends Component {
   }
 
   
+  //const activities = activityAPI.showActivity()
+  
   render() { 
+
     console.log("searchResult", this.state.searchResults)
     console.log("props", this.props)
     console.log('userProfile', this.props.userProfile)
+    
     return ( 
       <>
       <main className='fs-6 m-5'>
@@ -92,9 +96,11 @@ class AddActivity extends Component {
       </button>
 
       <h3>Your Activity:</h3>
-      {this.props.userProfile?.activities?.map(activity=>{
-        return(
-        <p>{activity.name} 
+      
+      {/* <h2>{this.props.userProfile?.activities[0].name}</h2> */}
+      {this.props.userProfile?.activities?.map(activity=>
+        <>
+        <p>{activity.name} </p> 
         {/* Delete button not working */}
         <button 
         type="submit"
@@ -102,10 +108,10 @@ class AddActivity extends Component {
           DELETE
         </button>
         
-        </p> 
         
-        )
-      })}
+        
+        </>
+      )}
       {/* Here we will display the list of a user's activities in cards */}
       </main>
       </>
