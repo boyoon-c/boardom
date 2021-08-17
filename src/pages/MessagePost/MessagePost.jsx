@@ -24,6 +24,7 @@ class MessagePost extends Component {
         <MessageForm
           handleAddMessage={this.props.handleAddMessage}
           handleDeleteMessage={this.props.handleDeleteMessage}
+          handleUpdateMessage={this.props.handleUpdateMessage}
         />
       </>
      );

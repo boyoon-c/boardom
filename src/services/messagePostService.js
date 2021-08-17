@@ -33,3 +33,10 @@ export function deleteMessagePost(message) {
   {mode: 'cors'})
   .then(res => res.json())
 }
+
+export function update(message) {
+  return fetch(`${BASE_URL}edit/${message._id}`, {
+    method: 'PUT',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify(message)
+  }).then(res => res.json());}

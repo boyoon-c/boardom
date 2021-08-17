@@ -114,6 +114,16 @@ class App extends Component {
 		})
 	}
 
+	handleUpdateMessage = async messageId => {
+		const updatedMessage = await messageAPI.update(messageId)
+		const newMessagesArray = this.state.messages.map(p => 
+      p._id === updatedMessage._id ? updatedMessage : p
+    );
+		this.setState(
+      {messages: newMessagesArray}
+		)
+	}
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
@@ -221,6 +231,7 @@ class App extends Component {
 						messages={this.state.messages}
 						handleAddMessage={this.handleAddMessage}
 						handleDeleteMessage={this.handleDeleteMessage}
+						handleUpdateMessage={this.handleUpdateMessage}
 						/>
         </Route>
 			</>
