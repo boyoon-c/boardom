@@ -39,8 +39,8 @@ class AddActivity extends Component {
    
 
    handleChange= e=> {
-     console.log('e.target1', e.target)
-   const formData = {...this.state.formData, [e.target.name]: e.target.value}
+    console.log('e.target1', e.target)
+    const formData = {...this.state.formData, [e.target.name]: e.target.value}
 
     this.setState({
       formData: formData,

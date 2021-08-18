@@ -173,7 +173,8 @@ class App extends Component {
 		}
 		this.handleGetAllGroups()
 		this.handleGetAllMessages()
-	}
+		}
+		
 	render() {
 		const { user, userProfile } = this.state
 		return (
