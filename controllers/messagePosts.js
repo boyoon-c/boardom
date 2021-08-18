@@ -17,6 +17,7 @@ function index (req, res) {
 }
 
 function edit (req, res) {
+  console.log('hitting messagePost/edit')
   MessagePost.findByIdAndUpdate(req.params.id, req.body, { new:true })
   .then((message) => {
     res.status(200)
