@@ -4,17 +4,21 @@ import { Calendar } from '../models/calendar.js'
 import axios from 'axios'
 
 export {
-  //updateActivity,
+  updateActivity,
   search,
   addActivity,
   removeActivity,
   createActivity
 }
 
-//function updateActivity(req,res){
-  //some function
-  //res.redirect('/')
-//}
+function updateActivity(req,res){
+  Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
+  .then((activity) => {
+    res.status(200)
+    .json(activity)
+  })
+
+}
 
 function createActivity (req, res) {
   Activity.create(req.body)
@@ -45,7 +49,8 @@ function removeActivity (req, res) {
 }
 
 function addActivity (req, res) {
-  req.body.name = req.body.activity
+  console.log("addActivity function req.body",req.body)
+  //req.body.name = req.body.activity
   //adding user's profile _id to req.body (for creating a new resource)
   req.body.collected_by = req.user.profile
 //find the profile of the logged in user
