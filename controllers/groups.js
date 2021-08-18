@@ -16,7 +16,8 @@ function joinActivity (req, res) {
   //people in activity
 }
 
- function addActivity (req, res) {
+function addActivity (req, res) {
+  console.log(req.params)
 Group.findById(req.params.id)
     .then(group => {
 Activity.findOne({activityNo: req.body.key})

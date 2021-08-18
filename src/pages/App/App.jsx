@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import About from '../About/About'
 import AddActivity from '../AddActivity/AddActivity'
+import GroupAddActivity from '../GroupAddActivity/GroupAddActivity'
 //import Calendar from '../Calendar/Calendar'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -58,6 +59,7 @@ class App extends Component {
 
 	handleCreateGroup = async newGroupData => {
 		const newGroup = await groupAPI.createGroup(newGroupData)
+		console.log("handleCreateGroup new group", newGroup)
 		this.setState ({ userProfile: newGroup }) // not sure what to set new group
 	}
 
@@ -102,11 +104,18 @@ class App extends Component {
 	}
 	
 	handleAddActivity = async activity =>{
-		console.log('before', activity)
+		//console.log('before', activity)
 		const updatedProfile = await activityAPI.addActivity(activity)
-		console.log('updatedProfile', updatedProfile)
+		//console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
 		//this.props.history.push('/addActivity')
+	} 
+	handleAddGroupActivity = async (activity, groupId) =>{
+		console.log('activity', activity)
+		const updatedGroup = await groupAPI.addActivity(activity, groupId)
+		//console.log('updatedProfile', updatedProfile)
+		this.setState({groups: updatedGroup})
+		this.props.history.push('/')
 	} 
 	
 	handleRemoveActivity = async activity =>{
@@ -173,7 +182,8 @@ class App extends Component {
 		}
 		this.handleGetAllGroups()
 		this.handleGetAllMessages()
-	}
+		}
+
 	render() {
 		const { user, userProfile } = this.state
 		return (
@@ -207,7 +217,23 @@ class App extends Component {
 			handleRemoveActivity={this.handleRemoveActivity}
 			/>
 			</Route>
-				
+			
+			<Route exact path='/groupAddActivity'
+			render={({history})=>
+			<GroupAddActivity 
+			groups={this.state.groups}
+			userProfile={userProfile}
+			handleSignupOrLogin={this.handleSignupOrLogin} 
+			history={history}
+			handleAddGroupActivity={this.handleAddGroupActivity}
+
+			//handleRemoveGroupActivity={this.handleRemoveActivity}
+			/>
+			}
+			
+			/>
+
+
 			<Route exact path='/about'>
 			<About handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
 			</Route>
