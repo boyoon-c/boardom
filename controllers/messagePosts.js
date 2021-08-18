@@ -43,7 +43,7 @@ function deleteMessagePost (req, res) {
         //req.body.messagePosts = req.body.body
         console.log('req.body' , req.body)  
         MessagePost.create(req.body)
-        //.populate('author').execPopulate()
+        //.populate('author')
         .then((message) => {
           //  Profile.findById(req.body.author)
           //        .then(profile => {
@@ -60,12 +60,6 @@ function deleteMessagePost (req, res) {
   function index (req, res) {
         MessagePost.find({})
         .populate('author')
-        // .populate({
-        //   path: 'author',
-        //   populate: {
-        //     path: 'name'
-        //    },
-        //   })
         .then(messagePosts => {
           res.status(200)
           .json(messagePosts)
