@@ -13,7 +13,7 @@ const MessageCard = ({message, handleDeleteMessage, idx}) => {
        { <Link
           className='btn btn-sm btn-warning'
           to={{
-            pathname: '/edit',
+            pathname: `/edit/${message._id}`, ///////////////////
             state: {message}
           }}
         >

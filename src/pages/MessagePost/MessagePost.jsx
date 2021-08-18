@@ -30,11 +30,6 @@ class MessagePost extends Component {
           handleDeleteMessage={this.props.handleDeleteMessage}
           handleUpdateMessage={this.props.handleUpdateMessage}
         />
-        {/* <Route exact path='/edit' render={({location}) => 
-          <EditMessageForm
-            location={location}
-          />
-      } /> */}
   
       
       </>
