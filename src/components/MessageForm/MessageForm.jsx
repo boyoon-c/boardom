@@ -20,7 +20,7 @@ class MessagePost extends Component {
     };
 
     handleSubmit = e => {
-      e.preventDefault();
+      // e.preventDefault();
       this.props.handleAddMessage(this.state.formData) //create and pass handleAddMessage from App
     };
 

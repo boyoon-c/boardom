@@ -10,7 +10,8 @@ class EditMessageForm extends Component {
 
    handleSubmit = e => {
     e.preventDefault();
-    this.props.handleUpdateMessage(this.state.formData);
+    this.props.handleUpdateMessage(this.state.formData)
+    e.target.reset()
   };
 
   handleChange = e => {
@@ -18,8 +19,8 @@ class EditMessageForm extends Component {
     this.setState({
       formData,
       invalidForm: !this.formRef.current.checkValidity()
-    });
-  };
+    })
+  }
 
   render() { 
     const { body } = this.state.formData
