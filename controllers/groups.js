@@ -1,5 +1,6 @@
 import { Group } from '../models/group.js'
 import { Profile } from '../models/profile.js'
+import {Activity } from '../models/activity.js'
 
 export{
   index,
@@ -15,8 +16,41 @@ function joinActivity (req, res) {
   //people in activity
 }
 
-function addActivity (req, res) {
-//work on this
+ function addActivity (req, res) {
+Group.findById(req.params.id)
+    .then(group => {
+Activity.findOne({activityNo: req.body.key})
+    .then(activity => {
+  if (activity) {
+      activity.peopleInActivity.push(req.user.profile)
+      activity.save()
+        .then(activity => {
+          group.activities.push(activity._id)
+          group.save()
+            .then((group) => {
+              res.json(group)
+         })
+      })
+    } else {
+      Activity.create(req.body)
+        .then(activity => {
+      Group.findById(req.params.id)
+        .then(group => {
+          group.activities.push(activity)
+          group.save()
+            .then(group => group.populate('activities').execPopulate())
+            .then(group => {
+              activity.peopleInActivity.push(req.user.profile)
+              activity.save()
+                .then(() => {
+                  res.json(group)
+                })
+            })
+        })
+      })
+    }
+  })
+})
 }
 
 function leaveGroup (req, res) {
