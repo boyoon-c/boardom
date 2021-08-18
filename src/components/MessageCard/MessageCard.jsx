@@ -5,7 +5,7 @@ const MessageCard = ({message, handleDeleteMessage, idx}) => {
   return ( 
     <>
 <h3 key={idx}>{message.body}</h3>
-<h3 key={idx}>{message.author}</h3>
+<h3 key={idx}>{message.author.name}</h3>
     <button onClick={() => 
       (handleDeleteMessage(message._id))}>
         REMOVE

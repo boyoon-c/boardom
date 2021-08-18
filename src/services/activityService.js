@@ -5,7 +5,7 @@ const BASE_URL="/api/activity/"
 // update function that's going to add time information to the activity
 export function updateActivity(act){
   return fetch(
-    `${BASE_URL}${act}`,
+    `${BASE_URL}editActivity/${act._id}`,
     {
       method: 'PUT', 
       headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
