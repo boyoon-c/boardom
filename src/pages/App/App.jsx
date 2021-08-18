@@ -23,6 +23,7 @@ import './App.css'
 import * as profileAPI from '../../services/profileService'
 import MessagePost from '../MessagePost/MessagePost'
 import * as messageAPI from '../../services/messagePostService'
+import EditMessageForm from '../../components/EditMessageForm/EditMessageForm'
 
 class App extends Component {
 	state = {
@@ -76,12 +77,24 @@ class App extends Component {
 	handleJoin = async groupId => {
 		const updatedGroup = await groupAPI.join(groupId)
 		console.log(updatedGroup)
-		this.setState({ groups: updatedGroup })
-	}
+		// this.setState({ groups: updatedGroup })
+	} 
+	
+	// handleLeaveGroup = async groupId => {
+	// 	const updatedGroup = await groupAPI.leave(groupId)
+	// 	this.setState({ groups: updatedGroup })
+	// } 
 	
 	handleLeaveGroup = async groupId => {
 		const updatedGroup = await groupAPI.leave(groupId)
-		this.setState({ groups: updatedGroup })
+		console.log('updatedGroup', updatedGroup)
+		const newGroups=[...this.state.groups]
+		const leaveGroup = (element) => element._id === groupId
+		const leaveGroupIdx = newGroups.findIndex(leaveGroup)
+		newGroups.splice(leaveGroupIdx,1)
+		this.setState({
+			groups: newGroups
+		})
 	}
 	
 	handleAddActivity = async activity =>{
@@ -261,7 +274,7 @@ class App extends Component {
           <GroupList
 		  	userProfile={this.state.userProfile}
 			groups={this.state.groups}
-		  	handleJoinGroup={this.handleJoinGroup}
+		  	handleJoin={this.handleJoin}
 			handleLeaveGroup={this.handleLeaveGroup}
 		   handleSignupOrLogin={this.handleSignupOrLogin} 
 		   history={this.props.history}/>
@@ -275,6 +288,12 @@ class App extends Component {
 						handleUpdateMessage={this.handleUpdateMessage}
 						/>
         </Route>
+				<Route exact path='/edit/:id' render={({location}) => 
+          <EditMessageForm
+					handleUpdateMessage={this.handleUpdateMessage}
+            location={location}
+          />
+      } />
 			</>
 		)
 	}

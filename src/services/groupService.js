@@ -22,7 +22,7 @@ export function getGroupProfile() {
 
 export function join(id) {
   return fetch(
-    `${BASE_URL}/join/${id}`,
+    `${BASE_URL}join/${id}`,
     {
       method: 'PATCH',
       headers: { Authorization: "Bearer " + tokenService.getToken() }
@@ -33,7 +33,7 @@ export function join(id) {
 
 export function leave(id) {
   return fetch(
-    `${BASE_URL}/leave/${id}`,
+    `${BASE_URL}leaveGroup/${id}`,
     {
       method: 'PATCH',
       headers: { Authorization: "Bearer " + tokenService.getToken() }

@@ -37,6 +37,6 @@ export function deleteMessagePost(message) {
 export function update(message) {
   return fetch(`${BASE_URL}edit/${message._id}`, {
     method: 'PUT',
-    headers: {'content-type': 'application/json'},
+    headers: {'content-type': 'application/json', Authorization: "Bearer " + tokenService.getToken()},
     body: JSON.stringify(message)
   }).then(res => res.json());}
