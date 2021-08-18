@@ -23,6 +23,7 @@ import './App.css'
 import * as profileAPI from '../../services/profileService'
 import MessagePost from '../MessagePost/MessagePost'
 import * as messageAPI from '../../services/messagePostService'
+import EditMessageForm from '../../components/EditMessageForm/EditMessageForm'
 
 class App extends Component {
 	state = {
@@ -273,6 +274,11 @@ class App extends Component {
 						handleUpdateMessage={this.handleUpdateMessage}
 						/>
         </Route>
+				<Route exact path='/edit' render={({location}) => 
+          <EditMessageForm
+            location={location}
+          />
+      } />
 			</>
 		)
 	}

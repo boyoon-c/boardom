@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-class EditPuppy extends Component {
+class EditMessageForm extends Component {
   state = { 
     invalidForm: false,
-    formData: this.props.location.state.puppy //check on this
+    //formData: this.props.location.state.puppy //check on this
    }
 
    formRef = React.createRef()
@@ -22,7 +22,8 @@ class EditPuppy extends Component {
   };
 
   render() { 
-    const { body } = this.state.formData
+    //{console.log('EditMessage', this.props.location.state )}
+    //const { body } = this.state.formData
     return ( 
       <>
         <h1>Edit Message</h1>
@@ -36,7 +37,7 @@ class EditPuppy extends Component {
             <input
               className="form-control"
               name="body"
-              value={body}
+              value={this.props.messagePost.body}
               onChange={this.handleChange}
               required
             />
@@ -54,4 +55,4 @@ class EditPuppy extends Component {
   }
 }
  
-export default EditPuppy;
+export default EditMessageForm;

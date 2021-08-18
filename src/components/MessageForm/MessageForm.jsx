@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class MessagePost extends Component {
   state = { 
     invalidForm: true,

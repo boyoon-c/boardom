@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import {Route, Link} from 'react-router-dom';
 import MessageForm from '../../components/MessageForm/MessageForm';
+import EditMessageForm from '../../components/EditMessageForm/EditMessageForm'
+import MessageCard from '../../components/MessageCard/MessageCard';
 
 class MessagePost extends Component {
   state = { 
@@ -8,13 +11,18 @@ class MessagePost extends Component {
   render() { 
     return ( 
       <>
-        {console.log(this.props.messages)}
-        <h2>Messages</h2>
+        <h2>Messages Post:</h2>
+
+
         {this.props.messages?.map((message, idx) => 
            <>
-         <h3 key={idx}>{message.body}</h3>
+           <MessageCard 
+           message={message}
+           handleDeleteMessage={this.props.handleDeleteMessage}
+           />
+         {/* <h3 key={idx}>{message.body}</h3>
            <button onClick={() => 
-           (this.props.handleDeleteMessage(message._id))}>REMOVE</button>     
+           (this.props.handleDeleteMessage(message._id))}>REMOVE</button>      */}
          </>
         )}
         <MessageForm
@@ -22,6 +30,21 @@ class MessagePost extends Component {
           handleDeleteMessage={this.props.handleDeleteMessage}
           handleUpdateMessage={this.props.handleUpdateMessage}
         />
+        {/* <Route exact path='/edit' render={({location}) => 
+          <EditMessageForm
+            location={location}
+          />
+      } /> */}
+    {/* <Link
+        className='btn btn-sm btn-warning'
+        to={{
+            pathname: '/edit',
+            state: {this.props.messages}
+          }}
+      >
+        Edit
+      </Link> */}
+      
       </>
      );
   }
