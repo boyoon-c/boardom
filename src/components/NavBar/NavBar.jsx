@@ -10,8 +10,7 @@ const NavBar = ({ user, handleLogout }) => {
 					<div>
 						<ul>
 							Welcome, {user.name}
-            	<Link to="/users">Users</Link>
-							<Link to="/addActivity">Add Activity</Link>
+							<Link to="/">Home</Link>
 							<Link to="/about">About</Link>
 							<Link to="/calendar">Calendar</Link>
 							<Link to="/group">Create Group</Link>

@@ -1,40 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import styles from '../App/App.css'
+//import styles from '../App/App.css'
 import * as activityAPI from '../../services/activityService'
 
-class AddActivity extends Component {
-  // state = { 
-  //   invalidForm: true,
-  //   formData: {
-  //     name:'',
-  //     type:'',
-  //     participants: Number,
-  //     activityNo: String,
-  //     scheduledDate: Date,
-  //     scheduledTime: Date,
-  //   },
-  //   searchResults:{},
-  //  }
+class GroupAddActivity extends Component {
   constructor(props){
     super(props)
     this.state = {
-          invalidForm: true,
-    formData: {
+      invalidForm: true,
+      searchResults:{},
+      group: undefined,
+      formData: {
       name:'',
       type:'',
-      participants: Number,
-      key: String,
-      scheduledDate: Date,
+      participants: null,
+      key: null,
+      scheduledDate: null,
       //scheduledTime: Date,
     },
-    searchResults:{},
 
     }
-    //this.handleChange=this.handleChange.bind(this)
-    //this.handleSubmit=this.handleSubmit.bind(this)
   }
-   formRef=React.createRef()
+  formRef=React.createRef()
 
    
 
@@ -49,7 +36,7 @@ class AddActivity extends Component {
 
   handleSearch = async (participants, type)=>{
     const searchResults = await activityAPI.search(participants, type)
-    this.setState({searchResults: searchResults})
+    this.setState({formData: searchResults})
   }
 
 
@@ -58,27 +45,27 @@ class AddActivity extends Component {
     this.handleSearch(this.state.formData.participants, this.state.formData.type)
   }
 
-  handleSubmit2=(e)=>{
-    e.preventDefault()
-    // console.log('e.target2', e.target)
-    // console.log('e.target.object', {[e.target.name]:e.target.value})
-    // console.log('e.target.name',[e.target.type])
-    // console.log('e.target.name.value',e.target.name.value)
-    // console.log('e.target.value',e.target.value)
-    // console.log("BEFORE FORMDATA", this.state.formData)
-    // this.setState({
-    //   formData.name: e.target.name.value
-    // })
-    // this.state.formData.name = e.target.name.value
-    // const formData = {...this.state.formData, [e.target.name]: e.target.value}
-    let updatedForm = {...this.state.formData, key: e.target.key.value}
-    updatedForm = {...updatedForm, name: e.target.name.value}
-    updatedForm = {...updatedForm, type: e.target.type.value}
-    this.setState({
-      formData: updatedForm 
-    });
-    console.log('AFTER FORMDATA', this.state.formData)
-  }
+  handleGroupSubmit = (e) =>{
+      e.preventDefault()
+      if (this.state.group===undefined){
+          alert("please select a group!")
+      } else{
+      this.props.handleAddGroupActivity(this.state.formData, this.state.group)
+      this.props.history.push('/')
+    }  
+    
+} 
+
+//   handleSubmit2=(e)=>{
+//     e.preventDefault()
+//     let updatedForm = {...this.state.formData, key: e.target.key.value}
+//     updatedForm = {...updatedForm, name: e.target.name.value}
+//     updatedForm = {...updatedForm, type: e.target.type.value}
+//     this.setState({
+//       formData: updatedForm 
+//     });
+//     console.log('AFTER FORMDATA', this.state.formData)
+//   }
   render() { 
 
     console.log("searchResult", this.state.searchResults)
@@ -88,7 +75,7 @@ class AddActivity extends Component {
     return ( 
       <>
       <main className='fs-6 m-5'>
-      <h2>Add activity</h2>
+      <h2>Add activity and join a group</h2>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <h3>Activity type:</h3>
         <select 
@@ -129,10 +116,10 @@ class AddActivity extends Component {
         </button>
       </form>
       <h3>Search Results</h3>
-        <div>{this.state.searchResults.activity}</div>
+        <div>{this.state.formData.activity}</div>
      
      
-      <form ref={this.formRef} onSubmit={this.handleSubmit2}>
+      <form ref={this.formRef} onSubmit={this.handleGroupSubmit}>
         
         <input 
           name="name"
@@ -146,13 +133,6 @@ class AddActivity extends Component {
               value={this.state.formData.scheduledDate}
               onChange={this.handleChange}
             />
-          {/* <input 
-            name="scheduledTime"
-            value={this.state.formData.scheduledTime}
-            type="time"
-            onChange={this.handleChange}
-          /> */}
-          
           <input
             name="type"
             value={this.state.searchResults.type}
@@ -163,34 +143,40 @@ class AddActivity extends Component {
             value={this.state.searchResults.key}
             type="hidden"
           />
+          
+          <select name="group" onChange={(evt)=>this.setState({[evt.target.name]: evt.target.value})}> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
+            <option value="">select 1</option>
+            {this.props.groups?.map(group=>
+            <option value={group._id}>
+                {group.name}
+            </option>)}
+              {/* <option value={this.props.groups[0].id}>{this.props.groups[0].name}</option> */}
+          </select>
           <button>Enter</button>
       </form>
-      {/* {console.log("BEFORE CLICKING ADD ACTIVITY", this.state.formData)} */}
-      
-      <button 
+      {/* <button 
         type="submit"
-        //onClick={()=>this.props.handleAddActivity(this.state.searchResults)}
-        onClick={()=>this.props.handleAddActivity(this.state.formData)}
+        onClick={()=>this.props.handleAddGroupActivity(this.state.formData)}
         >
           Add Activity
-      </button>
+      </button> */}
 
       <h3>Your Activity:</h3>
       {this.props.userProfile?.activities?.map(activity=>
         <>
         <p>{activity.name} scheduled at {activity.scheduledDate} </p> 
-        <button 
+        {/* <button 
         type="submit"
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
-        </button>
-        <Link
+        </button> */}
+        {/* <Link
               className='btn btn-sm btn-warning'
               to={{
               pathname: `/editActivity/${activity._id}`,
               state: {activity}
               }}
-          >EDIT</Link>
+          >EDIT</Link> */}
         </>
       )}
 
@@ -200,4 +186,4 @@ class AddActivity extends Component {
   }
 }
  
-export default AddActivity;
+export default GroupAddActivity;
