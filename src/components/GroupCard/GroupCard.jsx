@@ -27,7 +27,7 @@ const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
       <div>
         <Link
         to={{
-          pathname: `/group/${group._id}`,
+          pathname: `/leaveGroup/${group._id}`,
           state: {group}
         }}
       >

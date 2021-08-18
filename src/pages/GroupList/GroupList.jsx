@@ -5,6 +5,14 @@ import GroupCard from '../../components/GroupCard/GroupCard'
 
 class GroupList extends Component {
 
+  // state = {
+  //   group: [],
+  // }
+
+  // async componentDidMount() {
+  //   const groups = await getAllGroups()
+  //   this.setState({ groups })
+  // }
 
   render() { 
     return (
