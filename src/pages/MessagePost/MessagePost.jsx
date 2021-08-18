@@ -13,7 +13,6 @@ class MessagePost extends Component {
       <>
         <h2>Messages Post:</h2>
 
-
         {this.props.messages?.map((message, idx) => 
            <>
            <MessageCard 

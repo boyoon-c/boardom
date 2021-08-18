@@ -22,7 +22,6 @@ class EditMessageForm extends Component {
   };
 
   render() { 
-    //{console.log('EditMessage', this.props.location.state )}
     const { body } = this.state.formData
     return ( 
       <>
