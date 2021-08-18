@@ -33,7 +33,7 @@ export function join(id) {
 
 export function leave(id) {
   return fetch(
-    `${BASE_URL}leave/${id}`,
+    `${BASE_URL}leaveGroup/${id}`,
     {
       method: 'PATCH',
       headers: { Authorization: "Bearer " + tokenService.getToken() }

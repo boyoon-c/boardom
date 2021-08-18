@@ -23,11 +23,11 @@ const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
            }
             
 
-      { !(group?._id === userProfile) && (group?.members?.some(eachMember => eachMember._id === group._id)) &&
+      { !(group?._id === userProfile) && !(group?.members?.some(eachMember => eachMember._id === group._id)) &&
       <div>
         <Link
         to={{
-          pathname: `/group/${group._id}`,
+          pathname: `/leaveGroup/${group._id}`,
           state: {group}
         }}
       >

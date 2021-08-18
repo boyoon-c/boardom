@@ -80,11 +80,22 @@ class App extends Component {
 		// this.setState({ groups: updatedGroup })
 	} 
 	
+	// handleLeaveGroup = async groupId => {
+	// 	const updatedGroup = await groupAPI.leave(groupId)
+	// 	this.setState({ groups: updatedGroup })
+	// } 
+	
 	handleLeaveGroup = async groupId => {
 		const updatedGroup = await groupAPI.leave(groupId)
-		this.setState({ groups: updatedGroup })
-	} 
-	
+		console.log('updatedGroup', updatedGroup)
+		const newGroups=[...this.state.groups]
+		const leaveGroup = (element) => element._id === groupId
+		const leaveGroupIdx = newGroups.findIndex(leaveGroup)
+		newGroups.splice(leaveGroupIdx,1)
+		this.setState({
+			groups: newGroups
+		})
+	}
 	
 	handleAddActivity = async activity =>{
 		console.log('before', activity)
