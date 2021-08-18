@@ -117,6 +117,7 @@ class App extends Component {
 	}
 	
 	handleAddMessage = async message => {
+		console.log(this.state.messages)
 		const newMessage = await messageAPI.createMessagePost(message)
 		this.setState(state => ({
 			messages: [...state.messages, newMessage]

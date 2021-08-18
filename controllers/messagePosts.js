@@ -1,4 +1,5 @@
 import { MessagePost } from "../models/messagePost.js";
+import { Profile } from "../models/profile.js";
 
 export {
   create,
@@ -36,11 +37,29 @@ function deleteMessagePost (req, res) {
   })
 }
 
+// function create (req, res) {
+//   req.body.author = req.user.profile._id
+//   MessagePost.create(req.body)
+//   .then((message) => {
+//     res.status(200)
+//     .json(message)
+//   })
+// }
+
 function create (req, res) {
-  req.body.author = req.user.profile._id
+  req.body.author = req.user.profile
+  console.log('req.body' , req.body)  
   MessagePost.create(req.body)
+  //.populate('author').execPopulate()
   .then((message) => {
+  //  Profile.findById(req.body.author)
+  //        .then(profile => {
+  //          profile.messagePosts.push(message)
+  //          .save()
+//  .then(() => {
     res.status(200)
     .json(message)
-  })
+   })
+  //  })
+  // })
 }
