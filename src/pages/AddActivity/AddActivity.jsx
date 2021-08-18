@@ -146,16 +146,16 @@ class AddActivity extends Component {
         />
         <input 
               name="scheduledDate"
-              type="date"
+              type="datetime-local"
               value={this.state.formData.scheduledDate}
               onChange={this.handleChange}
             />
-          <input 
+          {/* <input 
             name="scheduledTime"
             value={this.state.formData.scheduledTime}
-            type="date"
+            type="time"
             onChange={this.handleChange}
-          />
+          /> */}
           
           <input
             name="type"
