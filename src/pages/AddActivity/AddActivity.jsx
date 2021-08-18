@@ -59,13 +59,12 @@ class AddActivity extends Component {
 
   handleSubmit2=(e)=>{
     e.preventDefault()
-    console.log('e.target2', e.target)
-    console.log('e.target.object', {[e.target.name]:e.target.value})
-    console.log('e.target.name',[e.target.type])
-    console.log('e.target.name.value',e.target.name.value)
-    console.log('e.target.value',e.target.value)
-    
-    console.log("BEFORE FORMDATA", this.state.formData)
+    // console.log('e.target2', e.target)
+    // console.log('e.target.object', {[e.target.name]:e.target.value})
+    // console.log('e.target.name',[e.target.type])
+    // console.log('e.target.name.value',e.target.name.value)
+    // console.log('e.target.value',e.target.value)
+    // console.log("BEFORE FORMDATA", this.state.formData)
     // this.setState({
     //   formData.name: e.target.name.value
     // })
@@ -79,12 +78,6 @@ class AddActivity extends Component {
     });
     console.log('AFTER FORMDATA', this.state.formData)
   }
-    
-
-
-  
-  //const activities = activityAPI.showActivity()
-  
   render() { 
 
     console.log("searchResult", this.state.searchResults)
@@ -131,7 +124,7 @@ class AddActivity extends Component {
         </select><br />
  
         <button type="submit" disabled={this.state.invalidForm}>
-          Next Activity this will call another activity
+          Random Activity Search
         </button>
       </form>
       <h3>Search Results</h3>
@@ -139,11 +132,13 @@ class AddActivity extends Component {
      
      
       <form ref={this.formRef} onSubmit={this.handleSubmit2}>
+        
         <input 
           name="name"
           value={this.state.searchResults.activity}
-          //onChange={this.handleChange}
+          type="hidden"
         />
+
         <input 
               name="scheduledDate"
               type="datetime-local"
@@ -160,16 +155,17 @@ class AddActivity extends Component {
           <input
             name="type"
             value={this.state.searchResults.type}
-
+            type="hidden"
           />
           <input
             name="key"
             value={this.state.searchResults.key}
-
+            type="hidden"
           />
           <button>Enter</button>
       </form>
-      {console.log("BEFORE CLICKING ADD ACTIVITY", this.state.formData)}
+      {/* {console.log("BEFORE CLICKING ADD ACTIVITY", this.state.formData)} */}
+      
       <button 
         type="submit"
         //onClick={()=>this.props.handleAddActivity(this.state.searchResults)}
@@ -177,37 +173,19 @@ class AddActivity extends Component {
         >
           Add Activity
       </button>
-      {/* <form ref={this.formRef} onSubmit={this.handleSubmit}>
-          <input 
-            name={this.state.formData.date}
-            type="date"
-            onChange={this.handleChange}
-           />
-          <input 
-            name={this.state.formData.time}
-            type="time"
-            onChange={this.handleChange} 
-          />
-          <button className="btn-sm btn-secondary">Submit</button>  
-        </form> */}
+
       <h3>Your Activity:</h3>
-      
-      {/* <h2>{this.props.userProfile?.activities[0].name}</h2> */}
       {this.props.userProfile?.activities?.map(activity=>
         <>
-        <p>{activity.name} </p> 
-        {/* Delete button not working */}
+        <p>{activity.name} scheduled at {activity.scheduledDate} </p> 
         <button 
         type="submit"
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
         </button>
-        
-        
-        
         </>
       )}
-      {/* Here we will display the list of a user's activities in cards */}
+
       </main>
       </>
      );
