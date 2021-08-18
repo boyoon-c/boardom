@@ -17,10 +17,11 @@ function joinActivity (req, res) {
 }
 
 function addActivity (req, res) {
-  console.log(req.params)
-Group.findById(req.params.id)
+  req.body.name=req.body.activity
+  req.body.activityNo=req.body.key
+  Group.findById(req.params.id)
     .then(group => {
-Activity.findOne({activityNo: req.body.key})
+  Activity.findOne({activityNo: req.body.key})
     .then(activity => {
   if (activity) {
       activity.peopleInActivity.push(req.user.profile)
