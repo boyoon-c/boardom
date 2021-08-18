@@ -8,12 +8,13 @@ class GroupDetails extends Component {
       group: this.props.location.state.group
     }
 }
-    // async componentDidMount() {
-    //     const group = await groupService.getGroupProfile(this.props.match.params.id)
-    //     console.log('this.props.match', this.props.match)
-    //     console.log('group', group)
-    //     this.setState({group})
-    // }
+    async componentDidMount() {
+        const group = await groupService.getGroupProfile(this.state.group._id)
+        console.log('this.props.match', this.props.match)
+        console.log('group', group)
+        this.setState({group})
+    }
+    
     render () {
         console.log("Members", this.state.group?.members)
         return (

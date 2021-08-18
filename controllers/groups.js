@@ -73,8 +73,8 @@ function index (req, res) {
 
 function show(req, res) {
   Group.findById(req.params.id)
-  .populate('memebers')
-  .populate('activities')//.execPopulate()
+  .populate('members')
+  //.populate('activities')//.execPopulate()
   .then(group => {
     res.json(group)
   })
