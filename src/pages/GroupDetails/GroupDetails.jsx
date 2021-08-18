@@ -20,6 +20,9 @@ class GroupDetails extends Component {
         return (
           <>
               <h1>Welcome to {this.state.group?.name}!</h1>
+              <h1>{this.state.group?.name}'s Description:</h1>
+              <h3>{this.state.group.description}</h3>
+
               <h1>{this.state.group?.name}s' members List:</h1>
               {this.state.group?.members?.map(members =>{
                 return(<h1>{members.name}</h1>)
