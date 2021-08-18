@@ -46,6 +46,7 @@ class GroupForm extends Component {
           name="description"
           value={this.state.formData.description}
           onChange={this.handleChange}
+          required
         />
         <button
           type="submit"
