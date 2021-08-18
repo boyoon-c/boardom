@@ -1,7 +1,15 @@
 import * as tokenService from './tokenService'
 const BASE_URL="/api/group/"
 
-export function createGroup (group) {
+export function addActivity(groupId){
+  return fetch(
+    `${BASE_URL}/addActivity/${groupId}`
+  )
+
+}
+
+
+export function createGroup(group) {
   return fetch(
     `${BASE_URL}createGroup`,
     {

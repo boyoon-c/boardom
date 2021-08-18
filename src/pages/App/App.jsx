@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import About from '../About/About'
 import AddActivity from '../AddActivity/AddActivity'
+import GroupAddActivity from '../GroupAddActivity/GroupAddActivity'
 //import Calendar from '../Calendar/Calendar'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -58,6 +59,7 @@ class App extends Component {
 
 	handleCreateGroup = async newGroupData => {
 		const newGroup = await groupAPI.createGroup(newGroupData)
+		console.log("handleCreateGroup new group", newGroup)
 		this.setState ({ userProfile: newGroup }) // not sure what to set new group
 	}
 
@@ -174,7 +176,7 @@ class App extends Component {
 		this.handleGetAllGroups()
 		this.handleGetAllMessages()
 		}
-		
+
 	render() {
 		const { user, userProfile } = this.state
 		return (
@@ -208,7 +210,19 @@ class App extends Component {
 			handleRemoveActivity={this.handleRemoveActivity}
 			/>
 			</Route>
-				
+			
+			<Route exact path='/groupAddActivity'>
+			<GroupAddActivity 
+			groups={this.state.groups}
+			userProfile={userProfile}
+			handleSignupOrLogin={this.handleSignupOrLogin} 
+			history={this.props.history}
+			handleAddActivity={this.handleAddActivity}
+			handleRemoveActivity={this.handleRemoveActivity}
+			/>
+			</Route>
+
+
 			<Route exact path='/about'>
 			<About handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
 			</Route>

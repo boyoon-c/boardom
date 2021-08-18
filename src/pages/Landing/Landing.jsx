@@ -10,11 +10,14 @@ const Landing = ({user}) => {
       </h1>
       <ul>
       <Link 
-         className="btn-sm btn-light"
+        className="btn-sm btn-light"
+        to = "/addActivity"
       >Going solo?</Link>
       <Link 
-         className="btn-sm btn-light"
-        
+        className="btn-sm btn-light"
+        to ={{
+          pathname: '/groupAddActivity'
+        }}
       >Wanna do it as a group?</Link>
       </ul>
     </main>
