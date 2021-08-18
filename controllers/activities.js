@@ -4,17 +4,21 @@ import { Calendar } from '../models/calendar.js'
 import axios from 'axios'
 
 export {
-  //updateActivity,
+  updateActivity,
   search,
   addActivity,
   removeActivity,
   createActivity
 }
 
-//function updateActivity(req,res){
-  //some function
-  //res.redirect('/')
-//}
+function updateActivity(req,res){
+  Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
+  .then((activity) => {
+    res.status(200)
+    .json(activity)
+  })
+
+}
 
 function createActivity (req, res) {
   Activity.create(req.body)

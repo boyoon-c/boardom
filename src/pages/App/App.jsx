@@ -24,6 +24,9 @@ import * as profileAPI from '../../services/profileService'
 import MessagePost from '../MessagePost/MessagePost'
 import * as messageAPI from '../../services/messagePostService'
 import EditMessageForm from '../../components/EditMessageForm/EditMessageForm'
+import EditActivityForm from '../../components/EditActivityForm/EditActivityForm'
+
+
 
 class App extends Component {
 	state = {
@@ -31,6 +34,7 @@ class App extends Component {
 		userProfile: null,
 		groups: [],
 		messages: [],
+		activities:{}
 	}
 
 	renderEventContent = () => {
@@ -146,16 +150,19 @@ class App extends Component {
 		)
 	}
 
-	handleUpdateActivity = async updatedActivityData => {
-		// const updatedPuppy = await activityAPI.updateActivity(updatedActivityData);
-		// const newPuppiesArray = this.state.puppies.map(p => 
-		//   p._id === updatedPuppy._id ? updatedPuppy : p
+	handleUpdateActivity = async activityId => {
+		const updatedActivity = await activityAPI.updateActivity(activityId);
+		console.log("This is updatedActivity", updatedActivity)
+		// const newActivitiesArray = this.state.activities.map(a => 
+		//   a._id === updatedActivity._id ? updatedActivity : a
 		// );
-		// this.setState(
-		//   {puppies: newPuppiesArray},
-		//   // Using cb to wait for state to update before rerouting
-		//   () => this.props.history.push('/')
-		// );
+		this.setState(
+		  //{activities: newActivitiesArray},
+		  {activities: updatedActivity},
+//		  () => this.props.history.push('/')
+		);
+		this.props.history.push('/addActivity')
+
 	  }
 
 	async componentDidMount() {
@@ -174,126 +181,135 @@ class App extends Component {
 			<NavBar user={user} handleLogout={this.handleLogout} />
 				
 			<Route exact path='/'>
-          <Landing user={user} />
-        </Route>
+			<Landing user={user} />
+			</Route>
 				
 			<Route exact path='/signup'>
-          <Signup history={this.props.history} handleSignupOrLogin={this.handleSignupOrLogin}/>
-        </Route>
+			<Signup history={this.props.history} handleSignupOrLogin={this.handleSignupOrLogin}/>
+			</Route>
 				
 			<Route exact path='/login'>
-          <Login handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
-        </Route>
+			<Login handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+			</Route>
 				
 			<Route 
-				exact path="/users"
-				render={()=> 
-					user ? <Users /> : <Redirect to='/login'/>
+			exact path="/users"
+			render={()=> 
+				user ? <Users /> : <Redirect to='/login'/>
 			}/>
 				
 			<Route exact path='/addActivity'>
-          <AddActivity 
-		  userProfile={userProfile}
-		  handleSignupOrLogin={this.handleSignupOrLogin} 
-		  history={this.props.history}
-		  handleAddActivity={this.handleAddActivity}
-		  handleRemoveActivity={this.handleRemoveActivity}
-		  />
-        </Route>
-				
-		<Route exact path='/about'>
-          <About handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
-        </Route>
-
-		<Route exact path='/calendar'>
-          <FullCalendar 
-		  	handleSignupOrLogin={this.handleSignupOrLogin} 
+			<AddActivity 
+			userProfile={userProfile}
+			handleSignupOrLogin={this.handleSignupOrLogin} 
 			history={this.props.history}
-			plugins={[ dayGridPlugin ]}
-			initialViews="dayGridMonth"
-			
-			//events={this.state.events}
-			events={[
-				{ title: 'event 1', date: '2019-04-01' },
-				{ title: 'event 2', date: '2019-04-02' }
-			  ]}
-			  eventContent={this.renderEventContent}
-		  />
-        </Route>
+			handleAddActivity={this.handleAddActivity}
+			handleRemoveActivity={this.handleRemoveActivity}
+			/>
+			</Route>
+				
+			<Route exact path='/about'>
+			<About handleSignupOrLogin={this.handleSignupOrLogin} history={this.props.history}/>
+			</Route>
 
-		<Route exact path='/group'>
-          <Group 
-						handleSignupOrLogin={this.handleSignupOrLogin} 
-						history={this.props.history} 
-						handleCreateGroup={this.handleCreateGroup}
-					/>
-        </Route>
+			<Route exact path='/calendar'>
+			<FullCalendar 
+				handleSignupOrLogin={this.handleSignupOrLogin} 
+				history={this.props.history}
+				plugins={[ dayGridPlugin ]}
+				initialViews="dayGridMonth"
+				//events={this.state.events}
+				events={[
+					{ title: 'event 1', date: '2019-04-01' },
+					{ title: 'event 2', date: '2019-04-02' }
+				]}
+				eventContent={this.renderEventContent}
+			/>
+			</Route>
 
-		<Route 
-		exact path='/profile/:id'
-		render={({ match })=> 
-			authService.getUser() ?
-          <ProfileDetails
-		  match={match}
-		  handleAddFriend={this.handleAddFriend}
-		  handleRemoveFriend={this.handleRemoveFriend}
-		  handleRemoveActivity={this.handleRemoveActivity}
-		  userProfile={userProfile}
-	  /> : <Redirect to='/login' />
+			<Route exact path='/group'>
+			<Group 
+				handleSignupOrLogin={this.handleSignupOrLogin} 
+				history={this.props.history} 
+				handleCreateGroup={this.handleCreateGroup}
+				/>
+			</Route>
 
-  }
-/>
-		<Route 
-		exact path='/group/:id'
-		render={({ match, location })=> 
-			authService.getUser() ?
-          <GroupDetails
-		  group={this.state.group}
-		  match={match}
-		  handleJoin={this.handleJoin}
-		  handleLeaveGroup={this.handleLeaveGroup}
-		  userProfile={userProfile}
-		  location={location}
-	  /> : <Redirect to='/login' />
-  }
-/>
-
-
-		<Route 
-		exact path='/profileList'>
-          <ProfileList
-			userProfile={this.state.userProfile}
-		  	handleAddFriend={this.handleAddFriend}
+			<Route 
+			exact path='/profile/:id'
+			render={({ match })=> 
+				authService.getUser() ?
+			<ProfileDetails
+			match={match}
+			handleAddFriend={this.handleAddFriend}
 			handleRemoveFriend={this.handleRemoveFriend}
-		   handleSignupOrLogin={this.handleSignupOrLogin} 
-		   history={this.props.history}/>
-        </Route>
+			handleRemoveActivity={this.handleRemoveActivity}
+			userProfile={userProfile}
+			/> : <Redirect to='/login' />
+  			}
+			/>
 
-		<Route 
-		exact path='/groupList'>
-          <GroupList
-		  	userProfile={this.state.userProfile}
-			groups={this.state.groups}
-		  	handleJoin={this.handleJoin}
+			<Route 
+			exact path='/group/:id'
+			render={({ match, location })=> 
+				authService.getUser() ?
+			<GroupDetails
+			group={this.state.group}
+			match={match}
+			handleJoin={this.handleJoin}
 			handleLeaveGroup={this.handleLeaveGroup}
-		   handleSignupOrLogin={this.handleSignupOrLogin} 
-		   history={this.props.history}/>
-        </Route>
-		<Route 
+			userProfile={userProfile}
+			location={location}
+			/> : <Redirect to='/login' />
+			}
+			/>
+
+
+			<Route 
+			exact path='/profileList'>
+			<ProfileList
+				userProfile={this.state.userProfile}
+				handleAddFriend={this.handleAddFriend}
+				handleRemoveFriend={this.handleRemoveFriend}
+			handleSignupOrLogin={this.handleSignupOrLogin} 
+			history={this.props.history}/>
+			</Route>
+
+			<Route 
+			exact path='/groupList'>
+			<GroupList
+				userProfile={this.state.userProfile}
+				groups={this.state.groups}
+				handleJoin={this.handleJoin}
+				handleLeaveGroup={this.handleLeaveGroup}
+			handleSignupOrLogin={this.handleSignupOrLogin} 
+			history={this.props.history}/>
+			</Route>
+
+			<Route 
 			exact path='/messagePost'>
-          <MessagePost
-						messages={this.state.messages}
-						handleAddMessage={this.handleAddMessage}
-						handleDeleteMessage={this.handleDeleteMessage}
-						handleUpdateMessage={this.handleUpdateMessage}
-						/>
-        </Route>
-				<Route exact path='/edit/:id' render={({location}) => 
-          <EditMessageForm
-					handleUpdateMessage={this.handleUpdateMessage}
-            location={location}
-          />
-      } />
+			<MessagePost
+				messages={this.state.messages}
+				handleAddMessage={this.handleAddMessage}
+				handleDeleteMessage={this.handleDeleteMessage}
+				handleUpdateMessage={this.handleUpdateMessage}
+				/>
+			</Route>
+
+			<Route exact path='/edit/:id' render={({location}) => 
+			<EditMessageForm
+				handleUpdateMessage={this.handleUpdateMessage}
+				location={location}
+			/>
+			} />
+
+			<Route exact path='/editActivity/:id' render={({location}) => 
+			<EditActivityForm
+				handleUpdateActivity={this.handleUpdateActivity}
+				location={location}
+			/>
+			} />
+
 			</>
 		)
 	}
