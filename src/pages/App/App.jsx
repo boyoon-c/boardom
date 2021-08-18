@@ -113,8 +113,11 @@ class App extends Component {
 	handleAddGroupActivity = async (activity, groupId) =>{
 		console.log('activity', activity)
 		const updatedGroup = await groupAPI.addActivity(activity, groupId)
+		const groups = this.state.groups
+		groups.filter((group)=>group._id!==updatedGroup._id)
+		groups.push(updatedGroup)
 		//console.log('updatedProfile', updatedProfile)
-		this.setState({groups: updatedGroup})
+		this.setState({groups: groups})
 		this.props.history.push('/')
 	} 
 	

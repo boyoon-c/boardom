@@ -9,9 +9,9 @@ class GroupAddActivity extends Component {
     this.state = {
       invalidForm: true,
       searchResults:{},
-      group: this.props.groups[0],
+      group: undefined,
       formData: {
-      //name:'',
+      name:'',
       type:'',
       participants: null,
       key: null,
@@ -36,7 +36,7 @@ class GroupAddActivity extends Component {
 
   handleSearch = async (participants, type)=>{
     const searchResults = await activityAPI.search(participants, type)
-    this.setState({searchResults: searchResults})
+    this.setState({formData: searchResults})
   }
 
 
@@ -50,7 +50,7 @@ class GroupAddActivity extends Component {
       if (this.state.group===undefined){
           alert("please select a group!")
       } else{
-      this.props.handleAddGroupActivity(this.state.searchResults, this.state.group)
+      this.props.handleAddGroupActivity(this.state.formData, this.state.group)
       this.props.history.push('/')
     }  
     
@@ -116,7 +116,7 @@ class GroupAddActivity extends Component {
         </button>
       </form>
       <h3>Search Results</h3>
-        <div>{this.state.searchResults.activity}</div>
+        <div>{this.state.formData.activity}</div>
      
      
       <form ref={this.formRef} onSubmit={this.handleGroupSubmit}>
@@ -143,6 +143,7 @@ class GroupAddActivity extends Component {
             value={this.state.searchResults.key}
             type="hidden"
           />
+          
           <select name="group" onChange={(evt)=>this.setState({[evt.target.name]: evt.target.value})}> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
             <option value="">select 1</option>
             {this.props.groups?.map(group=>
