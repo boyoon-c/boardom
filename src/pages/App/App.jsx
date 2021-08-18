@@ -104,11 +104,18 @@ class App extends Component {
 	}
 	
 	handleAddActivity = async activity =>{
-		console.log('before', activity)
+		//console.log('before', activity)
 		const updatedProfile = await activityAPI.addActivity(activity)
-		console.log('updatedProfile', updatedProfile)
+		//console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
 		//this.props.history.push('/addActivity')
+	} 
+	handleAddGroupActivity = async (activity, groupId) =>{
+		console.log('activity', activity)
+		const updatedGroup = await groupAPI.addActivity(activity, groupId)
+		//console.log('updatedProfile', updatedProfile)
+		this.setState({groups: updatedGroup})
+		this.props.history.push('/')
 	} 
 	
 	handleRemoveActivity = async activity =>{
@@ -211,16 +218,20 @@ class App extends Component {
 			/>
 			</Route>
 			
-			<Route exact path='/groupAddActivity'>
+			<Route exact path='/groupAddActivity'
+			render={({history})=>
 			<GroupAddActivity 
 			groups={this.state.groups}
 			userProfile={userProfile}
 			handleSignupOrLogin={this.handleSignupOrLogin} 
-			history={this.props.history}
-			handleAddActivity={this.handleAddActivity}
-			handleRemoveActivity={this.handleRemoveActivity}
+			history={history}
+			handleAddGroupActivity={this.handleAddGroupActivity}
+
+			//handleRemoveGroupActivity={this.handleRemoveActivity}
 			/>
-			</Route>
+			}
+			
+			/>
 
 
 			<Route exact path='/about'>

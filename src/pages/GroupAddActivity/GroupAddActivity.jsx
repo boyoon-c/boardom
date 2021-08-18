@@ -8,19 +8,20 @@ class GroupAddActivity extends Component {
     super(props)
     this.state = {
       invalidForm: true,
+      searchResults:{},
+      group: this.props.groups[0],
       formData: {
       //name:'',
       type:'',
-      participants: Number,
-      key: String,
-      scheduledDate: Date,
+      participants: null,
+      key: null,
+      scheduledDate: null,
       //scheduledTime: Date,
     },
-    searchResults:{},
 
     }
   }
-   formRef=React.createRef()
+  formRef=React.createRef()
 
    
 
@@ -44,16 +45,27 @@ class GroupAddActivity extends Component {
     this.handleSearch(this.state.formData.participants, this.state.formData.type)
   }
 
-  handleSubmit2=(e)=>{
-    e.preventDefault()
-    let updatedForm = {...this.state.formData, key: e.target.key.value}
-    updatedForm = {...updatedForm, name: e.target.name.value}
-    updatedForm = {...updatedForm, type: e.target.type.value}
-    this.setState({
-      formData: updatedForm 
-    });
-    console.log('AFTER FORMDATA', this.state.formData)
-  }
+  handleGroupSubmit = (e) =>{
+      e.preventDefault()
+      if (this.state.group===undefined){
+          alert("please select a group!")
+      } else{
+      this.props.handleAddGroupActivity(this.state.searchResults, this.state.group)
+      this.props.history.push('/')
+    }  
+    
+} 
+
+//   handleSubmit2=(e)=>{
+//     e.preventDefault()
+//     let updatedForm = {...this.state.formData, key: e.target.key.value}
+//     updatedForm = {...updatedForm, name: e.target.name.value}
+//     updatedForm = {...updatedForm, type: e.target.type.value}
+//     this.setState({
+//       formData: updatedForm 
+//     });
+//     console.log('AFTER FORMDATA', this.state.formData)
+//   }
   render() { 
 
     console.log("searchResult", this.state.searchResults)
@@ -107,7 +119,7 @@ class GroupAddActivity extends Component {
         <div>{this.state.searchResults.activity}</div>
      
      
-      <form ref={this.formRef} onSubmit={this.handleSubmit2}>
+      <form ref={this.formRef} onSubmit={this.handleGroupSubmit}>
         
         <input 
           name="name"
@@ -131,36 +143,39 @@ class GroupAddActivity extends Component {
             value={this.state.searchResults.key}
             type="hidden"
           />
-          <select name="name" id=""> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
-            {this.props.groups?.map(group=><option>{group.name}</option>)}
-            <option value=""></option>
+          <select name="group" onChange={(evt)=>this.setState({[evt.target.name]: evt.target.value})}> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
+            <option value="">select 1</option>
+            {this.props.groups?.map(group=>
+            <option value={group._id}>
+                {group.name}
+            </option>)}
               {/* <option value={this.props.groups[0].id}>{this.props.groups[0].name}</option> */}
           </select>
           <button>Enter</button>
       </form>
-      <button 
+      {/* <button 
         type="submit"
-        onClick={()=>this.props.handleAddActivity(this.state.formData)}
+        onClick={()=>this.props.handleAddGroupActivity(this.state.formData)}
         >
           Add Activity
-      </button>
+      </button> */}
 
       <h3>Your Activity:</h3>
       {this.props.userProfile?.activities?.map(activity=>
         <>
         <p>{activity.name} scheduled at {activity.scheduledDate} </p> 
-        <button 
+        {/* <button 
         type="submit"
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
-        </button>
-        <Link
+        </button> */}
+        {/* <Link
               className='btn btn-sm btn-warning'
               to={{
               pathname: `/editActivity/${activity._id}`,
               state: {activity}
               }}
-          >EDIT</Link>
+          >EDIT</Link> */}
         </>
       )}
 
