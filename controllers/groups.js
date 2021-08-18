@@ -14,9 +14,21 @@ export{
 
 function joinActivity (req, res) {
   //people in activity
+  Group.findById(req.params.id)
+    .then((group) => {
+      group.populate('activities')
+      Activity.findOne({activityNo: req.body.key})
+        .then((activity) => {
+          activity.peopleInActivity.push(activity)
+          activity.save()
+          .then(() => {
+            res.json(activity)
+          })
+        })
+    })
 }
 
- function addActivity (req, res) {
+function addActivity (req, res) {
 Group.findById(req.params.id)
     .then(group => {
 Activity.findOne({activityNo: req.body.key})
@@ -108,7 +120,7 @@ function index (req, res) {
 function show(req, res) {
   Group.findById(req.params.id)
   .populate('members')
-  //.populate('activities')//.execPopulate()
+  .populate('activities')//.execPopulate()
   .then(group => {
     res.json(group)
   })
