@@ -82,7 +82,6 @@ Profile.findById(req.user.profile)
        
         //add the new activity document to the user's profile
        Profile.findById(req.user.profile)
-       //.populate('activities')
         .then(profile => {
           //console.log('else statement req.body.profile', profile)
 

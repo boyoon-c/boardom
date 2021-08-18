@@ -25,8 +25,7 @@ export function getAllMessages () {
 }
 
 export function deleteMessagePost(message) {
-  return fetch(`${BASE_URL}deleteMessagePost/${message}`,
-  {
+  return fetch(`${BASE_URL}deleteMessagePost/${message}`, {
     method: 'DELETE',
     headers: { Authorization: "Bearer " + tokenService.getToken()}
   }, 
