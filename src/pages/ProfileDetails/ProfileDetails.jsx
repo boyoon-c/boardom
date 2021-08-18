@@ -68,7 +68,7 @@ class ProfileDetails extends Component {
                   <p>{group.name}</p>
                   <button
                   type="submit"
-                  onClick={() =>this.props.handleLeaveGroup(group._id)}>Leave {group.name}>
+                  onClick={() =>this.props.handleLeaveGroup(group._id)}>Leave {group.name}
                   
 
                   </button>

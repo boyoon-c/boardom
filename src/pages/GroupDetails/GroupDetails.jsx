@@ -29,6 +29,12 @@ class GroupDetails extends Component {
         <p>{activity.name} </p>
         )
       })}
+      <h1>{this.state.group?.name}'s Description:</h1>
+      {/* {this.state.group?.description?.map(description=>{
+        return(
+        <p>{group.description} </p>
+        )
+      })} */}
           </>
         );
     }
