@@ -142,6 +142,7 @@ class App extends Component {
 		this.setState(
       {messages: newMessagesArray}
 		)
+		this.props.history.push('/messagePost')
 	}
 
 	handleUpdateActivity = async updatedActivityData => {
