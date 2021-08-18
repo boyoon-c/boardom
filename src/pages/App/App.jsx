@@ -76,7 +76,7 @@ class App extends Component {
 	handleJoin = async groupId => {
 		const updatedGroup = await groupAPI.join(groupId)
 		console.log(updatedGroup)
-		this.setState({ groups: updatedGroup })
+		// this.setState({ groups: updatedGroup })
 	} 
 	
 	handleLeaveGroup = async groupId => {

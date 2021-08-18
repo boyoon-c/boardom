@@ -47,6 +47,7 @@ function show(req, res) {
   Profile.findById(req.params.id)
   .populate('friends')
   .populate('activities') //.execPopulate()
+  .populate('groups')
   .then(profile => {
     res.json(profile)
   })
