@@ -244,6 +244,7 @@ class App extends Component {
 			handleAddFriend={this.handleAddFriend}
 			handleRemoveFriend={this.handleRemoveFriend}
 			handleRemoveActivity={this.handleRemoveActivity}
+			handleLeaveGroup={this.handleLeaveGroup}
 			userProfile={userProfile}
 			/> : <Redirect to='/login' />
   			}
