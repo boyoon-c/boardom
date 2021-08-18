@@ -59,15 +59,13 @@ class EditActivityForm extends Component {
                 pathname:'/addActivity',
             }}
             > Edit </Link> */}
-             <a herf="/addActivity">
 		  <button
             type="submit"
             className='btn btn-sm btn-warning'
             disabled={this.state.invalidForm}
           >
-            Edit Message
+            Edit Date
           </button>
-          </a>
         </form>
       </>
      );
