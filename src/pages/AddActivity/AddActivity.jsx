@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import styles from '../App/App.css'
 import * as activityAPI from '../../services/activityService'
 
@@ -183,6 +184,13 @@ class AddActivity extends Component {
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
         </button>
+        <Link
+              className='btn btn-sm btn-warning'
+              to={{
+              pathname: `/editActivity/${activity._id}`,
+              state: {activity}
+              }}
+          >EDIT</Link>
         </>
       )}
 
