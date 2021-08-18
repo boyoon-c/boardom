@@ -45,7 +45,8 @@ function removeActivity (req, res) {
 }
 
 function addActivity (req, res) {
-  req.body.name = req.body.activity
+  console.log("addActivity function req.body",req.body)
+  //req.body.name = req.body.activity
   //adding user's profile _id to req.body (for creating a new resource)
   req.body.collected_by = req.user.profile
 //find the profile of the logged in user

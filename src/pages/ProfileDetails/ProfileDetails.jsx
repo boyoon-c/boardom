@@ -9,8 +9,8 @@ class ProfileDetails extends Component {
     state = {
         profile: {},
         formData:{
-            profile: '',
-            activityName: '',
+            //profile: '',
+            activityId: '',
             date: '',
             time: ''
         }
@@ -57,19 +57,7 @@ class ProfileDetails extends Component {
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
           DELETE
         </button>
-        {/* <form ref={this.formRef} onSubmit={this.handleSubmit}>
-          <input 
-            name={this.state.formData.date}
-            type="date"
-            onChange={this.handleChange}
-           />
-          <input 
-            name={this.state.formData.time}
-            type="time"
-            onChange={this.handleChange} 
-          />
-          <button className="btn-sm btn-secondary">Submit</button>
-        </form> */}
+        
         </>
         )
       })}
