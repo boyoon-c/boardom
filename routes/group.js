@@ -21,3 +21,4 @@ router.patch('/join/:id', checkAuth, groupCtrl.join)
 router.patch('/leaveGroup/:id', checkAuth, groupCtrl.leaveGroup)
 router.post('/addActivity/:id', checkAuth, groupCtrl.addActivity) //work on this
 router.post('/joinActivity/:id', checkAuth, groupCtrl.joinActivity) //work on this
+// router.post('/joinActivity/:id', checkAuth, groupCtrl.joinActivity) //work on this
