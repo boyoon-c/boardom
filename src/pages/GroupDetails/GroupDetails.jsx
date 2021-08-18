@@ -31,7 +31,10 @@ class GroupDetails extends Component {
               <h1>{this.state.group?.name}'s Activities: </h1>
               {this.state.group?.activities?.map(activity=>{
         return(
-        <p>{activity.name} </p>
+          <>
+        <p>Name: "{activity.name}", Type: "{activity.type}" </p>
+        <p> </p>
+</>
         )
       })}
           </>
