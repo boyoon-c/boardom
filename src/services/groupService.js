@@ -13,8 +13,8 @@ export function createGroup (group) {
   .then((res) => res.json())
 }
 
-export function getGroupProfile() {
-  return fetch(`${BASE_URL}groupProfile`, 
+export function getGroupProfile(id) {
+  return fetch(`${BASE_URL}${id}`, 
   {headers: { Authorization: "Bearer " + tokenService.getToken() }},
   {mode: 'cors'})
   .then(res => res.json())
