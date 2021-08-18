@@ -10,7 +10,7 @@ const NavBar = ({ user, handleLogout }) => {
 					<div>
 						<ul>
 							Welcome, {user.name}
-                			<Link to="/users">Users</Link>
+            	<Link to="/users">Users</Link>
 							<Link to="/addActivity">Add Activity</Link>
 							<Link to="/about">About</Link>
 							<Link to="/calendar">Calendar</Link>
@@ -18,6 +18,7 @@ const NavBar = ({ user, handleLogout }) => {
 							<Link to="/grouplist">Grouplist</Link>
 							<Link to={`/profile/${user.profile}`}>Profile Details</Link>
 							<Link to="/profileList">User List</Link>
+							<Link to="/messagePost">Message Board</Link>
 							<Link to='' onClick={handleLogout}>LOG OUT</Link>
 						</ul>
 					</div>

@@ -113,7 +113,6 @@ class App extends Component {
 		const updatedProfile = await activityAPI.removeActivity(activity)
 		this.setState({userProfile:updatedProfile})
 		//this.props.history.push('/addActivity')
-
 	}
 	
 	handleGetAllMessages = async () => {
@@ -122,6 +121,7 @@ class App extends Component {
 	}
 	
 	handleAddMessage = async message => {
+		console.log(this.state.messages)
 		const newMessage = await messageAPI.createMessagePost(message)
 		this.setState(state => ({
 			messages: [...state.messages, newMessage]
@@ -130,7 +130,6 @@ class App extends Component {
 
 	handleDeleteMessage = async messageId => {
 		const updatedMessages = await messageAPI.deleteMessagePost(messageId)
-		console.log('updatedMessages', updatedMessages)
 		const newMessages=[...this.state.messages]
 		const deleteMessage = (element) => element._id === messageId
 		const deleteMessageIdx = newMessages.findIndex(deleteMessage)
@@ -148,6 +147,7 @@ class App extends Component {
 		this.setState(
       {messages: newMessagesArray}
 		)
+		this.props.history.push('/messagePost')
 	}
 
 	handleUpdateActivity = async activityId => {
