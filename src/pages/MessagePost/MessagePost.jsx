@@ -35,15 +35,7 @@ class MessagePost extends Component {
             location={location}
           />
       } /> */}
-    {/* <Link
-        className='btn btn-sm btn-warning'
-        to={{
-            pathname: '/edit',
-            state: {this.props.messages}
-          }}
-      >
-        Edit
-      </Link> */}
+  
       
       </>
      );

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class EditMessageForm extends Component {
   state = { 
     invalidForm: false,
-    //formData: this.props.location.state.puppy //check on this
+    formData: this.props.location.state.message //check on this
    }
 
    formRef = React.createRef()
@@ -23,7 +23,7 @@ class EditMessageForm extends Component {
 
   render() { 
     //{console.log('EditMessage', this.props.location.state )}
-    //const { body } = this.state.formData
+    const { body } = this.state.formData
     return ( 
       <>
         <h1>Edit Message</h1>
@@ -37,7 +37,7 @@ class EditMessageForm extends Component {
             <input
               className="form-control"
               name="body"
-              value={this.props.messagePost.body}
+              value={body}
               onChange={this.handleChange}
               required
             />

@@ -6,8 +6,19 @@ const MessageCard = ({message, handleDeleteMessage, idx}) => {
     <>
 <h3>message card</h3>
 <h3 key={idx}>{message.body}</h3>
-           <button onClick={() => 
-           (handleDeleteMessage(message._id))}>REMOVE</button>     
+    <button onClick={() => 
+      (handleDeleteMessage(message._id))}>
+        REMOVE
+    </button>   
+       { <Link
+          className='btn btn-sm btn-warning'
+          to={{
+            pathname: '/edit',
+            state: {message}
+          }}
+        >
+        Edit
+        </Link> }  
 
     </>
    );

@@ -276,6 +276,7 @@ class App extends Component {
         </Route>
 				<Route exact path='/edit' render={({location}) => 
           <EditMessageForm
+					handleUpdateMessage={this.handleUpdateMessage}
             location={location}
           />
       } />
