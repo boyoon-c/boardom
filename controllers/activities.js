@@ -12,21 +12,29 @@ export {
 }
 
 function updateActivity(req,res){
-  //console.log(req.user.profile)
-  Profile.findById(req.user.profile)
-  .then(profile =>{
-    Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
-    .then(() =>{
-      res.json(profile)
-    })
+  Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
+  .then((activity) => {
+    res.status(200)
+    .json(activity)
   })
-  
-  // .then((activity) => {
-  //   res.status(200)
-  //   .json(activity)
-  // })
-  // )
 }
+
+// function updateActivity(req,res){
+//   //console.log(req.user.profile)
+//   Profile.findById(req.user.profile)
+//   .then(profile =>{
+//     Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
+//     .then(() =>{
+//       res.json(profile)
+//     })
+//   })
+  
+//   // .then((activity) => {
+//   //   res.status(200)
+//   //   .json(activity)
+//   // })
+//   // )
+// }
 
 function createActivity (req, res) {
   Activity.create(req.body)
