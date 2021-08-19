@@ -331,27 +331,34 @@ class App extends Component {
 
 			<Route 
 			exact path='/messagePost'>
+				{/* render={({ match })=> 
+				authService.getUser() ? */}
 			<MessagePost
+				// match={match}
 				messages={this.state.messages}
+				userProfile={userProfile}
 				handleAddMessage={this.handleAddMessage}
 				handleDeleteMessage={this.handleDeleteMessage}
 				handleUpdateMessage={this.handleUpdateMessage}
 				/>
 			</Route>
 
-			<Route exact path='/edit/:id' render={({location}) => 
+			<Route exact path='/edit/:id' 
+			render={({location}) => 
 			<EditMessageForm
 				handleUpdateMessage={this.handleUpdateMessage}
 				location={location}
 			/>
-			} />
+			} 
+			/>
 
 			<Route exact path='/editActivity/:id' render={({location}) => 
 			<EditActivityForm
 				handleUpdateActivity={this.handleUpdateActivity}
 				location={location}
 			/>
-			} />
+			} 
+			/>
 
 			</>
 		)
