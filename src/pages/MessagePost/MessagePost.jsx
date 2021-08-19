@@ -5,9 +5,10 @@ import EditMessageForm from '../../components/EditMessageForm/EditMessageForm'
 import MessageCard from '../../components/MessageCard/MessageCard';
 
 class MessagePost extends Component {
-  state = { 
+  // state = { 
 
-   }
+  //  }
+  
   render() { 
     return ( 
       <>

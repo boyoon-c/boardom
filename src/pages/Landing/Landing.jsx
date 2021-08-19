@@ -20,7 +20,7 @@ const Landing = ({user}) => {
         to ={{
           pathname: '/groupAddActivity'
         }}
-        >Wanna do it as a group?</Link></ul>
+        >Are you group???</Link></ul>//need to fix this
         : <ul></ul>}
       
     </main>
