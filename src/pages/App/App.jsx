@@ -177,6 +177,8 @@ class App extends Component {
 
 	  }
 
+	  
+
 	async componentDidMount() {
 		if (!this.state.userProfile){
 			const userProfile = await userAPI.getUserProfile()
