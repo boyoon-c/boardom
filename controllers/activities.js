@@ -65,7 +65,7 @@ function removeActivity (req, res) {
 }
 
 function addActivity (req, res) {
-  //req.body.name = req.body.activity
+  req.body.name = req.body.name
   //adding user's profile _id to req.body (for creating a new resource)
   req.body.collected_by = req.user.profile
 //find the profile of the logged in user
@@ -92,7 +92,7 @@ Profile.findById(req.user.profile)
     } else {
       Activity.create(req.body) // json body data from postman
       .then(activity => {
-        //activity.name=req.body.activity
+        activity.name=req.body.name
         //console.log('else statement req.body.activity', activity)
        
         //add the new activity document to the user's profile
