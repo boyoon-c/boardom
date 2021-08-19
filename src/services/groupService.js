@@ -63,3 +63,15 @@ export function getAllGroups() {
   {mode: 'cors'})
   .then(res => res.json())
 }
+
+export function joinGroupActivity(id) {
+  return fetch (
+    `${BASE_URL}joinActivity/${id}`,
+    {
+      method: 'POST',
+      headers: { Authorization: "Bearer " + tokenService.getToken() }
+    },
+    {mode: 'cors'}
+    )
+    .then(res => res.json())
+}
