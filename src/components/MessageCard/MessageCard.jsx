@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const MessageCard = ({message, handleDeleteMessage, idx, userProfile}) => {
   return ( 
-    
 
 <>
     <h3 key={idx}>{message.body}</h3>

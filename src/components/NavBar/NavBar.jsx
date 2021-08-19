@@ -7,9 +7,11 @@ const NavBar = ({ user, handleLogout }) => {
 		<>
 			{user ? (
 				<nav>
-					<div>
-						<ul>
+					<div className="nav">
+						<main>
 							Welcome, {user.name}
+						</main>
+						<ul className="nav-header">
 							<Link to="/">Home</Link>
 							<Link to="/about">About</Link>
 							<Link to="/calendar">Calendar</Link>
@@ -27,7 +29,6 @@ const NavBar = ({ user, handleLogout }) => {
 					<div>
 						<ul>
 								<Link to="/login">Log In</Link>
-               					<Link to="/users">Users</Link>
 								<Link to="/signup">Sign Up</Link>
 						</ul>
 					</div>

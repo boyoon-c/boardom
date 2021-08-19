@@ -2,12 +2,13 @@ nav {
     color: fuchsia;
 }
 .nav {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: grid;
     grid-template-rows: 7vmin auto;
   }
   
   .nav-header {
+    max-height: 10%;
     background-color: var(--black);
     display: flex;
     align-items: center;

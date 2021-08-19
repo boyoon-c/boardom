@@ -4,32 +4,19 @@ import styles from '../App/App.css'
 import * as activityAPI from '../../services/activityService'
 
 class AddActivity extends Component {
-  // state = { 
-  //   invalidForm: true,
-  //   formData: {
-  //     name:'',
-  //     type:'',
-  //     participants: Number,
-  //     activityNo: String,
-  //     scheduledDate: Date,
-  //     scheduledTime: Date,
-  //   },
-  //   searchResults:{},
-  //  }
   constructor(props){
     super(props)
     this.state = {
-          invalidForm: true,
+    invalidForm: true,
     formData: {
       name:'',
       type:'',
-      participants: Number,
-      key: String,
-      scheduledDate: Date,
+      participants: 1,
+      key: null,
+      scheduledDate: null,
       //scheduledTime: Date,
     },
-    searchResults:{},
-
+    searchResults:{}
     }
     //this.handleChange=this.handleChange.bind(this)
     //this.handleSubmit=this.handleSubmit.bind(this)
@@ -58,24 +45,14 @@ class AddActivity extends Component {
 
   handleSubmit2=(e)=>{
     e.preventDefault()
-    // console.log('e.target2', e.target)
-    // console.log('e.target.object', {[e.target.name]:e.target.value})
-    // console.log('e.target.name',[e.target.type])
-    // console.log('e.target.name.value',e.target.name.value)
-    // console.log('e.target.value',e.target.value)
-    // console.log("BEFORE FORMDATA", this.state.formData)
-    // this.setState({
-    //   formData.name: e.target.name.value
-    // })
-    // this.state.formData.name = e.target.name.value
-    // const formData = {...this.state.formData, [e.target.name]: e.target.value}
+    
     let updatedForm = {...this.state.formData, key: e.target.key.value}
     updatedForm = {...updatedForm, name: e.target.name.value}
     updatedForm = {...updatedForm, type: e.target.type.value}
     this.setState({
       formData: updatedForm 
     });
-    console.log('AFTER FORMDATA', this.state.formData)
+    this.props.history.push('/addActivity')
   }
   render() { 
 
@@ -107,7 +84,7 @@ class AddActivity extends Component {
           <option value="busywork">busywork</option>
         </select>
 
-        <h3>Number of participants</h3>
+        {/* <h3>Number of participants</h3>
         <select
         name="participants"
         value={this.state.formData.participants}
@@ -120,7 +97,7 @@ class AddActivity extends Component {
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-        </select><br />
+        </select><br /> */}
  
         <button type="submit" disabled={this.state.invalidForm}>
           Random Activity Search

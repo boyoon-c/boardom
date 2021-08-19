@@ -8,18 +8,21 @@ const Landing = ({user}) => {
       <h1>
         Hello, {user ? user.name : "friend"}
       </h1>
-      <ul>
-      <Link 
+      
+        {user ? 
+        <ul>     
+         <Link 
         className="btn-sm btn-light"
         to = "/addActivity"
-      >Going solo?</Link>
-      <Link 
+        >Going solo?</Link>
+        <Link 
         className="btn-sm btn-light"
         to ={{
           pathname: '/groupAddActivity'
         }}
-      >Wanna do it as a group?</Link>
-      </ul>
+        >Are you group???</Link></ul>//need to fix this
+        : <ul></ul>}
+      
     </main>
   )
 }

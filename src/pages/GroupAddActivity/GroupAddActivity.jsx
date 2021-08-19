@@ -25,7 +25,7 @@ class GroupAddActivity extends Component {
 
    
 
-   handleChange= e=> {
+    handleChange= e=> {
     console.log('e.target1', e.target)
     const formData = {...this.state.formData, [e.target.name]: e.target.value}
 
@@ -53,7 +53,6 @@ class GroupAddActivity extends Component {
       this.props.handleAddGroupActivity(this.state.formData, this.state.group)
       this.props.history.push('/')
     }  
-    
 } 
 
 //   handleSubmit2=(e)=>{
@@ -66,6 +65,7 @@ class GroupAddActivity extends Component {
 //     });
 //     console.log('AFTER FORMDATA', this.state.formData)
 //   }
+
   render() { 
 
     console.log("searchResult", this.state.searchResults)
@@ -75,28 +75,29 @@ class GroupAddActivity extends Component {
     return ( 
       <>
       <main className='fs-6 m-5'>
-      <h2>Add activity and join a group</h2>
+      <h3>Add activity and join a group</h3>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
-        <h3>Activity type:</h3>
+        <h3>What activity is your group interested in?</h3>
         <select 
           value={this.state.formData.type} 
           name="type"
           onChange={this.handleChange}
           required
-          default="social"
+          //default="social"
           >
-          <option value="">Please select type</option>
+          <option value="">Please select activity type</option>
           <option value="education">education</option>
           <option value="recreational">recreational</option>
           <option value="social">social</option>
-          <option value="diy">diy</option>
+          {/* <option value="diy">diy</option> */}
           <option value="cooking">cooking</option>
           <option value="relaxation">relaxation</option>
-          <option value="music">music</option>
-          <option value="busywork">busywork</option>
+          {/* <option value="music">music</option> */}
+          {/* <option value="busywork">busywork</option> */}
         </select>
 
-        <h3>Number of participants</h3>
+        {/* <h3>Number of participants</h3> */}
+        
         <select
         name="participants"
         value={this.state.formData.participants}
@@ -111,13 +112,12 @@ class GroupAddActivity extends Component {
           <option value="5">5</option>
         </select><br />
  
-        <button type="submit" disabled={this.state.invalidForm}>
+        <button className="btn-sm btn-dark" type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
       </form>
-      <h3>Search Results</h3>
-        <div>{this.state.formData.activity}</div>
-     
+      <h4>Search Results</h4>
+      {this.state.formData.activity ? <div>{this.state.formData.activity}</div>: <p>No matching search results</p> }     
      
       <form ref={this.formRef} onSubmit={this.handleGroupSubmit}>
         
@@ -127,12 +127,12 @@ class GroupAddActivity extends Component {
           type="hidden"
         />
 
-        <input 
+        {/* <input 
               name="scheduledDate"
               type="datetime-local"
               value={this.state.formData.scheduledDate}
               onChange={this.handleChange}
-            />
+            /> */}
           <input
             name="type"
             value={this.state.searchResults.type}
@@ -144,6 +144,7 @@ class GroupAddActivity extends Component {
             type="hidden"
           />
           
+          <h4>What group are you?</h4>
           <select name="group" onChange={(evt)=>this.setState({[evt.target.name]: evt.target.value})}> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
             <option value="">select 1</option>
             {this.props.groups?.map(group=>
@@ -152,7 +153,7 @@ class GroupAddActivity extends Component {
             </option>)}
               {/* <option value={this.props.groups[0].id}>{this.props.groups[0].name}</option> */}
           </select>
-          <button>Enter</button>
+          <button className="btn-sm btn-dark">Enter</button>
       </form>
       {/* <button 
         type="submit"
@@ -161,10 +162,10 @@ class GroupAddActivity extends Component {
           Add Activity
       </button> */}
 
-      <h3>Your Activity:</h3>
+      {/* <h3>Your Activity:</h3>
       {this.props.userProfile?.activities?.map(activity=>
         <>
-        <p>{activity.name} scheduled at {activity.scheduledDate} </p> 
+        <p>{activity.name} scheduled at {activity.scheduledDate} </p>  */}
         {/* <button 
         type="submit"
         onClick={()=>this.props.handleRemoveActivity(activity._id)}>
@@ -177,8 +178,8 @@ class GroupAddActivity extends Component {
               state: {activity}
               }}
           >EDIT</Link> */}
-        </>
-      )}
+        {/* </>
+      )} */}
 
       </main>
       </>
