@@ -134,3 +134,18 @@ function show(req, res) {
     res.json(group)
   })
 }
+
+// this is trying to populate the people in the activity
+// function show(req, res) {
+//   Group.findById(req.params.id)
+//   .populate('members')
+//   .populate('activities')//.execPopulate()
+//   .then(group => {
+//     Activity.find({})
+//     .populate('peopleInActivity')
+//     .then(()=>{
+
+//       res.json(group)
+//     })
+//   })
+// }

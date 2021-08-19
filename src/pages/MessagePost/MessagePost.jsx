@@ -17,6 +17,7 @@ class MessagePost extends Component {
         {this.props.messages?.map((message, idx) => 
            <>
            <MessageCard 
+           userProfile={this.props.userProfile}
            message={message}
            handleDeleteMessage={this.props.handleDeleteMessage}
            />
@@ -26,6 +27,7 @@ class MessagePost extends Component {
          </>
         )}
         <MessageForm
+          userProfile={this.props.userProfile}
           handleAddMessage={this.props.handleAddMessage}
           handleDeleteMessage={this.props.handleDeleteMessage}
           handleUpdateMessage={this.props.handleUpdateMessage}
