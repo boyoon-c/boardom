@@ -6,9 +6,15 @@ class GroupDetails extends Component {
     constructor(props) {
       super(props)
     this.state = {
-      group: this.props.location.state.group
+      group: this.props.location.state.group,
+      formData: {
+        key: null
+      }
     }
 }
+
+formRef=React.createRef()
+
     async componentDidMount() {
         const group = await groupService.getGroupProfile(this.state.group._id)
         console.log('this.props.match', this.props.match)
@@ -30,21 +36,36 @@ class GroupDetails extends Component {
                 return(<h1>{members.name}</h1>)
               })}
               <h1>{this.state.group?.name}'s Activities: </h1>
-              {this.state.group?.activities?.map(activity=>{
+              {this.state.group?.activities?.map((activity,idx)=>{
         return(
           <>
         <p>Name: "{activity.name}", Type: "{activity.type}" </p>
         <Link
         to={{
-          
           pathname: `/group/${this.state.group._id}`,
-          // state: {this.state.group}
-        }}
-        
-        >
-        <button onClick={this.props.handleJoinGroupActivity}>Join</button>
-        
-        
+          // state: this.props.group.activities
+        }}>
+          {console.log('activity', activity)}
+
+          <button
+          onClick={()=> this.props.handleJoinGroupActivity(this.state.group._id, activity.activityNo)
+          }>
+              Join
+            </button>
+
+          {/* <form 
+          ref={this.formRef}
+          onSubmit={()=> this.props.handleJoinGroupActivity(this.state.group._id)}>
+          <input 
+          idx={idx}
+          name='key' 
+          type="hidden" 
+          value={activity.key}/>
+          <button >
+              Join
+            </button>
+          </form> */}
+          
         </Link>
 </>
         )
