@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as groupService from "../../services/groupService"
+import { Link } from "react-router-dom"
 
 class GroupDetails extends Component {
     constructor(props) {
@@ -33,7 +34,18 @@ class GroupDetails extends Component {
         return(
           <>
         <p>Name: "{activity.name}", Type: "{activity.type}" </p>
-        <p> </p>
+        <Link
+        to={{
+          
+          pathname: `/group/${this.state.group._id}`,
+          // state: {this.state.group}
+        }}
+        
+        >
+        <button onClick={this.props.handleJoinGroupActivity}>Join</button>
+        
+        
+        </Link>
 </>
         )
       })}

@@ -177,6 +177,14 @@ class App extends Component {
 
 	  }
 
+	  handleJoinGroupActivity = async groupId => {
+		  const joinGroupActivity = await groupAPI.joinGroupActivity(groupId);
+		  this.setState(
+			  {activities: joinGroupActivity} //try array later
+		  );
+
+		//   this.props.history.push('/group/${group._id}')
+	  }
 	  
 
 	async componentDidMount() {
@@ -288,6 +296,7 @@ class App extends Component {
 			<GroupDetails
 			group={this.state.groups}
 			match={match}
+			handleJoinGroupActivity={this.handleJoinGroupActivity}
 			handleJoin={this.handleJoin}
 			handleLeaveGroup={this.handleLeaveGroup}
 			userProfile={userProfile}
