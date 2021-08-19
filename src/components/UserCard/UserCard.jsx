@@ -19,7 +19,7 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
         <h1>{user.name}</h1>
       </Link>
               
-              <button onClick={() => handleAddFriend(user.profile)}>Add  {user.name} to friends</button> 
+              <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" onClick={() => handleAddFriend(user.profile)}>Add  {user.name} to friends</button> 
            </div> 
            }
             
@@ -34,7 +34,7 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
       >
         <h1>{user.name}</h1>
       </Link>
-      <button onClick={() => handleRemoveFriend(user.profile)}>Remove {user.name} from friends</button> 
+      <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" onClick={() => handleRemoveFriend(user.profile)}>Remove {user.name} from friends</button> 
       </div>
       }   
     </>

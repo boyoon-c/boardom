@@ -44,6 +44,7 @@ class MessagePost extends Component {
           required
         />
          <button
+         class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
           type="submit"
     			disabled={this.state.invalidForm}
         >

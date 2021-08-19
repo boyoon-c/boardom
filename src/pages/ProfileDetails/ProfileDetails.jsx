@@ -48,7 +48,7 @@ class ProfileDetails extends Component {
         return(
           <>
           <li>{activity.name}
-            <button 
+            <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
               type="submit"
               onClick={()=>this.props.handleRemoveActivity(activity._id)}
             >
@@ -70,7 +70,7 @@ class ProfileDetails extends Component {
                     <li>{activity.name}</li>
                     )}
                     </ul>
-                  <button
+                  <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
                   type="submit"
                   onClick={() =>this.props.handleLeaveGroup(group._id)}>Leave {group.name}
                   </button>
