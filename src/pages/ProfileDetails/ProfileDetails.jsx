@@ -47,7 +47,7 @@ class ProfileDetails extends Component {
       {this.state.profile?.friends?.map(friend =>{
         return(<h1>{friend.name}</h1>)
       })}
-      <h1>{this.state.profile?.name}'s Activities: </h1>
+      <h1>{this.state.profile?.name}'s Solo Activities: </h1>
       {this.state.profile?.activities?.map(activity=>{
         return(
         <>
@@ -61,6 +61,18 @@ class ProfileDetails extends Component {
         </>
         )
       })}
+            <h1>{this.state.profile?.name}'s Group Activities: </h1>
+            {this.state.groups?.activities?.map(activity=>{
+        return(
+        <>
+        <p>{activity.name} </p>
+          
+        
+        </>
+        )
+      })}
+
+
       <h1>{this.state.profile.name}'s Groups: </h1>
               {this.state.profile.groups?.map(group=>{ 
                 return(

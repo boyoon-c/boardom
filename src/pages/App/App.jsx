@@ -111,7 +111,7 @@ class App extends Component {
 		//this.props.history.push('/addActivity')
 	} 
 	handleAddGroupActivity = async (activity, groupId) =>{
-		console.log('activity', activity)
+		console.log('handlegroupactivity', activity)
 		const updatedGroup = await groupAPI.addActivity(activity, groupId)
 		const groups = this.state.groups
 		groups.filter((group)=>group._id!==updatedGroup._id)
@@ -176,6 +176,18 @@ class App extends Component {
 		this.props.history.push('/addActivity')
 
 	  }
+
+	  handleJoinGroupActivity = async (groupId, activityNo) => {
+		  console.log("activityNumber", activityNo)
+		  const joinGroupActivity = await groupAPI.joinGroupActivity(groupId, activityNo);
+			console.log(joinGroupActivity)
+			// this.setState(
+			//   {activities: joinGroupActivity} //try array later
+		  // );
+
+		//   this.props.history.push('/group/${group._id}')
+	  }
+	  
 
 	async componentDidMount() {
 		if (!this.state.userProfile){
@@ -269,12 +281,12 @@ class App extends Component {
 			render={({ match })=> 
 				authService.getUser() ?
 			<ProfileDetails
-			match={match}
-			handleAddFriend={this.handleAddFriend}
-			handleRemoveFriend={this.handleRemoveFriend}
-			handleRemoveActivity={this.handleRemoveActivity}
-			handleLeaveGroup={this.handleLeaveGroup}
-			userProfile={userProfile}
+					match={match}
+					handleAddFriend={this.handleAddFriend}
+					handleRemoveFriend={this.handleRemoveFriend}
+					handleRemoveActivity={this.handleRemoveActivity}
+					handleLeaveGroup={this.handleLeaveGroup}
+					userProfile={userProfile}
 			/> : <Redirect to='/login' />
   			}
 			/>
@@ -286,6 +298,7 @@ class App extends Component {
 			<GroupDetails
 			group={this.state.groups}
 			match={match}
+			handleJoinGroupActivity={this.handleJoinGroupActivity}
 			handleJoin={this.handleJoin}
 			handleLeaveGroup={this.handleLeaveGroup}
 			userProfile={userProfile}
