@@ -166,14 +166,26 @@ class App extends Component {
 		this.props.history.push('/messagePost')
 	}
 
-	handleUpdateActivity = async activityId => {
-		const updatedActivity = await activityAPI.updateActivity(activityId);
-		console.log("This is updatedActivity", updatedActivity)
+	// handleUpdateActivity = async activityId => {
+	// 	const updatedActivity = await activityAPI.updateActivity(activityId);
+	// 	console.log("This is updatedActivity", updatedActivity)
+	// 	const userProfile = await userAPI.getUserProfile()
+
+	// 	this.setState(
+	// 	  {userProfile: userProfile},
+	// 	);
+	// 	this.props.history.push('/addActivity')
+	//   }
+
+	  handleUpdateActivity = async activityId => {
+		const updatedProfile = await activityAPI.updateActivity(activityId);
+
 		this.setState(
-		  {userProfile: updatedActivity},
+		  {userProfile: updatedProfile},
 		);
 		this.props.history.push('/addActivity')
 	  }
+
 
 	  handleJoinGroupActivity = async (groupId, activityNo) => {
 		  console.log("activityNumber", activityNo)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as groupService from "../../services/groupService"
 import { Link } from "react-router-dom"
+import blerd from '../../images/blerd.jpg';
+
 
 class GroupDetails extends Component {
     constructor(props) {
@@ -26,10 +28,30 @@ formRef=React.createRef()
         console.log("Members", this.state.group?.members)
         return (
           <>
-              <h1>Welcome to {this.state.group?.name}!</h1>
+              <h1
+              style={{
+                fontSize: 50,
+                textAlign: 'center',
+            }}
+              >Welcome to {this.state.group?.name}!</h1>
+              <div class="center-image">
+                      <img 
+                style={{
+                    height: 300,
+                    width: 300,
+                    borderRadius: 200,
+                    borderWidth: 5,
+                    borderColor: 'black',
+                    backgroundColor: '#7cebdc'
+                  }}
+                src={blerd} alt="block" class="block"/> 
+</div>
+
               {/* <h1>{this.state.group?.name}'s Description:</h1> */}
               <br></br>
+              <div class="desc">
               <h3>"{this.state.group.description}"</h3>
+              </div>
               <br></br>
               <h1>{this.state.group?.name}s' members List:</h1>
               {this.state.group?.members?.map(members =>{
@@ -47,7 +69,7 @@ formRef=React.createRef()
         }}>
           {console.log('activity', activity)}
 
-          <button
+          <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
           onClick={()=> this.props.handleJoinGroupActivity(this.state.group._id, activity.activityNo)
           }>
               Join
