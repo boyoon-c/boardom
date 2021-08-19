@@ -13,7 +13,6 @@ export{
 }
 
 function joinActivity (req, res) {
-  //people in activity
   console.log('join a group activity')
   console.log('req.params.id', req.params.id )
   console.log('req.body', req.body)
@@ -21,7 +20,6 @@ function joinActivity (req, res) {
   .then((group) => {
     group.populate('activities')
       Activity.findOne({activityNo: req.body.key})
-      //Activity.findOne({activityNo: req.body.key})
         .then((activity) => {
           console.log("activity in findone", activity)
           Profile.findById(req.params.id)
