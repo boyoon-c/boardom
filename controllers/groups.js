@@ -15,8 +15,8 @@ export{
 function joinActivity (req, res) {
   //people in activity
   Group.findById(req.params.id)
+  .populate('activities')
     .then((group) => {
-      group.populate('activities')
       Activity.findOne({activityNo: req.body.key})
         .then((activity) => {
           activity.peopleInActivity.push(activity)
