@@ -36,8 +36,6 @@ class AddActivity extends Component {
   }
    formRef=React.createRef()
 
-   
-
    handleChange= e=> {
     console.log('e.target1', e.target)
     const formData = {...this.state.formData, [e.target.name]: e.target.value}

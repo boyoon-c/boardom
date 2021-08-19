@@ -10,7 +10,7 @@ class Group extends Component {
     render() {
         return (
             <>
-                Group!
+               <h2> Create a Group! </h2>
                 <GroupForm 
                 history={this.props.history}
                 handleCreateGroup={this.props.handleCreateGroup}
