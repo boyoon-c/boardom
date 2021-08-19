@@ -30,16 +30,10 @@ class ProfileDetails extends Component {
   }
     
   async componentDidMount() {
-    //console.log("this.props.match", this.props.match)
     const profile = await profileService.getDetails(this.props.match.params.id)
-    console.log('this.props.match', this.props.match)
-    console.log('profile', profile)
     this.setState({profile})
   }
   render () {
-        // console.log("Profile", this.state.profile)
-        // console.log("My Friends", this.state.profile?.friends)
-        // console.log('Acitivity', this.state.formData)
     return (
           <>
       <h1>{this.state.profile?.name}'s Profile</h1>
@@ -48,41 +42,37 @@ class ProfileDetails extends Component {
         return(<h1>{friend.name}</h1>)
       })}
       <h1>{this.state.profile?.name}'s Solo Activities: </h1>
+      
+      <ul>
       {this.state.profile?.activities?.map(activity=>{
         return(
-        <>
-        <p>{activity.name} </p>
-        <button 
-        type="submit"
-        onClick={()=>this.props.handleRemoveActivity(activity._id)}>
-          DELETE
-        </button>
-        
-        </>
+          <>
+          <li>{activity.name}
+            <button 
+              type="submit"
+              onClick={()=>this.props.handleRemoveActivity(activity._id)}
+            >
+                DELETE
+            </button>
+          </li>
+          </>
         )
       })}
-            <h1>{this.state.profile?.name}'s Group Activities: </h1>
-            {this.state.groups?.activities?.map(activity=>{
-        return(
-        <>
-        <p>{activity.name} </p>
-          
-        
-        </>
-        )
-      })}
+      </ul>
 
-
-      <h1>{this.state.profile.name}'s Groups: </h1>
+      <h1>{this.state.profile.name}'s Group Activities: </h1>
               {this.state.profile.groups?.map(group=>{ 
                 return(
                   <>
-                  <p>{group.name}</p>
+                  <h1>{group.name}</h1>
+                  <ul> 
+                  {group.activities?.map(activity => 
+                    <li>{activity.name}</li>
+                    )}
+                    </ul>
                   <button
                   type="submit"
                   onClick={() =>this.props.handleLeaveGroup(group._id)}>Leave {group.name}
-                  
-
                   </button>
                   </>
                 )

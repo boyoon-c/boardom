@@ -285,6 +285,7 @@ class App extends Component {
 				authService.getUser() ?
 			<ProfileDetails
 					match={match}
+					groups={this.state.groups}
 					handleAddFriend={this.handleAddFriend}
 					handleRemoveFriend={this.handleRemoveFriend}
 					handleRemoveActivity={this.handleRemoveActivity}
@@ -299,13 +300,13 @@ class App extends Component {
 			render={({ match, location })=> 
 				authService.getUser() ?
 			<GroupDetails
-			group={this.state.groups}
-			match={match}
-			handleJoinGroupActivity={this.handleJoinGroupActivity}
-			handleJoin={this.handleJoin}
-			handleLeaveGroup={this.handleLeaveGroup}
-			userProfile={userProfile}
-			location={location}
+				group={this.state.groups}
+				match={match}
+				handleJoinGroupActivity={this.handleJoinGroupActivity}
+				handleJoin={this.handleJoin}
+				handleLeaveGroup={this.handleLeaveGroup}
+				userProfile={userProfile}
+				location={location}
 			/> : <Redirect to='/login' />
 			}
 			/>
