@@ -60,7 +60,10 @@ class App extends Component {
 	handleCreateGroup = async newGroupData => {
 		const newGroup = await groupAPI.createGroup(newGroupData)
 		console.log("handleCreateGroup new group", newGroup)
-		this.setState ({ userProfile: newGroup }) // not sure what to set new group
+		this.setState ({ userProfile: newGroup }) //chitra changed this 8/19 in the morning
+		//this.setState ({ groups: newGroup }) //this one broke group state
+		this.props.history.push('/grouplist')
+		
 	}
 
 	handleAddFriend = async friendId => {
@@ -277,6 +280,7 @@ class App extends Component {
 				authService.getUser() ?
 			<ProfileDetails
 					match={match}
+					groups={this.state.groups}
 					handleAddFriend={this.handleAddFriend}
 					handleRemoveFriend={this.handleRemoveFriend}
 					handleRemoveActivity={this.handleRemoveActivity}
@@ -291,13 +295,13 @@ class App extends Component {
 			render={({ match, location })=> 
 				authService.getUser() ?
 			<GroupDetails
-			group={this.state.groups}
-			match={match}
-			handleJoinGroupActivity={this.handleJoinGroupActivity}
-			handleJoin={this.handleJoin}
-			handleLeaveGroup={this.handleLeaveGroup}
-			userProfile={userProfile}
-			location={location}
+				group={this.state.groups}
+				match={match}
+				handleJoinGroupActivity={this.handleJoinGroupActivity}
+				handleJoin={this.handleJoin}
+				handleLeaveGroup={this.handleLeaveGroup}
+				userProfile={userProfile}
+				location={location}
 			/> : <Redirect to='/login' />
 			}
 			/>
@@ -326,27 +330,34 @@ class App extends Component {
 
 			<Route 
 			exact path='/messagePost'>
+				{/* render={({ match })=> 
+				authService.getUser() ? */}
 			<MessagePost
+				// match={match}
 				messages={this.state.messages}
+				userProfile={userProfile}
 				handleAddMessage={this.handleAddMessage}
 				handleDeleteMessage={this.handleDeleteMessage}
 				handleUpdateMessage={this.handleUpdateMessage}
 				/>
 			</Route>
 
-			<Route exact path='/edit/:id' render={({location}) => 
+			<Route exact path='/edit/:id' 
+			render={({location}) => 
 			<EditMessageForm
 				handleUpdateMessage={this.handleUpdateMessage}
 				location={location}
 			/>
-			} />
+			} 
+			/>
 
 			<Route exact path='/editActivity/:id' render={({location}) => 
 			<EditActivityForm
 				handleUpdateActivity={this.handleUpdateActivity}
 				location={location}
 			/>
-			} />
+			} 
+			/>
 
 			</>
 		)
