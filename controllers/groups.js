@@ -14,6 +14,26 @@ export{
 
 function joinActivity (req, res) {
   //people in activity
+  console.log('join a group activity')
+  console.log('req.params.id', req.params.id )
+  console.log('req.body', req.body)
+  Group.findById(req.params.id)
+  .then((group) => {
+    group.populate('activities')
+      Activity.findOne({activityNo: req.body.key})
+        .then((activity) => {
+          console.log("activity in findone", activity)
+          Profile.findById(req.params.id)
+          .then((profile) =>{
+            activity.peopleInActivity.push(req.user.profile)
+            activity.save()
+            .then(() => {
+              res.json(activity)
+
+          })
+          })
+        })
+    })
 }
 
 function addActivity (req, res) {
@@ -110,8 +130,7 @@ function index (req, res) {
 function show(req, res) {
   Group.findById(req.params.id)
   .populate('members')
-  // .populate('description')
-  //.populate('activities')//.execPopulate()
+  .populate('activities')//.execPopulate()
   .then(group => {
     res.json(group)
   })
