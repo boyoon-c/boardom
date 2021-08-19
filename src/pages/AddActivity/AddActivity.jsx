@@ -144,6 +144,7 @@ class AddActivity extends Component {
       
       <button 
         type="submit"
+        className="btn-sm btn-primary"
         //onClick={()=>this.props.handleAddActivity(this.state.searchResults)}
         onClick={()=>this.props.handleAddActivity(this.state.formData)}
         >
