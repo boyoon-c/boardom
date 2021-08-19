@@ -64,12 +64,12 @@ export function getAllGroups() {
   .then(res => res.json())
 }
 
-export function joinGroupActivity(id) {
-  return fetch (
-    `${BASE_URL}joinActivity/${id}`,
+export function joinGroupActivity(groupId, activityNo) {
+  return fetch(`${BASE_URL}joinActivity/${groupId}`,
     {
       method: 'POST',
-      headers: { Authorization: "Bearer " + tokenService.getToken() }
+      headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},    
+      body: JSON.stringify({key: activityNo})
     },
     {mode: 'cors'}
     )
