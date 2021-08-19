@@ -19,7 +19,9 @@ const UserCard = ({ user, userProfile, handleAddFriend, handleRemoveFriend }) =>
         <h1>{user.name}</h1>
       </Link>
               
-              <button onClick={() => handleAddFriend(user.profile)}>Add  {user.name} to friends</button> 
+              <button 
+              className="btn-sm btn-primary"
+              onClick={() => handleAddFriend(user.profile)}>Add  {user.name} to friends</button> 
            </div> 
            }
             

@@ -53,7 +53,6 @@ class GroupForm extends Component {
             onChange={this.handleChange}
             required
           />
-        <div class="">
           <button
             type="submit"
             disabled={this.state.invalidForm}
@@ -61,7 +60,7 @@ class GroupForm extends Component {
             >
             create
           </button>
-          </div>  
+          
         </div>
          
       </form>

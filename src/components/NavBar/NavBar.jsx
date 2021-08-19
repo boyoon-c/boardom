@@ -8,8 +8,8 @@ const NavBar = ({ user, handleLogout }) => {
 			{user ? (
 				<nav>
 					<div className="nav">
-						<main>
-							Welcome, {user.name}
+						<main className="fs-4">
+							Welcome, {user.name} 
 						</main>
 						<ul className="nav-header">
 							<Link to="/">Home</Link>
