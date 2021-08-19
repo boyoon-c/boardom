@@ -12,12 +12,20 @@ export {
 }
 
 function updateActivity(req,res){
-  Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
-  .then((activity) => {
-    res.status(200)
-    .json(activity)
+  //console.log(req.user.profile)
+  Profile.findById(req.user.profile)
+  .then(profile =>{
+    Activity.findByIdAndUpdate(req.params.id, req.body, { new:true })
+    .then(() =>{
+      res.json(profile)
+    })
   })
-
+  
+  // .then((activity) => {
+  //   res.status(200)
+  //   .json(activity)
+  // })
+  // )
 }
 
 function createActivity (req, res) {

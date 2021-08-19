@@ -12,7 +12,7 @@ class EditActivityForm extends Component {
    handleSubmit = e => {
     e.preventDefault();
     this.props.handleUpdateActivity(this.state.formData);
-    console.log("this is history", this.props)
+    //console.log("this is history", this.props)
     //this.props.history.push('/addActivity')
   };
 
@@ -36,7 +36,7 @@ class EditActivityForm extends Component {
         >
           <div className="form-group">
             <label>Selected Activity: {this.state.formData.name}</label><br />
-            <label>Previously Scheduled at: {this.state.formData.scheduledDate}</label><br />
+            <label>Previously Scheduled at: {this.props.location.state.activity.scheduledDate}</label><br />
             <input 
                 name="scheduledDate"
                 type="datetime-local"
@@ -54,20 +54,21 @@ class EditActivityForm extends Component {
             /> */}
     
           </div>
+          
           {/* <Link
             className='btn btn-sm btn-warning'
             to={{
                 pathname:'/addActivity',
             }}
             > Edit </Link> */}
-		  <button
+		      <button
             type="submit"
             className='btn btn-sm btn-warning'
             disabled={this.state.invalidForm}
           >
             Edit Date
           </button>
-        </form>
+          </form>
       </>
      );
   }

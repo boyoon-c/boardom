@@ -165,16 +165,10 @@ class App extends Component {
 	handleUpdateActivity = async activityId => {
 		const updatedActivity = await activityAPI.updateActivity(activityId);
 		console.log("This is updatedActivity", updatedActivity)
-		// const newActivitiesArray = this.state.activities.map(a => 
-		//   a._id === updatedActivity._id ? updatedActivity : a
-		// );
 		this.setState(
-		  //{activities: newActivitiesArray},
-		  {activities: updatedActivity},
-//		  () => this.props.history.push('/')
+		  {userProfile: updatedActivity},
 		);
 		this.props.history.push('/addActivity')
-
 	  }
 
 	  handleJoinGroupActivity = async (groupId, activityNo) => {
