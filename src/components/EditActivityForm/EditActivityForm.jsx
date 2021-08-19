@@ -13,6 +13,7 @@ class EditActivityForm extends Component {
     e.preventDefault();
     this.props.handleUpdateActivity(this.state.formData);
     console.log("this is history", this.props)
+    //this.props.history.push('/addActivity')
   };
 
   handleChange = e => {

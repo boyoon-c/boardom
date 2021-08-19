@@ -185,6 +185,7 @@ class App extends Component {
 		}
 		this.handleGetAllGroups()
 		this.handleGetAllMessages()
+		
 		}
 
 	render() {
