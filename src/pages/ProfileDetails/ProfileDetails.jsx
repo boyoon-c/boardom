@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UserCard from '../../components/UserCard/UserCard'
 import { friend, getUserProfile } from "../../services/userService"
 import * as profileService from "../../services/profileService"
+import block1 from '../../images/block1.png';
+import "./ProfileDetails.css"
 
 
 class ProfileDetails extends Component {
@@ -36,11 +38,32 @@ class ProfileDetails extends Component {
   render () {
     return (
           <>
-      <h1>{this.state.profile?.name}'s Profile</h1>
+          
+      <h1
+        style={{
+          fontSize: 50,
+          textAlign: 'center',
+      }}
+      >{this.state.profile?.name}'s Profile!</h1>
+                      <div class="center-image">
+                      <img 
+                style={{
+                    height: 300,
+                    width: 300,
+                    borderRadius: 200,
+                    borderWidth: 5,
+                    borderColor: 'black',
+                    backgroundColor: '#7cebdc'
+                  }}
+                src={block1} alt="block" class="block"/> 
+</div>
+         <br></br> 
       <h1>Friends List:</h1>
+      <br></br>
       {this.state.profile?.friends?.map(friend =>{
         return(<h1>{friend.name}</h1>)
       })}
+      <br></br>
       <h1>{this.state.profile?.name}'s Solo Activities: </h1>
       
       <ul>
