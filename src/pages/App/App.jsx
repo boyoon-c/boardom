@@ -104,7 +104,7 @@ class App extends Component {
 	}
 	
 	handleAddActivity = async activity =>{
-		//console.log('before', activity)
+		console.log('this.state.formData', activity)
 		const updatedProfile = await activityAPI.addActivity(activity)
 		//console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})

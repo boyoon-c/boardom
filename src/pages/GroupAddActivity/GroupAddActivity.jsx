@@ -25,7 +25,7 @@ class GroupAddActivity extends Component {
 
    
 
-   handleChange= e=> {
+    handleChange= e=> {
     console.log('e.target1', e.target)
     const formData = {...this.state.formData, [e.target.name]: e.target.value}
 
@@ -53,7 +53,6 @@ class GroupAddActivity extends Component {
       this.props.handleAddGroupActivity(this.state.formData, this.state.group)
       this.props.history.push('/')
     }  
-    
 } 
 
 //   handleSubmit2=(e)=>{
@@ -66,6 +65,7 @@ class GroupAddActivity extends Component {
 //     });
 //     console.log('AFTER FORMDATA', this.state.formData)
 //   }
+
   render() { 
 
     console.log("searchResult", this.state.searchResults)
@@ -97,6 +97,7 @@ class GroupAddActivity extends Component {
         </select>
 
         {/* <h3>Number of participants</h3> */}
+        
         <select
         name="participants"
         value={this.state.formData.participants}
@@ -116,7 +117,6 @@ class GroupAddActivity extends Component {
         </button>
       </form>
       <h4>Search Results</h4>
-      {console.log("this.state.formData.activity", this.state.formData.activity)}
       {this.state.formData.activity ? <div>{this.state.formData.activity}</div>: <p>No matching search results</p> }     
      
       <form ref={this.formRef} onSubmit={this.handleGroupSubmit}>

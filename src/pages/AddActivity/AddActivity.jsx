@@ -11,7 +11,7 @@ class AddActivity extends Component {
     formData: {
       name:'',
       type:'',
-      participants: null,
+      participants: 1,
       key: null,
       scheduledDate: null,
       //scheduledTime: Date,
@@ -44,7 +44,8 @@ class AddActivity extends Component {
   }
 
   handleSubmit2=(e)=>{
-    //e.preventDefault()
+    e.preventDefault()
+    
     let updatedForm = {...this.state.formData, key: e.target.key.value}
     updatedForm = {...updatedForm, name: e.target.name.value}
     updatedForm = {...updatedForm, type: e.target.type.value}
@@ -83,7 +84,7 @@ class AddActivity extends Component {
           <option value="busywork">busywork</option>
         </select>
 
-        <h3>Number of participants</h3>
+        {/* <h3>Number of participants</h3>
         <select
         name="participants"
         value={this.state.formData.participants}
@@ -96,7 +97,7 @@ class AddActivity extends Component {
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-        </select><br />
+        </select><br /> */}
  
         <button type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
