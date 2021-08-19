@@ -60,7 +60,10 @@ class App extends Component {
 	handleCreateGroup = async newGroupData => {
 		const newGroup = await groupAPI.createGroup(newGroupData)
 		console.log("handleCreateGroup new group", newGroup)
-		this.setState ({ userProfile: newGroup }) // not sure what to set new group
+		this.setState ({ userProfile: newGroup }) //chitra changed this 8/19 in the morning
+		//this.setState ({ groups: newGroup }) //this one broke group state
+		this.props.history.push('/grouplist')
+		
 	}
 
 	handleAddFriend = async friendId => {
