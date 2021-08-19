@@ -18,7 +18,7 @@ const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
         <h1>{group.name}</h1>
       </Link>
               
-              <button onClick={() => handleJoin(group._id)}>Become a member of {group.name}!</button> 
+              <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" onClick={() => handleJoin(group._id)}>Become a member of {group.name}!</button> 
            </div> 
            }
             
@@ -33,7 +33,7 @@ const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
       >
         <h1>{group.name}</h1>
       </Link>
-      <button onClick={() => handleLeaveGroup(group._id)}>Leave {group.name}.</button> 
+      <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" onClick={() => handleLeaveGroup(group._id)}>Leave {group.name}.</button> 
       </div>
       }   
     </>

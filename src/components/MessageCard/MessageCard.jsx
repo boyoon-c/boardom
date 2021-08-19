@@ -10,7 +10,7 @@ const MessageCard = ({message, handleDeleteMessage, idx, userProfile}) => {
       { (userProfile?._id === message.author._id) && 
             <div>
     
-    <button onClick={() => handleDeleteMessage(message._id)}>REMOVE</button>   
+    <button className="btn-sm btn-primary" onClick={() => handleDeleteMessage(message._id)}>REMOVE</button>   
     { <Link
        className='btn btn-sm btn-warning'
        to={{
