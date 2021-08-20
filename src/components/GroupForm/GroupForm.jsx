@@ -28,49 +28,44 @@ class GroupForm extends Component {
     const { name, description } = this.state.formData 
     return ( 
       <>
-     <div class="container mx-auto h-full flex flex-1 justify-center items-center">
-      <form
-        ref={this.formRef}
-        onSubmit={this.handleSubmit}
-      >
-        <h4>Name of group:</h4>
-        <div class="w-full max-w-lg">
-          <input 
-          class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-            type="text"
-            name="name"
-            value={this.state.formData.name}
-            onChange={this.handleChange}
-            required
-          /> 
-          <br />
-          <h4>Description:</h4>
-          <input
-            class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-            type="text"
-            name="description"
-            value={this.state.formData.description}
-            onChange={this.handleChange}
-            required
-          />
-        <div class="">
-          <button
-            type="submit"
-            disabled={this.state.invalidForm}
-            class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
+     <div class="mx-auto flex items-center">
+       <div class="container mx-auto p-9 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
+          <div class="py-12 p-10 bg-white rounded-xl">
+            <form
+              ref={this.formRef}
+              onSubmit={this.handleSubmit}
             >
-            create
-          </button>
-          </div>  
-        </div>
+              <h4>Name of group:</h4>
+              <div class="w-full max-w-lg">
+                <input 
+                  class="border bg-gray-100 py-2 px-4 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded" placeholder="Your Group Name"            type="text"
+                  name="name"
+                  value={this.state.formData.name}
+                  onChange={this.handleChange}
+                  required
+                /> 
+                <br />
+                <h4>Description:</h4>
+                <input
+                  class="border bg-gray-100 py-2 px-4 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded" placeholder="Your Group Description"            type="text"
+                  name="description"
+                  value={this.state.formData.description}
+                  onChange={this.handleChange}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={this.state.invalidForm}
+                  class="w-full mt-6 text-indigo-50 font-bold bg-indigo-600 py-3 rounded-md hover:bg-indigo-500 transition duration-300"            >
+                  create
+                </button>
+          
+              </div>
          
-      </form>
-      </div>
-
-
-
-
-
+            </form>
+          </div>
+     </div>
+</div>
       </>
      );
   }
