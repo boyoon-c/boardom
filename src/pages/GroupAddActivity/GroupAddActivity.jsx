@@ -75,12 +75,7 @@ class GroupAddActivity extends Component {
     return ( 
       <>
       <main className='fs-6 m-5'>
-      <h3
-      style={{
-        fontSize: 50,
-        textAlign: 'center',
-    }}
-      >Add activity and join a group</h3>
+      <div className="d-flex flex-column bd-highlight mb-3 justify-content-center text-center">
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <h3>What activity is your group interested in?</h3>
         <select 
@@ -160,32 +155,10 @@ class GroupAddActivity extends Component {
           </select>
           <button className="btn-sm btn-dark">Enter</button>
       </form>
-      {/* <button 
-        type="submit"
-        onClick={()=>this.props.handleAddGroupActivity(this.state.formData)}
-        >
-          Add Activity
-      </button> */}
 
-      {/* <h3>Your Activity:</h3>
-      {this.props.userProfile?.activities?.map(activity=>
-        <>
-        <p>{activity.name} scheduled at {activity.scheduledDate} </p>  */}
-        {/* <button 
-        type="submit"
-        onClick={()=>this.props.handleRemoveActivity(activity._id)}>
-          DELETE
-        </button> */}
-        {/* <Link
-              className='btn btn-sm btn-warning'
-              to={{
-              pathname: `/editActivity/${activity._id}`,
-              state: {activity}
-              }}
-          >EDIT</Link> */}
-        {/* </>
-      )} */}
 
+
+        </div>
       </main>
       </>
      );
