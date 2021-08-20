@@ -27,13 +27,12 @@ ABC considers the time of our users a top priority. We want to make sure that ou
 
 
 ## Technologies Used
-- React
+- React.js
 - Tailwind
 - Node.js v 14.17.1 & Express v 4.17.1
-- dot env
 - MongoDB
 - Mongoose
-- JWT Web Token
+- JWT Web Token Authentication
 - Bcrypt
 - CSS
 - Javascript
