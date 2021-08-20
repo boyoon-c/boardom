@@ -39,6 +39,7 @@ Boardom is an app that will generate a random activity for you to do solo or in 
 - CSS
 - Javascript
 - Bootstrap
+- AJAX
 
 ## Next Steps
 - Access a users profile and view completed activities.
