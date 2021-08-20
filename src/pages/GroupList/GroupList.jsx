@@ -17,7 +17,12 @@ class GroupList extends Component {
   render() { 
     return (
       <>
-        <h1>All available groups</h1>
+        <h1
+        style={{
+          fontSize: 50,
+          textAlign: 'center',
+      }}
+        >All available groups</h1>
         {this.props.groups.map(group => 
           <GroupCard
             group={group}

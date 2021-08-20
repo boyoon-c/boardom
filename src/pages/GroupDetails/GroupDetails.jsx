@@ -54,10 +54,13 @@ formRef=React.createRef()
               </div>
               <br></br>
               <h1>{this.state.group?.name}s' members List:</h1>
+              <br></br>
               {this.state.group?.members?.map(members =>{
                 return(<h1>{members.name}</h1>)
               })}
+              <br></br>
               <h1>{this.state.group?.name}'s Activities: </h1>
+              <br></br>
               {this.state.group?.activities?.map((activity,idx)=>{
         return(
           <>

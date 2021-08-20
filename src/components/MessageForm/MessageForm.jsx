@@ -43,6 +43,7 @@ class MessagePost extends Component {
           placeholder="enter message post"
           required
         />
+       
          <button
          class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
           type="submit"

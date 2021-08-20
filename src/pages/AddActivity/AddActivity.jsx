@@ -58,7 +58,12 @@ class AddActivity extends Component {
     return ( 
       <>
       <main className='fs-6 m-5'>
-      <h2>Add activity</h2>
+      <h2
+      style={{
+        fontSize: 50,
+        textAlign: 'center',
+    }}
+      >Add activity</h2>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <h3>Activity type:</h3>
         <select 

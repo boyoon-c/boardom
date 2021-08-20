@@ -65,9 +65,11 @@ class ProfileDetails extends Component {
       })}
       <br></br>
       <h1>{this.state.profile?.name}'s Solo Activities: </h1>
+      <br></br>
       
       <ul>
       {this.state.profile?.activities?.map(activity=>{
+        <br></br>
         return(
           <>
           <li>{activity.name}
@@ -89,6 +91,7 @@ class ProfileDetails extends Component {
                   <>
                   <h1>{group.name}</h1>
                   <ul> 
+                    <br></br>
                   {group.activities?.map(activity => 
                     <li>{activity.name}</li>
                     )}

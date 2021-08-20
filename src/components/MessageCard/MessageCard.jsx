@@ -5,8 +5,9 @@ const MessageCard = ({message, handleDeleteMessage, idx, userProfile}) => {
   return ( 
 
 <>
+    <h3 key={idx}>{message.author?.name}:</h3>
     <h3 key={idx}>{message.body}</h3>
-    <h3 key={idx}>{message.author?.name}</h3>  
+    <br></br>
       { (userProfile?._id === message.author._id) && 
             <div>
     

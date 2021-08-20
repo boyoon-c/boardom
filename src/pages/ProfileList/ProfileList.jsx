@@ -17,7 +17,12 @@ state = {
   render() { 
     return (
       <>
-        <h1>All available profiles</h1>
+        <h1
+        style={{
+          fontSize: 50,
+          textAlign: 'center',
+      }}
+        >All available profiles</h1>
         {this.state.users.map(user => 
           <UserCard
             user={user}
