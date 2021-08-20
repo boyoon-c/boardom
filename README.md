@@ -48,6 +48,9 @@ ABC considers the time of our users a top priority. We want to make sure that ou
 - Recommend activities
 
 ## Resources
+- 
 
-## Special Thanks!
-- To the instructors
+## Shoutouts!
+- To the instructors! and all the peers(mostly Blake and Big Nick) that assisted us and gave suggestions along the way!
+- I didn't forget about you either TA Squad.
+- 
