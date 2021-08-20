@@ -22,7 +22,7 @@ state = {
       <>
         <h1>All available profiles</h1>
         <section class="container px-6 py-4 mx-auto">
-          <div class="grid gap-6 mb-8 md:grid-cols-1 lg:grid-cols-3">
+          <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-3">
         {this.state.users.map(user => 
           <UserCard
             user={user}

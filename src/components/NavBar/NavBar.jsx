@@ -14,7 +14,6 @@ const NavBar = ({ user, handleLogout }) => {
 						<ul className="nav-header">
 							<Link to="/">Home</Link>
 							<Link to="/about">About</Link>
-							<Link to="/calendar">Calendar</Link>
 							<Link to="/group">Create Group</Link>
 							<Link to="/grouplist">Grouplist</Link>
 							<Link to={`/profile/${user.profile}`}>Profile Details</Link>
