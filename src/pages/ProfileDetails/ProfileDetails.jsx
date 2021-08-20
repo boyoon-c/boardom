@@ -11,7 +11,6 @@ class ProfileDetails extends Component {
     state = {
         profile: {},
         formData:{
-            //profile: '',
             activityId: '',
             date: '',
             time: ''

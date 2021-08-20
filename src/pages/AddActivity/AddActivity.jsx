@@ -80,7 +80,7 @@ class AddActivity extends Component {
           <option value="busywork">busywork</option>
         </select>
         </div>
-        <button class="text-sm px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" type="submit" disabled={this.state.invalidForm}>
+        <button class="btn-sm btn-dark" type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
       </form>
@@ -122,7 +122,7 @@ class AddActivity extends Component {
           />
           </div>
           <div className="p-2 bd-highlight text-center">
-          <button class="text-sm px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded">Enter</button>
+          <button class="btn-sm btn-dark">Enter</button>
           </div>
       </form>
       <div className="p-2 bd-highlight text-center">

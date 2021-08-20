@@ -29,13 +29,12 @@ Boardom is an app that will generate a random activity for you to do solo or in 
 
 
 ## Technologies Used
-- React
+- React.js
 - Tailwind
 - Node.js v 14.17.1 & Express v 4.17.1
-- dot env
 - MongoDB
 - Mongoose
-- JWT Web Token
+- JWT Web Token Authentication
 - Bcrypt
 - CSS
 - Javascript
