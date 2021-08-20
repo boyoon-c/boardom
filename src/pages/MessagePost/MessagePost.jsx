@@ -6,9 +6,6 @@ import MessageCard from '../../components/MessageCard/MessageCard';
 
 
 class MessagePost extends Component {
-  // state = { 
-
-  //  }
   
   render() { 
     return ( 
@@ -16,7 +13,7 @@ class MessagePost extends Component {
       <div class="desc">
         <h2>Messages Post:</h2>
       </div>  
-<br></br>
+        <br></br>
         {this.props.messages?.map((message, idx) => 
            <div class="mb-3">
            <MessageCard 
