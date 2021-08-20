@@ -83,6 +83,7 @@ class GroupAddActivity extends Component {
           name="type"
           onChange={this.handleChange}
           required
+          className="mr-2"
           //default="social"
           >
           <option value="">Please select activity type</option>
@@ -105,14 +106,13 @@ class GroupAddActivity extends Component {
         required
         >
           <option value="">Select number of participants</option>
-          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
         </select><br />
  
-        <button className="btn-sm btn-dark" type="submit" disabled={this.state.invalidForm}>
+        <button className="btn btn-sm btn-outline-secondary mt-2" type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
       </form>
@@ -153,7 +153,7 @@ class GroupAddActivity extends Component {
             </option>)}
               {/* <option value={this.props.groups[0].id}>{this.props.groups[0].name}</option> */}
           </select>
-          <button className="btn-sm btn-dark">Enter</button>
+          <button className="ml-2 btn btn-sm btn-outline-secondary">Enter</button>
       </form>
 
 
