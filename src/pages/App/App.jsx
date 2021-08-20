@@ -62,6 +62,7 @@ class App extends Component {
 		console.log("handleCreateGroup new group", newGroup)
 		this.setState ({ userProfile: newGroup }) //chitra changed this 8/19 in the morning
 		//this.setState ({ groups: newGroup }) //this one broke group state
+		this.handleGetAllGroups()
 		this.props.history.push('/grouplist')
 		
 	}

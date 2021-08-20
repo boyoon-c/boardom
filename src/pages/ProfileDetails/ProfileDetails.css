@@ -1,0 +1,13 @@
+.center-image{
+    display:flex;
+    justify-content:center; /* horizontally center */
+    align-items:center;    /* vertically center */
+    
+}
+
+.desc{
+    display:flex;
+    justify-content:center; /* horizontally center */
+    align-items:center;    /* vertically center */
+ 
+}
