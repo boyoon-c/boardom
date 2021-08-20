@@ -80,19 +80,19 @@ class AddActivity extends Component {
           <option value="busywork">busywork</option>
         </select>
         </div>
-        <button class="btn-sm btn-dark" type="submit" disabled={this.state.invalidForm}>
+        <button className="btn btn-sm btn-outline-secondary" type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
       </form>
 
 
       <div className="fs-6 p-2 bd-highlight">
-      <h3>Search Results</h3>
-        <div>{this.state.searchResults.activity}</div>
+      <h4>Search Results</h4>
+        {this.state.searchResults.activity ? <div>{this.state.searchResults.activity}</div> : <p>No matching search results</p>}
       </div>
         </div>
       <form className="fs-6" ref={this.formRef} onSubmit={this.handleSubmit2}>
-      <div className="fs-5 p-0 bd-highlight text-center">
+      <div className="fs-5 -mt-6 bd-highlight text-center">
         Choose Date!
       </div>
       <div className="p-2 bd-highlight text-center">
@@ -122,14 +122,14 @@ class AddActivity extends Component {
           />
           </div>
           <div className="p-2 bd-highlight text-center">
-          <button class="btn-sm btn-dark">Enter</button>
+          <button class="btn btn-sm btn-outline-secondary">Enter</button>
           </div>
       </form>
       <div className="p-2 bd-highlight text-center">
 
       <button 
         type="submit"
-        className="btn-sm btn-primary"
+        className="btn btn-sm btn-outline-secondary"
         onClick={()=>this.props.handleAddActivity(this.state.formData)}
         >
           Now add it to your collection!
