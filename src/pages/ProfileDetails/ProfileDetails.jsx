@@ -88,7 +88,7 @@ class ProfileDetails extends Component {
       </ul>
       </div>
 
-      <h1>{this.state.profile.name}'s Group Activities: </h1>
+      <h1>{this.state.profile.name}'s Groups: </h1>
       <div class=" mx-auto bg-white rounded-xl shadow-lg align overflow-hidden md:box-content">
               {this.state.profile.groups?.map(group=>{ 
                 return(
@@ -96,6 +96,7 @@ class ProfileDetails extends Component {
                   <h1>{group.name}</h1>
                   <ul> 
                     <br></br>
+                    <h4>Activities:</h4>
                   {group.activities?.map(activity => 
                     <li>{activity.name}</li>
                     )}
