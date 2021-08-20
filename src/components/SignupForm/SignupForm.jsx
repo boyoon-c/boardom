@@ -43,9 +43,14 @@ class SignupForm extends Component {
         onSubmit={this.handleSubmit}
         className={styles.container}
       >
-        <div className={styles.inputContainer}>
-          <label htmlFor="name" className={styles.label}>
-            Name
+      <div class="container text-sm mx-auto max-w-md ">
+        <div class="p-1 bg-white rounded-xl py-3">
+          <div class="m-3 fs-4 text-center">
+            Sign up
+          </div>
+          <div class="mb-6">      
+          <label htmlFor="name" class="ml-4 text-sm mr-4 font-bold inline-block mb-1">
+                Name
           </label>
           <input
             type="text"
@@ -54,10 +59,11 @@ class SignupForm extends Component {
             value={name}
             name="name"
             onChange={this.handleChange}
+            class="border bg-gray-100 py-2 px-4 outline-none focus:ring-2 focus:ring-indigo-400 rounded"
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="email" className={styles.label}>Email</label>
+          <label htmlFor="email" class="ml-4 mr-4 font-bold inline-block mb-2">Email</label>
           <input
             type="text"
             autoComplete="off"
@@ -65,10 +71,12 @@ class SignupForm extends Component {
             value={email}
             name="email"
             onChange={this.handleChange}
+            class="border bg-gray-100 py-2 px-4 outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="password" className={styles.label}>Password</label>
+          <label htmlFor="password" class="ml-4 mr-4 font-bold inline-block mb-2">Password</label>
           <input
             type="password"
             autoComplete="off"
@@ -76,10 +84,12 @@ class SignupForm extends Component {
             value={password}
             name="password"
             onChange={this.handleChange}
+            class="border bg-gray-100 py-2 px-4 ml outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="confirm" className={styles.label}>Confirm Password</label>
+          <label htmlFor="confirm" class="ml-4 mr-4 font-bold inline-block mb-2">Confirm Password</label>
           <input
             type="password"
             autoComplete="off"
@@ -87,14 +97,19 @@ class SignupForm extends Component {
             value={passwordConf}
             name="passwordConf"
             onChange={this.handleChange}
+            class="border bg-gray-100 py-2 px-4  outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+
           />
         </div>
-        <div className={styles.inputContainer}>
-          <button disabled={this.isFormInvalid()} className={styles.button}>Sign Up</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
+        <div className="inline-block">
+          <button disabled={this.isFormInvalid()} class="w-40 text-indigo-50 font-bold bg-indigo-600 ml-5 py-2 rounded-md hover:bg-indigo-500 transition duration-300">Sign Up</button>
+          
+            <a href='/'>
+            <button class="w-40 text-indigo-50 font-bold bg-yellow-600 py-2 rounded-md hover:bg-indigo-500 transition duration-300">Cancel</button>
+            </a>
         </div>
+      </div>
+      </div>
       </form>
     )
   }

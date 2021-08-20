@@ -54,11 +54,7 @@ class AddActivity extends Component {
     this.props.history.push('/addActivity')
   }
   render() { 
-
-    console.log("searchResult", this.state.searchResults)
-    console.log("props", this.props)
-    console.log('userProfile', this.props.userProfile)
-    
+   
     return ( 
       <>
       <main className='fs-6 m-5'>
