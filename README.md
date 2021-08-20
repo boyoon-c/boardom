@@ -25,9 +25,9 @@ Boardom is an app that will generate a random activity for you to do solo or in 
 - [Wireframes](https://wireframe.cc/T3bcE5)
 
 ## Screenshot(s)
-![Screenshot 1](https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001/1200)
-![Screenshot 2](https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)
-![Screenshot 3](https://i.natgeofe.com/n/6f9b6d9e-5797-4867-a859-7b0c2a66cd3b/02-bird-of-paradise-A012_C010_1029SF_0001575.jpg)
+![Screenshot 1](https://i.imgur.com/iR6AKfk.png)
+![Screenshot 2](https://i.imgur.com/sxb3ZVV.png)
+![Screenshot 3](https://i.imgur.com/Jno1sP0.png)
 
 
 ## Technologies Used
@@ -51,20 +51,18 @@ Boardom is an app that will generate a random activity for you to do solo or in 
 - Be able to send email notifications for even invites
 - Recommend activities
 
-## Resources
-- 
-
 ## Shoutouts!
 - To the instructors! and all the peers(mostly Blake and Big Nick) that assisted us and gave suggestions along the way!
 - I didn't forget about you either TA Squad.
+- Also Thiago is the man, he has helped us so much! He spent so much time with our group personally that he might as well had been a member. It's sad to see you go but Good luck with your future endeavours.
 
 ## About Us
 ### Avis L. Nesbitt Jr
-Avis is based out of Maryland, a future Software Engineer , and beacon of hope in the bird community.
+Avis is from Maryland, a future Software Engineer , and beacon of hope in the bird community. He is really into listening to sad music on long jogs to metaphorically run away from his emotions.
 Check out his [LinkedIn](https://www.linkedin.com/in/avisnesbittjr/) and [GitHub!](https://github.com/avisjrjr)
 
 ### Boyoon Chang
-![Screenshot 2](https://pbs.twimg.com/profile_images/378800000090674240/f132e89a329f8c62a2a53ed1122f5c58.jpeg)
+Boyoon (Bo) is based out of Seoul, Korea, currently lives in Eugene, Oregon. She’s an occassional swimmer and likes electric dance music. Check out her [LinkedIn](https://www.linkedin.com/in/boyoon-chang/) and [Github!](https://github.com/boyoon-c)
 
 ### Chitra Son
-![Screenshot 3](https://i.pinimg.com/474x/67/55/ab/6755ab1a95a5de85dafae71b007ba884.jpg)
+Chitra is an aspiring Software Developer that is based out of New Hampshire. Checkout his work pieces and experience at [GitHub](https://github.com/chitrason) and [LinkedIn!](https://www.linkedin.com/in/chitrason/)
