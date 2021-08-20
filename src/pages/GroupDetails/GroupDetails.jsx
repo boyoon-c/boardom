@@ -45,7 +45,7 @@ formRef=React.createRef()
                     backgroundColor: '#7cebdc'
                   }}
                 src={blerd} alt="block" class="block"/> 
-</div>
+              </div>
 
               {/* <h1>{this.state.group?.name}'s Description:</h1> */}
               <br></br>
@@ -53,52 +53,72 @@ formRef=React.createRef()
               <h3>"{this.state.group.description}"</h3>
               </div>
               <br></br>
-              <h1>{this.state.group?.name}s' members List:</h1>
-              <br></br>
-              <div class=" mx-auto bg-white rounded-xl shadow-lg align overflow-hidden md:box-content">
+              <div className="d-flex fs-3 flex-column bd-highlight mb-3 justify-content-center text-center">{this.state.group?.name}s' member list:</div>
+              <section class="container px-6 py-4 mx-auto">
+              <div class="grid gap-6 mb-8 md:grid-cols-4 lg:grid-cols-6">
+
               {this.state.group?.members?.map(members =>{
-                return(<h1>{members.name}</h1>)
+                   
+              
+                return(
+                  <div class="flex w-30 mb-2 py-2 px-2 items-center p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
+                  <div id="body" class="flex flex-col ml-5">
+                {members.name}
+                </div>
+                </div>)
+                
               })}
               </div>
-              <br></br>
-              <h1>{this.state.group?.name}'s Activities: </h1>
-              <br></br>
-              <div class=" mx-auto bg-white rounded-xl shadow-lg align overflow-hidden md:box-content">
+              </section>
+
+
+              <div className="d-flex fs-3 flex-column bd-highlight mb-3 justify-content-center text-center">
+                {this.state.group?.name}'s Activities: 
+              </div>
+              <section class="container px-6 py-4 mx-auto">
+              <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-6">
+
               {this.state.group?.activities?.map((activity,idx)=>{
-        return(
-          <>
-        <p>Name: "{activity.name}", Type: "{activity.type}" </p>
-        <Link
-        to={{
-          pathname: `/group/${this.state.group._id}`,
-          // state: this.props.group.activities
-        }}>
-          {console.log('activity', activity)}
+              return(
+                <>
+                <div class="flex w-30 mb-2 py-2 px-2 items-center p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
+                <div id="body" class="flex flex-col ml-2">
 
-          <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
-          onClick={()=> this.props.handleJoinGroupActivity(this.state.group._id, activity.activityNo)
-          }>
-              Join
-            </button>
+              {activity.name}
+              <p>Activity type: {activity.type} </p>
+              <Link
+              to={{
+                pathname: `/group/${this.state.group._id}`,
+                // state: this.props.group.activities
+                }}>
+                {console.log('activity', activity)}
 
-          {/* <form 
-          ref={this.formRef}
-          onSubmit={()=> this.props.handleJoinGroupActivity(this.state.group._id)}>
-          <input 
-          idx={idx}
-          name='key' 
-          type="hidden" 
-          value={activity.key}/>
-          <button >
-              Join
-            </button>
-          </form> */}
-          
-        </Link>
-</>
-        )
-      })}
-      </div>
+                <button class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
+                onClick={()=> this.props.handleJoinGroupActivity(this.state.group._id, activity.activityNo)
+                }>
+                    Join
+                </button>
+                </Link>
+                </div>
+                </div>
+                {/* <form 
+                ref={this.formRef}
+                onSubmit={()=> this.props.handleJoinGroupActivity(this.state.group._id)}>
+                <input 
+                idx={idx}
+                name='key' 
+                type="hidden" 
+                value={activity.key}/>
+                <button >
+                    Join
+                  </button>
+                </form> */}
+                
+                </>
+              )
+            })}
+          </div>
+          </section>
           </>
         );
     }
