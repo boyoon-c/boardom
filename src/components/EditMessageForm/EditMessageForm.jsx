@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class EditMessageForm extends Component {
   state = { 
     invalidForm: false,
-    formData: this.props.location.state.message //check on this
+    formData: this.props.location.state.message
    }
 
    formRef = React.createRef()
