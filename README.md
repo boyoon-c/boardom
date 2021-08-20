@@ -10,8 +10,10 @@ ABC considers the time of our users a top priority. We want to make sure that ou
 
 ## Description 
 
+Boardom is an app that will generate a random activity for you to do solo or in a group. You can choose from 9 different activity types. The activity types are: education, recreational, social, diy, cooking, relaxation, music and busywork. 
+
 ## You can find the app at:
-- [Heroku host site](https://boardom.herokuapp.com/)
+- [Heroku](https://boardom.herokuapp.com/)
 - [Github Repo](https://github.com/avisjrjr/boardom)
 
 
@@ -52,4 +54,14 @@ ABC considers the time of our users a top priority. We want to make sure that ou
 ## Shoutouts!
 - To the instructors! and all the peers(mostly Blake and Big Nick) that assisted us and gave suggestions along the way!
 - I didn't forget about you either TA Squad.
-- 
+
+## About Us
+### Avis L. Nesbitt Jr
+Avis is based out of Maryland, a future Software Engineer , and beacon of hope in the bird community.
+Check out his [LinkedIn](https://www.linkedin.com/in/avisnesbittjr/) and [GitHub!](https://github.com/avisjrjr)
+
+### Boyoon Chang
+![Screenshot 2](https://pbs.twimg.com/profile_images/378800000090674240/f132e89a329f8c62a2a53ed1122f5c58.jpeg)
+
+### Chitra Son
+![Screenshot 3](https://i.pinimg.com/474x/67/55/ab/6755ab1a95a5de85dafae71b007ba884.jpg)
