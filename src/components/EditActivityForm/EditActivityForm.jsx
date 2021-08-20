@@ -28,6 +28,8 @@ class EditActivityForm extends Component {
     //const { body } = this.state.formData
     return ( 
       <>
+      <div className="d-flex flex-column bd-highlight mb-3 justify-content-center text-center">
+
         <h1>Edit Activity Schedule</h1>
         <form 
             ref={this.formRef}
@@ -55,12 +57,6 @@ class EditActivityForm extends Component {
     
           </div>
           
-          {/* <Link
-            className='btn btn-sm btn-warning'
-            to={{
-                pathname:'/addActivity',
-            }}
-            > Edit </Link> */}
 		      <button
             type="submit"
             className='btn btn-sm btn-warning'
@@ -69,6 +65,7 @@ class EditActivityForm extends Component {
             Edit Date
           </button>
           </form>
+          </div>
       </>
      );
   }
