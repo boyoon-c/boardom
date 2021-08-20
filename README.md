@@ -10,6 +10,8 @@ ABC considers the time of our users a top priority. We want to make sure that ou
 
 ## Description 
 
+2020 happened, and we learned a lesson from it. One of the things that we have learned and are continuing to learn from the pandemic is how to cope with boredom and this app could be one of the answers to solving it. Whether an essential worker or not, many of us have most likely experienced physical or mental burn out. Working overtime, working from home or even just being stuck at home, you have probably  faced boredom 
+
 Boardom is an app that will generate a random activity for you to do solo or in a group. You can choose from 9 different activity types. The activity types are: education, recreational, social, diy, cooking, relaxation, music and busywork. 
 
 ## You can find the app at:
