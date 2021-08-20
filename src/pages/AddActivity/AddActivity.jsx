@@ -60,7 +60,7 @@ class AddActivity extends Component {
       <main className=''>
         <div className="d-flex flex-column bd-highlight mb-3 justify-content-center text-center">
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
-        <div className="p-2 bd-highlight">
+        <div className="-mt-4 bd-highlight">
         <h3>Activity type</h3>
         <select 
           value={this.state.formData.type} 
@@ -80,7 +80,7 @@ class AddActivity extends Component {
           <option value="busywork">busywork</option>
         </select>
         </div>
-        <button className="btn btn-sm btn-outline-secondary" type="submit" disabled={this.state.invalidForm}>
+        <button className="btn btn-sm btn-outline-secondary mt-1 ml-4" type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
       </form>

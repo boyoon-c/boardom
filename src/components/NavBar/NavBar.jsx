@@ -11,7 +11,7 @@ const NavBar = ({ user, handleLogout }) => {
 						<main className="fs-4">
 							Welcome, {user.name} 
 						</main>
-						<ul className="nav-header">
+						<div className="nav-header">
 							<Link to="/">Home</Link>
 							<Link to="/about">About</Link>
 							<Link to="/group">Create Group</Link>
@@ -20,7 +20,7 @@ const NavBar = ({ user, handleLogout }) => {
 							<Link to="/profileList">User List</Link>
 							<Link to="/messagePost">Message Board</Link>
 							<Link to='' onClick={handleLogout}>LOG OUT</Link>
-						</ul>
+						</div>
 					</div>
 				</nav>
 			) : (
