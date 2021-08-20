@@ -1,6 +1,4 @@
-nav {
-    color: fuchsia;
-}
+
 .nav {
     /* min-height: 100vh; */
     display: grid;
@@ -31,3 +29,7 @@ nav {
     margin-bottom: 5vmin;
   }
   
+  .nav-header :hover {
+    color: black;
+    background-color: #5DB7DE;
+  }

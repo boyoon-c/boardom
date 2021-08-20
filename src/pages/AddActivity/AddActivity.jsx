@@ -18,9 +18,8 @@ class AddActivity extends Component {
     },
     searchResults:{}
     }
-    //this.handleChange=this.handleChange.bind(this)
-    //this.handleSubmit=this.handleSubmit.bind(this)
   }
+
    formRef=React.createRef()
 
    handleChange= e=> {
@@ -55,11 +54,7 @@ class AddActivity extends Component {
     this.props.history.push('/addActivity')
   }
   render() { 
-
-    console.log("searchResult", this.state.searchResults)
-    console.log("props", this.props)
-    console.log('userProfile', this.props.userProfile)
-    
+   
     return ( 
       <>
       <main className='fs-6 m-5'>
@@ -84,21 +79,6 @@ class AddActivity extends Component {
           <option value="busywork">busywork</option>
         </select>
 
-        {/* <h3>Number of participants</h3>
-        <select
-        name="participants"
-        value={this.state.formData.participants}
-        onChange={this.handleChange}
-        required
-        >
-          <option value="">Select number of participants</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select><br /> */}
- 
         <button type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
@@ -110,10 +90,10 @@ class AddActivity extends Component {
       <form ref={this.formRef} onSubmit={this.handleSubmit2}>
         
         <input 
-          name="name"
-          value={this.state.searchResults.activity}
-          type="hidden"
-        />
+            name="name"
+            value={this.state.searchResults.activity}
+            type="hidden"
+          />
 
         <input 
               name="scheduledDate"
@@ -121,13 +101,7 @@ class AddActivity extends Component {
               value={this.state.formData.scheduledDate}
               onChange={this.handleChange}
             />
-          {/* <input 
-            name="scheduledTime"
-            value={this.state.formData.scheduledTime}
-            type="time"
-            onChange={this.handleChange}
-          /> */}
-          
+                
           <input
             name="type"
             value={this.state.searchResults.type}
@@ -140,18 +114,50 @@ class AddActivity extends Component {
           />
           <button>Enter</button>
       </form>
-      {/* {console.log("BEFORE CLICKING ADD ACTIVITY", this.state.formData)} */}
       
       <button 
         type="submit"
         className="btn-sm btn-primary"
-        //onClick={()=>this.props.handleAddActivity(this.state.searchResults)}
         onClick={()=>this.props.handleAddActivity(this.state.formData)}
         >
           Add Activity
       </button>
 
+
       <h3>Your Activity:</h3>
+      <div className="container-fluid full-width-div">
+      <div className="row justify-content-md-center row-cols-sm-1 ">
+      {this.props.userProfile?.activities?.map(activity=>
+        <>
+        <div className="col">
+            <div className="card bg-light shadow-lg mb-3 mx-1" styleName="width:20em;height:40em; text-align: center">
+              <div className="card-body">
+              <div styleName="display: inline">
+        <div class="text-sm">{activity.name} scheduled at {activity.scheduledDate} </div> 
+        <button 
+        class="text-xs px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
+        type="submit"
+        onClick={()=>this.props.handleRemoveActivity(activity._id)}>
+          DELETE
+        </button>
+        <Link
+              class="text-xs px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded"
+              to={{
+              pathname: `/editActivity/${activity._id}`,
+              state: {activity}
+              }}
+          >EDIT</Link>
+          </div>
+          </div>
+          </div>
+          </div>
+        </>
+      )}
+      </div>
+      </div>
+
+      {/* <h3>Your Activity:</h3>
+
       {this.props.userProfile?.activities?.map(activity=>
         <>
         <p>{activity.name} scheduled at {activity.scheduledDate} </p> 
@@ -169,7 +175,7 @@ class AddActivity extends Component {
           >EDIT</Link>
         </>
       )}
-
+ */}
       </main>
       </>
      );
