@@ -60,14 +60,19 @@ class ProfileDetails extends Component {
          <br></br> 
       <h1>Friends List:</h1>
       <br></br>
+      <div class=" mx-auto bg-white rounded-xl shadow-lg align overflow-hidden md:box-content">
+
       {this.state.profile?.friends?.map(friend =>{
         return(<h1>{friend.name}</h1>)
       })}
       <br></br>
+      </div>
       <h1>{this.state.profile?.name}'s Solo Activities: </h1>
-      
+      <br></br>
+      <div class=" mx-auto bg-white rounded-xl shadow-lg align overflow-hidden md:box-content">
       <ul>
       {this.state.profile?.activities?.map(activity=>{
+        <br></br>
         return(
           <>
           <li>{activity.name}
@@ -82,13 +87,16 @@ class ProfileDetails extends Component {
         )
       })}
       </ul>
+      </div>
 
       <h1>{this.state.profile.name}'s Group Activities: </h1>
+      <div class=" mx-auto bg-white rounded-xl shadow-lg align overflow-hidden md:box-content">
               {this.state.profile.groups?.map(group=>{ 
                 return(
                   <>
                   <h1>{group.name}</h1>
                   <ul> 
+                    <br></br>
                   {group.activities?.map(activity => 
                     <li>{activity.name}</li>
                     )}
@@ -100,6 +108,7 @@ class ProfileDetails extends Component {
                   </>
                 )
               })}
+             </div> 
         </>
       )
     
