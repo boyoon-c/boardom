@@ -57,10 +57,11 @@ class AddActivity extends Component {
    
     return ( 
       <>
-      <main className='fs-6 m-5'>
-      <h2>Add activity</h2>
+      <main className=''>
+        <div className="d-flex flex-column bd-highlight mb-3 justify-content-center text-center">
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
-        <h3>Activity type:</h3>
+        <div className="p-2 bd-highlight">
+        <h3>Activity type</h3>
         <select 
           value={this.state.formData.type} 
           name="type"
@@ -78,17 +79,24 @@ class AddActivity extends Component {
           <option value="music">music</option>
           <option value="busywork">busywork</option>
         </select>
-
-        <button type="submit" disabled={this.state.invalidForm}>
+        </div>
+        <button class="text-sm px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" type="submit" disabled={this.state.invalidForm}>
           Random Activity Search
         </button>
       </form>
+
+
+      <div className="fs-6 p-2 bd-highlight">
       <h3>Search Results</h3>
         <div>{this.state.searchResults.activity}</div>
-     
-     
-      <form ref={this.formRef} onSubmit={this.handleSubmit2}>
-        
+      </div>
+        </div>
+      <form className="fs-6" ref={this.formRef} onSubmit={this.handleSubmit2}>
+      <div className="fs-5 p-0 bd-highlight text-center">
+        Choose Date!
+      </div>
+      <div className="p-2 bd-highlight text-center">
+
         <input 
             name="name"
             value={this.state.searchResults.activity}
@@ -112,24 +120,27 @@ class AddActivity extends Component {
             value={this.state.searchResults.key}
             type="hidden"
           />
-          <button>Enter</button>
+          </div>
+          <div className="p-2 bd-highlight text-center">
+          <button class="text-sm px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded">Enter</button>
+          </div>
       </form>
-      
+      <div className="p-2 bd-highlight text-center">
+
       <button 
         type="submit"
         className="btn-sm btn-primary"
         onClick={()=>this.props.handleAddActivity(this.state.formData)}
         >
-          Add Activity
+          Now add it to your collection!
       </button>
+      </div>
 
-
-      <h3>Your Activity:</h3>
       <div className="container-fluid full-width-div">
       <div className="row justify-content-md-center row-cols-sm-1 ">
       {this.props.userProfile?.activities?.map(activity=>
         <>
-        <div className="col">
+        <div className="col" align="center">
             <div className="card bg-light shadow-lg mb-3 mx-1" styleName="width:20em;height:40em; text-align: center">
               <div className="card-body">
               <div styleName="display: inline">
