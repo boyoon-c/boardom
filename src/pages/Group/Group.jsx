@@ -10,9 +10,12 @@ class Group extends Component {
     render() {
         return (
             <>
-             <div className="desc">
-               <h2> Create a Group! </h2>
-               </div>
+               <h2
+               style={{
+                fontSize: 50,
+                textAlign: 'center',
+            }}
+               > Create a Group! </h2>
                 <GroupForm 
                 history={this.props.history}
                 handleCreateGroup={this.props.handleCreateGroup}

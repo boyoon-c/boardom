@@ -75,7 +75,12 @@ class GroupAddActivity extends Component {
     return ( 
       <>
       <main className='fs-6 m-5'>
-      <h3>Add activity and join a group</h3>
+      <h3
+      style={{
+        fontSize: 50,
+        textAlign: 'center',
+    }}
+      >Add activity and join a group</h3>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <h3>What activity is your group interested in?</h3>
         <select 
