@@ -60,8 +60,7 @@ class App extends Component {
 	handleCreateGroup = async newGroupData => {
 		const newGroup = await groupAPI.createGroup(newGroupData)
 		console.log("handleCreateGroup new group", newGroup)
-		this.setState ({ userProfile: newGroup }) //chitra changed this 8/19 in the morning
-		//this.setState ({ groups: newGroup }) //this one broke group state
+		this.setState ({ userProfile: newGroup })
 		this.handleGetAllGroups()
 		this.props.history.push('/grouplist')
 		
@@ -87,13 +86,9 @@ class App extends Component {
 	handleJoin = async groupId => {
 		const updatedGroup = await groupAPI.join(groupId)
 		console.log(updatedGroup)
-		// this.setState({ groups: updatedGroup })
 	} 
 	
-	// handleLeaveGroup = async groupId => {
-	// 	const updatedGroup = await groupAPI.leave(groupId)
-	// 	this.setState({ groups: updatedGroup })
-	// } 
+
 	
 	handleLeaveGroup = async groupId => {
 		const updatedGroup = await groupAPI.leave(groupId)
@@ -110,9 +105,7 @@ class App extends Component {
 	handleAddActivity = async activity =>{
 		console.log('this.state.formData', activity)
 		const updatedProfile = await activityAPI.addActivity(activity)
-		//console.log('updatedProfile', updatedProfile)
 		this.setState({userProfile: updatedProfile})
-		//this.props.history.push('/addActivity')
 	} 
 	handleAddGroupActivity = async (activity, groupId) =>{
 		console.log('handlegroupactivity', activity)
@@ -120,7 +113,6 @@ class App extends Component {
 		const groups = this.state.groups
 		groups.filter((group)=>group._id!==updatedGroup._id)
 		groups.push(updatedGroup)
-		//console.log('updatedProfile', updatedProfile)
 		this.setState({groups: groups})
 		this.props.history.push('/')
 	} 
@@ -128,7 +120,6 @@ class App extends Component {
 	handleRemoveActivity = async activity =>{
 		const updatedProfile = await activityAPI.removeActivity(activity)
 		this.setState({userProfile:updatedProfile})
-		//this.props.history.push('/addActivity')
 	}
 	
 	handleGetAllMessages = async () => {
@@ -166,16 +157,6 @@ class App extends Component {
 		this.props.history.push('/messagePost')
 	}
 
-	// handleUpdateActivity = async activityId => {
-	// 	const updatedActivity = await activityAPI.updateActivity(activityId);
-	// 	console.log("This is updatedActivity", updatedActivity)
-	// 	const userProfile = await userAPI.getUserProfile()
-
-	// 	this.setState(
-	// 	  {userProfile: userProfile},
-	// 	);
-	// 	this.props.history.push('/addActivity')
-	//   }
 
 	  handleUpdateActivity = async activityId => {
 		const updatedProfile = await activityAPI.updateActivity(activityId);
@@ -191,11 +172,6 @@ class App extends Component {
 		  console.log("activityNumber", activityNo)
 		  const joinGroupActivity = await groupAPI.joinGroupActivity(groupId, activityNo);
 			console.log(joinGroupActivity)
-			// this.setState(
-			//   {activities: joinGroupActivity} //try array later
-		  // );
-
-		//   this.props.history.push('/group/${group._id}')
 	  }
 	  
 
@@ -252,8 +228,6 @@ class App extends Component {
 			handleSignupOrLogin={this.handleSignupOrLogin} 
 			history={history}
 			handleAddGroupActivity={this.handleAddGroupActivity}
-
-			//handleRemoveGroupActivity={this.handleRemoveActivity}
 			/>
 			}
 			
@@ -270,7 +244,6 @@ class App extends Component {
 				history={this.props.history}
 				plugins={[ dayGridPlugin ]}
 				initialViews="dayGridMonth"
-				//events={this.state.events}
 				events={[
 					{ title: 'event 1', date: '2019-04-01' },
 					{ title: 'event 2', date: '2019-04-02' }
@@ -343,10 +316,7 @@ class App extends Component {
 
 			<Route 
 			exact path='/messagePost'>
-				{/* render={({ match })=> 
-				authService.getUser() ? */}
 			<MessagePost
-				// match={match}
 				messages={this.state.messages}
 				userProfile={userProfile}
 				handleAddMessage={this.handleAddMessage}
@@ -376,14 +346,5 @@ class App extends Component {
 		)
 	}
 }
-
-// function renderEventContent(eventInfo) {
-// 	return (
-// 	  <>
-// 		<b>{eventInfo.timeText}</b>
-// 		<i>{eventInfo.event.title}</i>
-// 	  </>
-// 	)
-//   }
 
 export default App

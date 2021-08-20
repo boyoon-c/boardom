@@ -12,8 +12,6 @@ class EditActivityForm extends Component {
    handleSubmit = e => {
     e.preventDefault();
     this.props.handleUpdateActivity(this.state.formData);
-    //console.log("this is history", this.props)
-    //this.props.history.push('/addActivity')
   };
 
   handleChange = e => {
@@ -25,7 +23,6 @@ class EditActivityForm extends Component {
   };
 
   render() { 
-    //const { body } = this.state.formData
     return ( 
       <>
       <div className="d-flex flex-column bd-highlight mb-3 justify-content-center text-center">
@@ -43,17 +40,10 @@ class EditActivityForm extends Component {
                 name="scheduledDate"
                 type="datetime-local"
                 placeholder={this.props.location.state.activity.scheduledDate}
-                //value={this.props.location.state.activity.scheduledDate}
                 onChange={this.handleChange}
                 required
             />
-            {/* <input
-              className="form-control"
-              name="body"
-              value={body}
-              onChange={this.handleChange}
-              required
-            /> */}
+
     
           </div>
           
