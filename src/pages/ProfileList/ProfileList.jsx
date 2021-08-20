@@ -7,22 +7,22 @@ class ProfileList extends Component {
 
 state = {
     users: [],
+    // filteredUsers: []
   }
 
   async componentDidMount() {
     const users = await getAllUsers()
-    this.setState({ users })
+    const filteredUsers = (users.filter(user => user.profile !== this.props.userProfile._id))
+    this.setState({ users: filteredUsers })
   }
 
+  
   render() { 
     return (
       <>
-        <h1
-        style={{
-          fontSize: 50,
-          textAlign: 'center',
-      }}
-        >All available profiles</h1>
+        <h1>All available profiles</h1>
+        <section class="container px-6 py-4 mx-auto">
+          <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-3">
         {this.state.users.map(user => 
           <UserCard
             user={user}
@@ -32,6 +32,9 @@ state = {
             handleRemoveFriend={this.props.handleRemoveFriend}
           />
         )}
+        </div>
+</section>
+
       </>
     );
   }

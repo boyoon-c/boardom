@@ -8,13 +8,12 @@ const NavBar = ({ user, handleLogout }) => {
 			{user ? (
 				<nav>
 					<div className="nav">
-						<main>
-							Welcome, {user.name}
+						<main className="fs-4">
+							Welcome, {user.name} 
 						</main>
 						<ul className="nav-header">
 							<Link to="/">Home</Link>
 							<Link to="/about">About</Link>
-							<Link to="/calendar">Calendar</Link>
 							<Link to="/group">Create Group</Link>
 							<Link to="/grouplist">Grouplist</Link>
 							<Link to={`/profile/${user.profile}`}>Profile Details</Link>

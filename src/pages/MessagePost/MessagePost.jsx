@@ -18,16 +18,14 @@ class MessagePost extends Component {
       </div>  
 <br></br>
         {this.props.messages?.map((message, idx) => 
-           <>
+           <div class="mb-3">
            <MessageCard 
            userProfile={this.props.userProfile}
            message={message}
            handleDeleteMessage={this.props.handleDeleteMessage}
            />
-         {/* <h3 key={idx}>{message.body}</h3>
-           <button onClick={() => 
-           (this.props.handleDeleteMessage(message._id))}>REMOVE</button>      */}
-         </>
+           </div>
+         
         )}
         <MessageForm
           userProfile={this.props.userProfile}
@@ -35,8 +33,6 @@ class MessagePost extends Component {
           handleDeleteMessage={this.props.handleDeleteMessage}
           handleUpdateMessage={this.props.handleUpdateMessage}
         />
-  
-      
       </>
      );
   }
