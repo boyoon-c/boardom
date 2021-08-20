@@ -14,22 +14,22 @@ const MessageCard = ({message, handleDeleteMessage, idx, userProfile}) => {
         <h3 key={idx}>{message.body}</h3>
         <h6 key={idx}>Written by:  {message.author?.name}</h6>  
         { (userProfile?._id === message.author._id) && 
-      <div>
-    
-    <button className="btn-sm btn-danger" onClick={() => handleDeleteMessage(message._id)}>REMOVE</button>   
-     <Link
-       to={{
-         pathname: `/edit/${message._id}`, 
-         state: {message}
-       }}
-     >
-       <button className="btn-sm btn-warning">
-     Edit
-     </button>
-     </Link>   
-     
-     </div> 
-}
+            <div>
+          
+          <button className="btn-sm btn-danger" onClick={() => handleDeleteMessage(message._id)}>REMOVE</button>   
+          <Link
+            to={{
+              pathname: `/edit/${message._id}`, 
+              state: {message}
+            }}
+          >
+            <button className="btn-sm btn-warning">
+          Edit
+          </button>
+          </Link>   
+          
+          </div> 
+        }
       </div>
     </div>             
   </div>
