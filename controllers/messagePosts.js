@@ -12,6 +12,7 @@ export {
 function edit (req, res) {
   console.log('hitting messagePost/edit')
   MessagePost.findByIdAndUpdate(req.params.id, req.body, { new:true })
+  .populate('author')
   .then((message) => {
     res.status(200)
     .json(message)

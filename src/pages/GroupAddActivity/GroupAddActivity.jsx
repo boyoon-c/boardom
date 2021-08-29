@@ -23,8 +23,6 @@ class GroupAddActivity extends Component {
   }
   formRef=React.createRef()
 
-   
-
     handleChange= e=> {
     console.log('e.target1', e.target)
     const formData = {...this.state.formData, [e.target.name]: e.target.value}
@@ -55,23 +53,8 @@ class GroupAddActivity extends Component {
     }  
 } 
 
-//   handleSubmit2=(e)=>{
-//     e.preventDefault()
-//     let updatedForm = {...this.state.formData, key: e.target.key.value}
-//     updatedForm = {...updatedForm, name: e.target.name.value}
-//     updatedForm = {...updatedForm, type: e.target.type.value}
-//     this.setState({
-//       formData: updatedForm 
-//     });
-//     console.log('AFTER FORMDATA', this.state.formData)
-//   }
-
   render() { 
 
-    console.log("searchResult", this.state.searchResults)
-    console.log("props", this.props)
-    console.log('userProfile', this.props.userProfile)
-    
     return ( 
       <>
       <main className='fs-6 m-5'>
@@ -127,38 +110,30 @@ class GroupAddActivity extends Component {
           type="hidden"
         />
 
-        {/* <input 
-              name="scheduledDate"
-              type="datetime-local"
-              value={this.state.formData.scheduledDate}
-              onChange={this.handleChange}
-            /> */}
-          <input
-            name="type"
-            value={this.state.searchResults.type}
-            type="hidden"
-          />
-          <input
-            name="key"
-            value={this.state.searchResults.key}
-            type="hidden"
-          />
+        <input
+          name="type"
+          value={this.state.searchResults.type}
+          type="hidden"
+        />
+
+        <input
+          name="key"
+          value={this.state.searchResults.key}
+          type="hidden"
+        />
           
-          <h4>What group are you?</h4>
-          <select name="group" onChange={(evt)=>this.setState({[evt.target.name]: evt.target.value})}> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
-            <option value="">select 1</option>
-            {this.props.groups?.map(group=>
-            <option value={group._id}>
-                {group.name}
-            </option>)}
-              {/* <option value={this.props.groups[0].id}>{this.props.groups[0].name}</option> */}
-          </select>
-          <button className="ml-2 btn btn-sm btn-outline-secondary">Enter</button>
+        <h4>What group are you?</h4>
+        <select name="group" onChange={(evt)=>this.setState({[evt.target.name]: evt.target.value})}> {/* Need to figure out what to put as name here; should match with what we have in group model, feel like this should be group */}
+          <option value="">select 1</option>
+          {this.props.groups?.map(group=>
+          <option value={group._id}>
+              {group.name}
+          </option>)}
+            {/* <option value={this.props.groups[0].id}>{this.props.groups[0].name}</option> */}
+        </select>
+        <button className="ml-2 btn btn-sm btn-outline-secondary">Enter</button>
       </form>
-
-
-
-        </div>
+      </div>
       </main>
       </>
      );

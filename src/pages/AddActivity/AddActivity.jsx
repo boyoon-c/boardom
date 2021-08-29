@@ -57,10 +57,11 @@ class AddActivity extends Component {
    
     return ( 
       <>
-      <main className=''>
-        <div className="d-flex flex-column bd-highlight mb-3 justify-content-center text-center">
+      <div className="flex justify-center">
+      <main className='w-3/6 mb-2 py-2 px-4 items-center p-4 bg-dark border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800'>
+      <div className=" bd-highlight mb-3 justify-content-center text-center">
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
-        <div className="-mt-4 bd-highlight">
+        <div className="mt-4 bd-highlight">
         <h3>Activity type</h3>
         <select 
           value={this.state.formData.type} 
@@ -90,7 +91,7 @@ class AddActivity extends Component {
       <h4>Search Results</h4>
         {this.state.searchResults.activity ? <div>{this.state.searchResults.activity}</div> : <p>No matching search results</p>}
       </div>
-        </div>
+      </div>
       <form className="fs-6" ref={this.formRef} onSubmit={this.handleSubmit2}>
       <div className="fs-5 -mt-6 bd-highlight text-center">
         Choose Date!
@@ -166,28 +167,8 @@ class AddActivity extends Component {
       )}
       </div>
       </div>
-
-      {/* <h3>Your Activity:</h3>
-
-      {this.props.userProfile?.activities?.map(activity=>
-        <>
-        <p>{activity.name} scheduled at {activity.scheduledDate} </p> 
-        <button 
-        type="submit"
-        onClick={()=>this.props.handleRemoveActivity(activity._id)}>
-          DELETE
-        </button>
-        <Link
-              className='btn btn-sm btn-warning'
-              to={{
-              pathname: `/editActivity/${activity._id}`,
-              state: {activity}
-              }}
-          >EDIT</Link>
-        </>
-      )}
- */}
       </main>
+      </div>
       </>
      );
   }
