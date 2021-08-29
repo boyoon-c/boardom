@@ -14,8 +14,9 @@ class GroupList extends Component {
           textAlign: 'center',
       }}
         >All available groups</h1>
-        {this.props.groups.map(group => 
+        {this.props?.groups?.map(group => 
           <GroupCard
+            userProfile={this.props.userProfile}
             group={group}
             key={group._id}
             handleJoin={this.props.handleJoin}

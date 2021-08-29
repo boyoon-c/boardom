@@ -26,13 +26,15 @@ const GroupCard = ({  userProfile, group, handleJoin, handleLeaveGroup }) => {
           }}>   
           </Link>
         </div> 
-        <h1>{userProfile}</h1>
-        {!(group?.members?.some(eachMember => eachMember._id === userProfile)) ?
+        {(group?.members?.some(eachMember => eachMember._id === userProfile)) ? <h1>member</h1> : <h1>not a member</h1>}
+        {!(group?.members?.some(eachMember => eachMember._id === userProfile)) &&
           <button 
               class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" 
               onClick={() => handleJoin(group._id)}>
             Become a member of {group.name}!
-          </button> :
+          </button> 
+        }
+        {(group?.members?.some(eachMember => eachMember._id === userProfile)) &&
           <button 
           class="px-4 py-1 text-black font-black tracking-wider bg-indigo-500 hover:bg-indigo-900 rounded" 
           onClick={() => handleLeaveGroup(group._id)}>
